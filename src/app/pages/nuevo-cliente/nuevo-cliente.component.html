@@ -1,1 +1,18 @@
-<p>nuevo-cliente works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <label>nombre</label>
+    <input type="text" formControlName="nombre">
+    <label>apellidos</label>
+    <input type="text" formControlName="apellidos">
+    <label>dni</label>
+    <input type="text" formControlName="dni">
+    <label>telefono</label>
+    <input type="text" formControlName="telefono">
+    <label>email</label>
+    <input type="text" formControlName="email">
+    <label>direccion</label>
+    <input type="text" formControlName="direccion">
+
+
+
+    <input type="submit">
+</form>
