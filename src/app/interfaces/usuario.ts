@@ -1,0 +1,21 @@
+export interface Usuario {
+
+    id: number,
+    nombre: string,
+    apellidos: string,
+    dni: string,
+    telefono: string,
+    email: string,
+    fecha_nacimiento: Date,
+    direccion: string,
+    numero_ss: string,
+    fecha_alta: Date,
+    fecha_baja: Date,
+    rol: string,
+    activo: boolean,
+    contraseña: string,
+    fecha_actualizacion: Date,
+    jornada: string,
+    foto_perfil: string,
+    especialidad: string,
+}
