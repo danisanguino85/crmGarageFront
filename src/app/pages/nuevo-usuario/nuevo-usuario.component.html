@@ -1,1 +1,74 @@
-<p>nuevo-usuario works!</p>
+<form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" formControlName="Nombre">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Apellidos</label>
+        <input type="text" class="form-control" formControlName="apellidos">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">DNI</label>
+        <input type="text" class="form-control" formControlName="dni">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Telefono</label>
+        <input type="text" class="form-control" formControlName="telefono">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" formControlName="fecha_nacimiento">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Direccion</label>
+        <input type="text" class="form-control" formControlName="direccion">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Numero SS</label>
+        <input type="text" class="form-control" formControlName="numero_ss">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fecha de Alta</label>
+        <input type="date" class="form-control" formControlName="fecha_alta">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fecha de Baja</label>
+        <input type="date" class="form-control" formControlName="fecha_baja">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Rol</label>
+        <input type="text" class="form-control" formControlName="rol">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Activo</label>
+        <select class="form-select" formControlName="activo">
+            <option [value]="true">Sí</option>
+            <option [value]="false">No</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control" formControlName="contraseña">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fecha de Actualizacion</label>
+        <input type="date" class="form-control" formControlName="fecha_actualizacion">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Jornada</label>
+        <input type="text" class="form-control" formControlName="jornada">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Foto de Perfil</label>
+        <input type="text" class="form-control" formControlName="foto_perfil">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Especialidad</label>
+        <input type="text" class="form-control" formControlName="especialidad">
+    </div>
+    <input type="submit" value="Registrar"  class="btn btn-info">
+</form>
