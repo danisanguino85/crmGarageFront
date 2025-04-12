@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { ReparacionesService } from '../../services/reparaciones.service';
 
 @Component({
   selector: 'app-lista-reparaciones',
@@ -7,5 +8,27 @@ import { Component } from '@angular/core';
   styleUrl: './lista-reparaciones.component.css'
 })
 export class ListaReparacionesComponent {
+
+
+  reparacionesServices = inject(ReparacionesService);
+  
+
+
+
+ async ngOnInit(){
+
+  //get all reparaciones
+  try {
+    const reparaciones = await this.reparacionesServices.getAllReparaciones()
+    console.log(reparaciones)
+  } catch (error: any) {
+    console.log(error.error.message)
+  } 
+
+
+  }
+
+
+
 
 }

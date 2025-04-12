@@ -18,7 +18,7 @@ export class ReparacionesService {
     )
   }
 
-  getByIdReparaciones(idReparaciones: string){
+  getByIdReparaciones(idReparaciones: String){
     return lastValueFrom(
       this.httpClient.get<Reparacion>(`${this.baseUrl}/${idReparaciones}`)
     )

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ReparacionesService } from '../../services/reparaciones.service';
 
 @Component({
   selector: 'app-nueva-reparacion',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class NuevaReparacionComponent {
 
+  reparacionesServices = inject(ReparacionesService);
+
+
+  ngOnInit(){
+    
+  }
 }
