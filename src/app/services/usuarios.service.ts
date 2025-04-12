@@ -17,7 +17,12 @@ export class UsuariosService {
 
   getAll() {
     return lastValueFrom
-      (this.httpClient.get<Usuario[]>(this.baseUrl))
+      (this.httpClient.get<Usuario[]>(`${this.baseUrl}`))
+  }
+
+  getById(usuarioId: number) {
+    return lastValueFrom
+      (this.httpClient.get<Usuario>(`${this.baseUrl}/${usuarioId}`))
   }
 
   register(body: Usuario) {

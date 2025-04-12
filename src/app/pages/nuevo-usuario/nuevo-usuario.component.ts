@@ -22,12 +22,9 @@ export class NuevoUsuarioComponent {
     fecha_nacimiento: new FormControl(),
     direccion: new FormControl(),
     numero_ss: new FormControl(),
-    fecha_alta: new FormControl(),
-    fecha_baja: new FormControl(),
     rol: new FormControl(),
     activo: new FormControl(),
     contraseña: new FormControl(),
-    fecha_actualizacion: new FormControl(),
     jornada: new FormControl(),
     foto_perfil: new FormControl(),
     especialidad: new FormControl()
@@ -36,6 +33,8 @@ export class NuevoUsuarioComponent {
   async onSubmit() {
     try {
       const usuario = await this.usuarioService.register(this.formRegistro.value)
+      this.router.navigateByUrl('/login');
+      console.log(usuario)
     } catch (error) {
       console.error(error)
     }

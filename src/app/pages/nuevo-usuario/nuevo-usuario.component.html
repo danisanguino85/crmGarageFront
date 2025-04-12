@@ -1,7 +1,7 @@
 <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
     <div class="mb-3">
         <label class="form-label">Nombre</label>
-        <input type="text" class="form-control" formControlName="Nombre">
+        <input type="text" class="form-control" formControlName="nombre">
     </div>
     <div class="mb-3">
         <label class="form-label">Apellidos</label>
@@ -32,14 +32,6 @@
         <input type="text" class="form-control" formControlName="numero_ss">
     </div>
     <div class="mb-3">
-        <label class="form-label">Fecha de Alta</label>
-        <input type="date" class="form-control" formControlName="fecha_alta">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Fecha de Baja</label>
-        <input type="date" class="form-control" formControlName="fecha_baja">
-    </div>
-    <div class="mb-3">
         <label class="form-label">Rol</label>
         <input type="text" class="form-control" formControlName="rol">
     </div>
@@ -53,10 +45,6 @@
     <div class="mb-3">
         <label class="form-label">Contraseña</label>
         <input type="password" class="form-control" formControlName="contraseña">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Fecha de Actualizacion</label>
-        <input type="date" class="form-control" formControlName="fecha_actualizacion">
     </div>
     <div class="mb-3">
         <label class="form-label">Jornada</label>

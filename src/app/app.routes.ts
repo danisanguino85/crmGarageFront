@@ -9,12 +9,17 @@ import { ListaReparacionesComponent } from './pages/lista-reparaciones/lista-rep
 import { DetalleReparacionComponent } from './pages/detalle-reparacion/detalle-reparacion.component';
 import { ListaVehiculosComponent } from './pages/lista-vehiculos/lista-vehiculos.component';
 import { DetalleVehiculoComponent } from './pages/detalle-vehiculo/detalle-vehiculo.component';
+import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
+import { DetalleUsuarioComponent } from './pages/detalle-usuario/detalle-usuario.component';
 
 export const routes: Routes = [
 
     { path: '', pathMatch: 'full', redirectTo: '/inicio' },
     { path: 'inicio', component: LoginComponent },
     { path: 'registro/usuario', component: NuevoUsuarioComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'usuarios', component: ListaUsuariosComponent },
+    { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
     { path: 'nuevo', component: NuevoClienteComponent },
     { path: 'cliente/:clienteId', component: DetalleClienteComponent },
     { path: 'admin', component: DashboardAdminComponent },

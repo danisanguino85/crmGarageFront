@@ -12,9 +12,10 @@ export interface Usuario {
     fecha_baja: Date,
     rol: string,
     activo: boolean,
-    contraseña: string,
+    password: string,
     fecha_actualizacion: Date,
     jornada: string,
     foto_perfil: string,
     especialidad: string,
+    token: string
 }
