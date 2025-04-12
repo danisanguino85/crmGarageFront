@@ -24,7 +24,7 @@ export class NuevoUsuarioComponent {
     numero_ss: new FormControl(),
     rol: new FormControl(),
     activo: new FormControl(),
-    contraseña: new FormControl(),
+    password: new FormControl(),
     jornada: new FormControl(),
     foto_perfil: new FormControl(),
     especialidad: new FormControl()
@@ -33,8 +33,13 @@ export class NuevoUsuarioComponent {
   async onSubmit() {
     try {
       const usuario = await this.usuarioService.register(this.formRegistro.value)
-      this.router.navigateByUrl('/login');
-      console.log(usuario)
+      if (usuario.rol === 'admin') {
+        this.router.navigateByUrl('/admin');
+      }
+      if (usuario.rol === 'mecanico') {
+        this.router.navigateByUrl('/taller');
+      }
+
     } catch (error) {
       console.error(error)
     }

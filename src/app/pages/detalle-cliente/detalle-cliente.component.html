@@ -1,3 +1,4 @@
+<h3>cliente</h3>
 {{cliente.nombre}}
 {{cliente.apellidos}}
 {{cliente.dni}}
@@ -5,3 +6,16 @@
 {{cliente.email}}
 {{cliente.direccion }}
 {{cliente.fecha_alta }}
+
+<h3>nueva nota</h3>
+<form [formGroup]="nuevaNotaForm" (ngSubmit)="onSubmitNota()">
+    <label>Nota</label>
+    <input type="text" formControlName="notas">
+
+    <input type="submit">
+</form>
+<h3>notas</h3>
+@for(nota of notas;track $index){
+
+<p>{{nota.notas}}</p>
+}

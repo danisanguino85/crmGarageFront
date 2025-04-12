@@ -1,5 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { ReparacionesService } from '../../services/reparaciones.service';
+import type { Reparacion } from '../../interfaces/reparacion';
 
 @Component({
   selector: 'app-lista-reparaciones',
@@ -11,19 +12,19 @@ export class ListaReparacionesComponent {
 
 
   reparacionesServices = inject(ReparacionesService);
-  
+
+  reparaciones: Reparacion[] = []
 
 
+  async ngOnInit() {
 
- async ngOnInit(){
+    //get all reparaciones
+    try {
+      this.reparaciones = await this.reparacionesServices.getAllReparaciones()
 
-  //get all reparaciones
-  try {
-    const reparaciones = await this.reparacionesServices.getAllReparaciones()
-    console.log(reparaciones)
-  } catch (error: any) {
-    console.log(error.error.message)
-  } 
+    } catch (error) {
+      console.log(error)
+    }
 
 
   }

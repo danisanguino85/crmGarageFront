@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../services/clientes.service';
 import { Router } from '@angular/router';
 
@@ -16,21 +16,52 @@ export class NuevoClienteComponent {
   clientesService = inject(ClientesService)
 
   registerForm: FormGroup = new FormGroup({
-    nombre: new FormControl(),
-    apellidos: new FormControl(),
-    dni: new FormControl(),
-    telefono: new FormControl(),
-    email: new FormControl(),
-    direccion: new FormControl(),
+    nombre: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    apellidos: new FormControl('', [
+      Validators.required,
+
+    ]),
+    dni: new FormControl('', [
+      Validators.required,
+      Validators.minLength(9),
+      Validators.maxLength(9)
+
+    ]),
+    telefono: new FormControl('', [
+      Validators.required,
+      Validators.minLength(9),
+      Validators.maxLength(12)
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+    ]),
+    direccion: new FormControl('', [
+      Validators.required
+    ]),
+
 
   })
+  checkError(fieldName: string, errorName: string) {
+    return this.registerForm.get(fieldName)?.hasError(errorName) && this.registerForm.get(fieldName)?.touched
+  }
+
 
 
   async onSubmit() {
-    const nuevoCliente = await this.clientesService.register(this.registerForm.value)
-    const clienteId = nuevoCliente.id
-    this.router.navigate([`/cliente/${clienteId}`])
-    this.registerForm.reset()
+    try {
+      if (this.registerForm.valid) {
+        const nuevoCliente = await this.clientesService.register(this.registerForm.value)
+        const clienteId = nuevoCliente.id
+        this.router.navigate([`/cliente/${clienteId}`])
+        this.registerForm.reset()
+      }
+    } catch (error) {
+
+    }
   }
 
 
