@@ -5,12 +5,17 @@ import { DetalleClienteComponent } from './pages/detalle-cliente/detalle-cliente
 import { ListaClientesComponent } from './pages/lista-clientes/lista-clientes.component';
 import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
 import { NuevoUsuarioComponent } from './pages/nuevo-usuario/nuevo-usuario.component';
+import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
+import { DetalleUsuarioComponent } from './pages/detalle-usuario/detalle-usuario.component';
 
 export const routes: Routes = [
 
     { path: '', pathMatch: 'full', redirectTo: '/inicio' },
     { path: 'inicio', component: LoginComponent },
     { path: 'registro/usuario', component: NuevoUsuarioComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'usuarios', component: ListaUsuariosComponent },
+    { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
     { path: 'nuevo', component: NuevoClienteComponent },
     { path: 'cliente/:clienteId', component: DetalleClienteComponent },
     { path: 'admin', component: DashboardAdminComponent },
