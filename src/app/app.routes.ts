@@ -7,6 +7,8 @@ import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin
 import { NuevoUsuarioComponent } from './pages/nuevo-usuario/nuevo-usuario.component';
 import { ListaReparacionesComponent } from './pages/lista-reparaciones/lista-reparaciones.component';
 import { DetalleReparacionComponent } from './pages/detalle-reparacion/detalle-reparacion.component';
+import { ListaVehiculosComponent } from './pages/lista-vehiculos/lista-vehiculos.component';
+import { DetalleVehiculoComponent } from './pages/detalle-vehiculo/detalle-vehiculo.component';
 
 export const routes: Routes = [
 
@@ -17,8 +19,11 @@ export const routes: Routes = [
     { path: 'cliente/:clienteId', component: DetalleClienteComponent },
     { path: 'admin', component: DashboardAdminComponent },
     { path: 'clientes', component: ListaClientesComponent },
-    {path: 'reparaciones', component: ListaReparacionesComponent},
-    {path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent},
+    { path: 'reparaciones', component: ListaReparacionesComponent },
+    { path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent },
+    { path: 'vehiculos', component: ListaVehiculosComponent },
+    { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent },
+
     { path: '**', redirectTo: '/inicio' },
 
 

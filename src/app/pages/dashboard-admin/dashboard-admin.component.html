@@ -1,5 +1,12 @@
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-
+<form [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
+    <label for="">cliente</label>
     <input type="text" formControlName="email">
+    <label for="">vehiculo</label>
+    <input class="btn btn-info" type="submit">
+</form>
+
+<form [formGroup]="searchVehiculoForm" (ngSubmit)="onSubmitMatricula()">
+    <label for="">matricula</label>
+    <input type="text" formControlName="matricula">
     <input class="btn btn-info" type="submit">
 </form>

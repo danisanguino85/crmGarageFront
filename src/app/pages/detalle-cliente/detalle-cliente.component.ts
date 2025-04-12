@@ -14,14 +14,14 @@ export class DetalleClienteComponent {
   clientesService = inject(ClientesService)
 
   async ngOnInit() {
-    await this.getCliente()
+    await this.loadCliente()
   }
 
 
-  async getCliente() {
+  async loadCliente() {
     try {
       this.cliente = await this.clientesService.getById(this.clienteId)
-      console.log(this.cliente)
+
     } catch (error) {
 
     }
