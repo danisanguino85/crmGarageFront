@@ -57,7 +57,10 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Rol</label>
-        <input type="text" class="form-control" formControlName="rol">
+        <select class="form-select" formControlName="rol">
+            <option value="admin">Admin</option>
+            <option value="mecanico">Mecanico</option>
+        </select>
         @if (checkControl('rol', 'required')) {
             <p class="text-danger small">rol obligatorio</p>
             }
@@ -81,7 +84,10 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Jornada</label>
-        <input type="text" class="form-control" formControlName="jornada">
+        <select class="form-select" formControlName="jornada">
+            <option value="parcial">Parcial</option>
+            <option value="completa">Completa</option>
+        </select>
         @if (checkControl('jornada', 'required')) {
             <p class="text-danger small">jornada obligatorio</p>
             }
@@ -95,10 +101,13 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Especialidad</label>
-        <input type="text" class="form-control" formControlName="especialidad">
+        <select class="form-select" formControlName="especialidad">
+            <option value="mecánica_general">Mecanica general</option>
+        </select>
         @if (checkControl('especialidad', 'required')) {
             <p class="text-danger small">especialidad obligatorio</p>
             }
     </div>
     <input type="submit" value="Registrar" class="btn btn-info">
 </form>
+<ngx-sonner-toaster richColors position="bottom-center" />

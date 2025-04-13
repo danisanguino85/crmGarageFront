@@ -14,14 +14,13 @@ export class DetalleReparacionComponent {
   reparacion!: Reparacion
 
   async ngOnInit() {
-    await this.ngOnInit()
+    await this.getReparacion()
   }
 
   async getReparacion() {
     //getById  repaciones
     try {
-      const reparacione = await this.reparacionesServices.getByIdReparaciones(this.idReparaciones)
-      console.log(reparacione)
+      this.reparacion = await this.reparacionesServices.getByIdReparaciones(this.idReparaciones)
     } catch (error) {
       console.log(error)
     }

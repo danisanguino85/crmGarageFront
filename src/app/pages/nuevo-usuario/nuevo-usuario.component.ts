@@ -2,10 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
+import { NgxSonnerToaster, toast } from 'ngx-sonner';
+
 
 @Component({
   selector: 'app-nuevo-usuario',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgxSonnerToaster],
   templateUrl: './nuevo-usuario.component.html',
   styleUrl: './nuevo-usuario.component.css'
 })
@@ -39,6 +41,9 @@ export class NuevoUsuarioComponent {
       }
       if (usuario.rol === 'mecanico') {
         this.router.navigateByUrl('/taller');
+      }
+      if (this.formRegistro.valid) {
+        toast.success('Usuario registrado correctamente')
       }
 
     } catch (error) {
