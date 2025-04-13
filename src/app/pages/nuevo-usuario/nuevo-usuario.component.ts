@@ -25,7 +25,7 @@ export class NuevoUsuarioComponent {
     direccion: new FormControl('', [Validators.required]),
     numero_ss: new FormControl('', [Validators.required]),
     rol: new FormControl('', [Validators.required]),
-    activo: new FormControl(false),
+    activo: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6),
     Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/)]),
     jornada: new FormControl('', [Validators.required]),
