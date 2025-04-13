@@ -2,61 +2,103 @@
     <div class="mb-3">
         <label class="form-label">Nombre</label>
         <input type="text" class="form-control" formControlName="nombre">
+        @if (checkControl('nombre', 'required')) {
+            <p class="text-danger small">nombre obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Apellidos</label>
         <input type="text" class="form-control" formControlName="apellidos">
+        @if (checkControl('apellidos', 'required')) {
+            <p class="text-danger small">apellidos obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">DNI</label>
         <input type="text" class="form-control" formControlName="dni">
+        @if (checkControl('dni', 'required')) {
+            <p class="text-danger small">DNI obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Telefono</label>
         <input type="text" class="form-control" formControlName="telefono">
+        @if (checkControl('telefono', 'required')) {
+            <p class="text-danger small">Telefono obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Email</label>
         <input type="email" class="form-control" formControlName="email">
+        @if (checkControl('email', 'required')) {
+            <p class="text-danger small">email obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Fecha de Nacimiento</label>
         <input type="date" class="form-control" formControlName="fecha_nacimiento">
+        @if (checkControl('fecha de nacimiento', 'required')) {
+            <p class="text-danger small">fecha de nacimiento obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Direccion</label>
         <input type="text" class="form-control" formControlName="direccion">
+        @if (checkControl('direccion', 'required')) {
+            <p class="text-danger small">direccion obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Numero SS</label>
         <input type="text" class="form-control" formControlName="numero_ss">
+        @if (checkControl('numeross', 'required')) {
+            <p class="text-danger small">numero ss obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Rol</label>
         <input type="text" class="form-control" formControlName="rol">
+        @if (checkControl('rol', 'required')) {
+            <p class="text-danger small">rol obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Activo</label>
         <select class="form-select" formControlName="activo">
-            <option [value]="true">Sí</option>
-            <option [value]="false">No</option>
+            <option [value]="1">Sí</option>
+            <option [value]="0">No</option>
         </select>
+        @if (checkControl('activo', 'required')) {
+            <p class="text-danger small">activo obligatorio</p>
+            }
     </div>
     <div class="mb-3">
-        <label class="form-label">Contraseña</label>
-        <input type="password" class="form-control" formControlName="contraseña">
+        <label class="form-label">password</label>
+        <input type="password" class="form-control" formControlName="password">
+        @if (checkControl('password', 'required')) {
+            <p class="text-danger small">passwordobligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Jornada</label>
         <input type="text" class="form-control" formControlName="jornada">
+        @if (checkControl('jornada', 'required')) {
+            <p class="text-danger small">jornada obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Foto de Perfil</label>
         <input type="text" class="form-control" formControlName="foto_perfil">
+        @if (checkControl('foto de perfil', 'required')) {
+            <p class="text-danger small">foto de perfil obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">Especialidad</label>
         <input type="text" class="form-control" formControlName="especialidad">
+        @if (checkControl('especialidad', 'required')) {
+            <p class="text-danger small">especialidad obligatorio</p>
+            }
     </div>
     <input type="submit" value="Registrar"  class="btn btn-info">
 </form>
