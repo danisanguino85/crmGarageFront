@@ -24,8 +24,17 @@ export const routes: Routes = [
     { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
     { path: 'nuevo', component: NuevoClienteComponent },
     { path: 'cliente/:clienteId', component: DetalleClienteComponent },
-    { path: 'admin', component: DashboardAdminComponent },
     { path: 'clientes', component: ListaClientesComponent },
+
+    //rutas hija del admin
+    { path: 'admin', component: DashboardAdminComponent,  children:[
+        { path: 'clientes', component: ListaClientesComponent },
+        { path: 'cliente/:clienteId', component: DetalleClienteComponent },
+        { path: 'usuarios', component: ListaUsuariosComponent },
+        { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
+    ] },
+
+   
     { path: 'reparaciones', component: ListaReparacionesComponent },
     { path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent },
     { path: 'registro/reparaciones', component: NuevaReparacionComponent },
