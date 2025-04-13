@@ -1,0 +1,10 @@
+.general {
+	display: flex;
+	flex-wrap: wrap;
+}
+ul {
+	width: 30%;
+}
+.lista {
+	width: 70%;
+}

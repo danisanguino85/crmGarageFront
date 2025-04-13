@@ -36,11 +36,23 @@ export const routes: Routes = [
 
    
     { path: 'reparaciones', component: ListaReparacionesComponent },
-    { path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent },
+    {
+        path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent, children: [
+
+            { path: 'vehiculo', component: ListaReparacionesComponent },
+            { path: 'cliente/:clienteId', component: ListaReparacionesComponent },
+        ]
+    },
     { path: 'registro/reparaciones', component: NuevaReparacionComponent },
     { path: 'vehiculos', component: ListaVehiculosComponent },
     { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent },
-    { path: 'taller', component: DashboardMecanicoComponent },
+    {
+        path: 'taller', component: DashboardMecanicoComponent, children: [
+            { path: 'reparaciones', component: ListaReparacionesComponent },
+            { path: 'reparaciones/:idReparaciones', component: ListaReparacionesComponent },
+        ]
+    },
+
 
     { path: '**', redirectTo: '/inicio' },
 
