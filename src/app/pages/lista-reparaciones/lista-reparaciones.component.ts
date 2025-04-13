@@ -21,15 +21,8 @@ export class ListaReparacionesComponent {
     //get all reparaciones
     try {
       this.reparaciones = await this.reparacionesServices.getAllReparaciones()
-
     } catch (error) {
       console.log(error)
     }
-
-
   }
-
-
-
-
 }

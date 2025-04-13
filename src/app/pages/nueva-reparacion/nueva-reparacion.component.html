@@ -1,1 +1,27 @@
-<p>nueva-reparacion works!</p>
+<form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label">fecha_ingreso</label>
+        <input type="date" class="form-control" formControlName="fecha_ingreso">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">fecha_salida</label>
+        <input type="date" class="form-control" formControlName="fecha_salida">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">estado</label>
+        <input type="text" class="form-control" formControlName="estado">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">fecha_finalizacion</label>
+        <input type="date" class="form-control" formControlName="fecha_finalizacion">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">presupuesto</label>
+        <input type="text" class="form-control" formControlName="presupuesto">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">precio_total</label>
+        <input type="text" class="form-control" formControlName="precio_total">
+    </div>
+    <input type="submit" value="Registrar"  class="btn btn-info">
+</form>

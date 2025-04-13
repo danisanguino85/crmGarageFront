@@ -1,3 +1,8 @@
-@for(reparacion of reparaciones;track $index){
-{{reparacion.presupuesto}}
+@for (reparacion of reparaciones; track $index) {
+    <p>{{reparacion.fecha_ingreso}}</p>
+    <p>{{reparacion.fecha_salida}}</p>
+    <p>{{reparacion.estado}}</p>
+    <p>{{reparacion.fecha_finalizacion}}</p>
+    <p>{{reparacion.presupuesto}}</p>
+    <p>{{reparacion.precio_total}}</p>
 }

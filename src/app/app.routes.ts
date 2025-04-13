@@ -12,6 +12,7 @@ import { DetalleVehiculoComponent } from './pages/detalle-vehiculo/detalle-vehic
 import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
 import { DetalleUsuarioComponent } from './pages/detalle-usuario/detalle-usuario.component';
 import { DashboardMecanicoComponent } from './pages/dashboard-mecanico/dashboard-mecanico.component';
+import { NuevaReparacionComponent } from './pages/nueva-reparacion/nueva-reparacion.component';
 
 export const routes: Routes = [
 
@@ -27,6 +28,7 @@ export const routes: Routes = [
     { path: 'clientes', component: ListaClientesComponent },
     { path: 'reparaciones', component: ListaReparacionesComponent },
     { path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent },
+    { path: 'registro/reparaciones', component: NuevaReparacionComponent },
     { path: 'vehiculos', component: ListaVehiculosComponent },
     { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent },
     { path: 'taller', component: DashboardMecanicoComponent },

@@ -22,6 +22,7 @@ export class LoginComponent {
     try {
       const response = await this.usuarioService.login(this.formLogin.value)
       localStorage.setItem('crm_garage_token', response.token)
+      this.router.navigateByUrl('/');
       console.log(response)
     } catch (error) {
       console.log(error)
