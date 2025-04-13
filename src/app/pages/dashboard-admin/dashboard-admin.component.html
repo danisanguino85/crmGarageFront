@@ -10,3 +10,20 @@
     <input type="text" formControlName="matricula">
     <input class="btn btn-info" type="submit">
 </form>
+
+<button [routerLink]="['/admin', 'clientes']">Ver lista de clientes</button>
+<button [routerLink]="['/admin', 'cliente', 'clienteId']">Ver un cliente concreto</button>
+
+<button [routerLink]="['/admin', 'usuarios']">Ver lista de Usuarios</button>
+<button [routerLink]="['/admin', 'usuario', 'usuarioId']">Ver un usuario concreto</button>
+
+<div>
+    <router-outlet />
+</div>
+
+
+
+
+<!--  
+        { path: 'usuarios', component: ListaUsuariosComponent },
+        { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent }, -->

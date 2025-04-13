@@ -1,12 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
 import { ClientesService } from '../../services/clientes.service';
 import { FormControl, FormControlName, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { VehiculosService } from '../../services/vehiculos.service';
 
 @Component({
   selector: 'app-dashboard-admin',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterOutlet, RouterLink],
   templateUrl: './dashboard-admin.component.html',
   styleUrl: './dashboard-admin.component.css'
 })
