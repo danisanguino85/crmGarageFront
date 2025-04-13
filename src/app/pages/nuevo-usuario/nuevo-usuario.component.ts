@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { ESPECIALIDADES } from '../../db/db';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { NgxSonnerToaster, toast } from 'ngx-sonner';
 export class NuevoUsuarioComponent {
   usuarioService = inject(UsuariosService);
   router = inject(Router);
+  especialidades: string[] = ESPECIALIDADES
 
   formRegistro: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),

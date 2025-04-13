@@ -1,11 +1,13 @@
 <div class="general">
     <ul>
-        <li>Reparaciones</li>
+        <li [routerLink]="['/taller/reparaciones/']">Reparaciones</li>
         <li></li>
         <li></li>
         <li></li>
     </ul>
 
-    <router-outlet></router-outlet>
+    <div class="lista">
+        <router-outlet />
+    </div>
 
 </div>
