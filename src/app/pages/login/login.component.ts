@@ -15,7 +15,7 @@ export class LoginComponent {
 
   formLogin: FormGroup = new FormGroup({
     email: new FormControl(),
-    contraseña: new FormControl()
+    password: new FormControl()
   })
 
   async onSubmit() {

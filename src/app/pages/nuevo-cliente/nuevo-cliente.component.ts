@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../services/clientes.service';
 import { Router } from '@angular/router';
+import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-nuevo-cliente',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgxSonnerToaster],
   templateUrl: './nuevo-cliente.component.html',
   styleUrl: './nuevo-cliente.component.css'
 })
@@ -56,7 +57,13 @@ export class NuevoClienteComponent {
       if (this.registerForm.valid) {
         const nuevoCliente = await this.clientesService.register(this.registerForm.value)
         const clienteId = nuevoCliente.id
-        this.router.navigate([`/cliente/${clienteId}`])
+        toast.success('Cliente resitrado', {
+          description: 'Se ha añadido un nuevo cliente a la base de datos'
+        })
+        setTimeout(() => {
+          this.router.navigate([`/cliente/${clienteId}`])
+        }, 2000)
+
         this.registerForm.reset()
       }
     } catch (error) {
