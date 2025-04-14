@@ -1,2 +1,31 @@
 <h1>Detalle usuario</h1>
-{{usuario.nombre}}
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+        {{usuario.nombre}}
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">{{usuario.apellidos}}</a>
+    <a href="#" class="list-group-item list-group-item-action">{{usuario.dni}}</a>
+    <a href="#" class="list-group-item list-group-item-action">{{usuario.telefono}}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.email}}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.direccion }}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.fecha_alta }}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.fecha_baja }}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.fecha_nacimiento
+        }}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">
+        <p>{{usuario.numero_ss}}</p>
+    </a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">
+        <p>{{usuario.rol}}</p>
+    </a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">
+        <p>{{usuario.activo}}</p>
+    </a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.direccion }}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.password}}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.fecha_actualizacion}}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.jornada}}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.foto_perfil}}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.especialidad}}</a>
+
+</div>

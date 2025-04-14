@@ -1,14 +1,10 @@
+<h2>CLIENTES</h2>
 @for(cliente of clientes;track $index){
-{{cliente.nombre}}
-{{cliente.apellidos}}
-{{cliente.dni}}
-{{cliente.telefono}}
-{{cliente.email}}
-{{cliente.direccion }}
-{{cliente.fecha_alta }}
-}
+<ul class="list-group list-group-horizontal" [routerLink]="[`/admin/cliente/${cliente.id}`]">
+    <li class="list-group-item w-100">{{cliente.nombre}} {{cliente.apellidos}}</li>
+    <li class="list-group-item w-100">{{cliente.telefono}}</li>
+    <li class="list-group-item w-100">{{cliente.email}}</li>
 
-<div>
-    Lista de clientes works perfectamente bro
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam neque, possimus ipsa voluptates voluptate quos! Blanditiis, aliquid. Sapiente, ducimus. Ullam obcaecati quidem quia at soluta corporis ipsam accusamus facere voluptatem.</p>
-</div>
+</ul>
+
+}

@@ -10,7 +10,7 @@ import type { Reparacion } from '../../interfaces/reparacion';
 })
 export class DetalleReparacionComponent {
   reparacionesServices = inject(ReparacionesService);
-  @Input() idReparacion = 0
+  @Input() reparacionId = 0
   reparacion!: Reparacion
 
   async ngOnInit() {
@@ -18,9 +18,10 @@ export class DetalleReparacionComponent {
   }
 
   async getReparacion() {
-    //getById  repaciones
+    //getById  reparaciones
     try {
-      this.reparacion = await this.reparacionesServices.getByIdReparacion(this.idReparacion)
+      console.log(this.reparacionId);
+      this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
     } catch (error) {
       console.log(error)
     }

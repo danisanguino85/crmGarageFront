@@ -3,6 +3,7 @@ import { ClientesService } from '../../services/clientes.service';
 import { FormControl, FormControlName, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { VehiculosService } from '../../services/vehiculos.service';
+import { ReparacionesService } from '../../services/reparaciones.service';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -14,31 +15,46 @@ export class DashboardAdminComponent {
 
   vehiculosService = inject(VehiculosService)
   clientesService = inject(ClientesService)
+  reparacionesService = inject(ReparacionesService)
+
   router = inject(Router)
   @Input() clienteId = 0
   @Input() vehiculoId = 0
+  @Input() reparacionId? = 0
 
   searchClienteForm: FormGroup = new FormGroup({
-    email: new FormControl(),
+    telefono: new FormControl(),
 
   })
   searchVehiculoForm: FormGroup = new FormGroup({
     matricula: new FormControl(),
 
   })
+  searchReparacionForm: FormGroup = new FormGroup({
+    notaTaller: new FormControl(),
+
+  })
 
 
   async onSubmitCliente() {
-    const response = await this.clientesService.getByEmail(this.searchClienteForm.value);
+    const response = await this.clientesService.getByTelefono(this.searchClienteForm.value);
+
     this.clienteId = response.id
-    this.router.navigate([`/cliente/${this.clienteId}`])
+    this.router.navigate([`/admin/cliente/${this.clienteId}`])
+  }
+
+  async onSubmitReparacion() {
+    const response = await this.reparacionesService.getReparacionById(this.searchReparacionForm.value.notaTaller);
+    this.reparacionId = response.id
+    this.searchReparacionForm.reset()
+    this.router.navigate([`/admin/reparacion/${this.reparacionId}`])
   }
 
   async onSubmitMatricula() {
     const response = await this.vehiculosService.getVehiculo(this.searchVehiculoForm.value)
-    console.log(response)
+    this.searchVehiculoForm.reset()
     this.vehiculoId = response.id
-    this.router.navigate([`/vehiculos/${this.vehiculoId}`])
+    this.router.navigate([`/admin/vehiculo/${this.vehiculoId}`])
   }
 
 }

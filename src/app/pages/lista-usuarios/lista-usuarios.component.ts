@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import type { Usuario } from '../../interfaces/usuario';
 import { UsuariosService } from '../../services/usuarios.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-lista-usuarios',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './lista-usuarios.component.html',
   styleUrl: './lista-usuarios.component.css'
 })

@@ -1,22 +1,9 @@
-<div>
-    @for (item of arrUsuario; track $index) {
-        <p>{{item.nombre}}</p>
-        <p>{{item.apellidos}}</p>
-        <p>{{item.dni}}</p>
-        <p>{{item.telefono}}</p>
-        <p>{{item.email}}</p>
-        <p>{{item.fecha_nacimiento}}</p>
-        <p>{{item.direccion}}</p>
-        <p>{{item.numero_ss}}</p>
-        <p>{{item.fecha_alta}}</p>
-        <p>{{item.fecha_baja}}</p>
-        <p>{{item.rol}}</p>
-        <p>{{item.activo}}</p>
-        <p>{{item.password}}</p>
-        <p>{{item.fecha_actualizacion}}</p>
-        <p>{{item.jornada}}</p>
-        <p>{{item.foto_perfil}}</p>
-        <p>{{item.especialidad}}</p>
-
-    }
-</div>
+<h2>EMPLEADOS</h2>
+@for(usuario of arrUsuario;track $index){
+<ul class="list-group list-group-horizontal" [routerLink]="[`/admin/usuario/${usuario.id}`]">
+    <li class="list-group-item w-100">{{usuario.nombre}} {{usuario.apellidos}}</li>
+    <li class="list-group-item w-100">{{usuario.telefono}}</li>
+    <li class="list-group-item w-100">{{usuario.email}}</li>
+    <li class="list-group-item w-100">{{usuario.rol}}</li>
+</ul>
+}

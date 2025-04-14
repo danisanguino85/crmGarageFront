@@ -23,7 +23,9 @@ export class ReparacionesService {
       (this.httpClient.post<Reparacion>(`${this.baseUrl}/new`, body))
   }
 
-  getByIdReparacion(idReparacion: number) {
+  getReparacionById(idReparacion: number) {
+    console.log(idReparacion);
+
     return lastValueFrom(
       this.httpClient.get<Reparacion>(`${this.baseUrl}/${idReparacion}`)
     )
