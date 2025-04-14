@@ -1,14 +1,26 @@
 <h3>cliente Detalle</h3>
-{{cliente.nombre}}
-{{cliente.apellidos}}
-{{cliente.dni}}
-{{cliente.telefono}}
-{{cliente.email}}
-{{cliente.direccion }}
-{{cliente.fecha_alta }}
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+        {{cliente.nombre}}
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">{{cliente.apellidos}}</a>
+    <a href="#" class="list-group-item list-group-item-action">{{cliente.dni}}</a>
+    <a href="#" class="list-group-item list-group-item-action">{{cliente.telefono}}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{cliente.email}}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{cliente.direccion }}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{cliente.fecha_alta }}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{cliente.direccion }}</a>
+    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{cliente.fecha_alta
+        }}</a>
+</div>
+
+
+
+
+<!--
 
 <h3>nueva nota</h3>
-<form [formGroup]="nuevaNotaForm" >
+<form [formGroup]="nuevaNotaForm">
     <label>Nota</label>
     <input type="text" formControlName="notas">
 
@@ -20,4 +32,4 @@
 <p>{{nota.notas}}</p>
 }
 
-<!-- (ngSubmit)="onSubmitNota()" -->
+ (ngSubmit)="onSubmitNota()" -->

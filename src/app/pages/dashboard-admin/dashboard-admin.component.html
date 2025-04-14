@@ -1,27 +1,37 @@
 <div class="general">
     <div class="lateral">
-        <ul>
-            <li [routerLink]="['/admin', 'clientes']">Clientes</li>
-            <li [routerLink]="['/admin', 'usuarios']">Empleados</li>
-            <li [routerLink]="['/admin', 'reparaciones']">Notas de taller</li>
-        </ul>
-        <form class="mb-3" [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
-            <label class="form-label">Teléfono</label>
-            <input type="text" class="form-control" formControlName="telefono">
-            <input type="submit">
-        </form>
-        <form class="mb-3" [formGroup]="searchReparacionForm" (ngSubmit)="onSubmitReparacion()">
-            <label class="form-label">Nota de taller</label>
-            <input type="text" class="form-control" formControlName="notaTaller">
-            <input type="submit">
+        <div class="fijo">
+            <ul>
+                <li [routerLink]="['/admin', 'clientes']">Clientes</li>
+                <li [routerLink]="['/admin', 'usuarios']">Empleados</li>
+                <li [routerLink]="['/admin', 'reparaciones']">Notas de taller</li>
+            </ul>
+            <form class="mb-3" [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
+                <label class="form-label">Cliente</label>
+                <input type="text" class="form-control" placeholder="número de teléfono" formControlName="telefono">
+                <input type="submit" value="Enviar">
+            </form>
 
-        </form>
-        <form class="mb-3" [formGroup]="searchVehiculoForm" (ngSubmit)="onSubmitMatricula()">
-            <label class="form-label">Vehículo</label>
-            <input type="text" class="form-control" formControlName="matricula">
-            <input type="submit">
+            <form class="mb-3" [formGroup]="searchReparacionForm" (ngSubmit)="onSubmitReparacion()">
+                <label class="form-label">Nota de taller</label>
+                <input type="text" class="form-control" placeholder="número de nota" formControlName="notaTaller">
+                <input type="submit" value="Enviar">
 
-        </form>
+            </form>
+            <form class="mb-3" [formGroup]="searchVehiculoForm" (ngSubmit)="onSubmitMatricula()">
+                <label class="form-label">Vehículo</label>
+                <input type="text" class="form-control" placeholder="matrícula" formControlName="matricula">
+                <input type="submit" value="Enviar">
+
+            </form>
+            <div class="logoTaller">
+                <i class="fa-solid fa-car"></i>
+                <p>TALLERES MACARRONI</p>
+
+            </div>
+        </div>
+
+
     </div>
 
     <div class="main">

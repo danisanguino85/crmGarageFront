@@ -30,13 +30,11 @@ export class DetalleClienteComponent {
 
     console.log(this.reparacionId);
 
-    /* await this.loadCliente()
+    await this.loadCliente()
     await this.loadNotas()
 
 
   }
-
-
   async loadCliente() {
     try {
       this.cliente = await this.clientesService.getById(this.clienteId)
@@ -62,6 +60,6 @@ export class DetalleClienteComponent {
       this.notas = await this.notasService.getAllNotas()
     } catch (error) {
 
-    }  */
+    }
   }
 }
