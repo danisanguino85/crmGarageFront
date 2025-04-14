@@ -35,21 +35,49 @@ export class NuevoUsuarioComponent {
     especialidad: new FormControl('', [Validators.required])
   })
 
-  async onSubmit() {
+  /* async onSubmit() {
     try {
       const usuario = await this.usuarioService.register(this.formRegistro.value)
+      if (this.formRegistro.valid) {
+        toast.success('Usuario registrado correctamente')
+      }
+      setTimeout(() => {
+
+      }, 2000)
       if (usuario.rol === 'admin') {
         this.router.navigateByUrl('/admin');
       }
       if (usuario.rol === 'mecanico') {
         this.router.navigateByUrl('/taller');
       }
-      if (this.formRegistro.valid) {
-        toast.success('Usuario registrado correctamente')
-      }
 
     } catch (error) {
       console.error(error)
+    }
+  } */
+
+  async onSubmit() {
+    try {
+      if (this.formRegistro.valid) {
+        toast.error('Formulario invalido. Revisa los campos.');
+        return;
+      }
+
+      const usuario = await this.usuarioService.register(this.formRegistro.value);
+
+      toast.success('Usuario registrado correctamente');
+
+      setTimeout(() => {
+        if (usuario.rol === 'admin') {
+          this.router.navigateByUrl('/admin');
+        } else if (usuario.rol === 'mecanico') {
+          this.router.navigateByUrl('/taller');
+        }
+      }, 1500);
+
+    } catch (error) {
+      console.error(error);
+      toast.error('Hubo un error al registrar el usuario');
     }
   }
 
