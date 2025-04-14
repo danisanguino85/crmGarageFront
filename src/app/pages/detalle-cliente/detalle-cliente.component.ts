@@ -13,6 +13,8 @@ import type { Nota } from '../../interfaces/nota';
 })
 export class DetalleClienteComponent {
   @Input() clienteId = 0
+  @Input() reparacionId: String | undefined
+
   cliente!: Cliente
   nota!: Nota
   notas: Nota[] = []
@@ -25,7 +27,10 @@ export class DetalleClienteComponent {
   })
 
   async ngOnInit() {
-    await this.loadCliente()
+
+    console.log(this.reparacionId);
+
+    /* await this.loadCliente()
     await this.loadNotas()
 
 
@@ -57,6 +62,6 @@ export class DetalleClienteComponent {
       this.notas = await this.notasService.getAllNotas()
     } catch (error) {
 
-    }
+    }  */
   }
 }

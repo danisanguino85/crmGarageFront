@@ -34,11 +34,17 @@ export const routes: Routes = [
         { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
     ] },
 
-   
+  
     { path: 'reparaciones', component: ListaReparacionesComponent },
+    /* desde el panel mecanico acceder a los diferentes componentes */
+    { path: 'taller/reparacion/:reparacionId', component: DetalleReparacionComponent, children:[
+        { path: 'vehiculo', component: DetalleVehiculoComponent },
+        { path: 'cliente', component: DetalleClienteComponent },
+    ] }, 
+
+
     {
         path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent, children: [
-
             { path: 'vehiculo', component: ListaReparacionesComponent },
             { path: 'cliente/:clienteId', component: ListaReparacionesComponent },
         ]
@@ -46,12 +52,15 @@ export const routes: Routes = [
     { path: 'registro/reparaciones', component: NuevaReparacionComponent },
     { path: 'vehiculos', component: ListaVehiculosComponent },
     { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent },
+
     {
         path: 'taller', component: DashboardMecanicoComponent, children: [
-            { path: 'reparaciones', component: ListaReparacionesComponent },
-            { path: 'reparaciones/:idReparaciones', component: ListaReparacionesComponent },
+          /*   { path: 'reparaciones/:reparacionId', component: DetalleReparacionComponent, children:[
+                { path: 'vehiculo', component: DetalleVehiculoComponent },
+                { path: 'cliente', component: DetalleClienteComponent }, 
+            ] }, */
         ]
-    },
+    }, 
 
 
     { path: '**', redirectTo: '/inicio' },
@@ -59,3 +68,6 @@ export const routes: Routes = [
 
 
 ];
+
+
+/*   /*  { path: 'reparaciones/:idReparaciones', component: ListaReparacionesComponent }, */ 

@@ -1,10 +1,26 @@
-<h1>Detalle Reparacion</h1>
-<li>Vehiculo</li>
-<li>Cliente</li>
-<li>Entrada</li>
-<li>Estado</li>
+<h2 class="titulo-seccion">Detalle Reparacion</h2>
+<div class="detalle-wrapper">
+  <!-- Botones a la izquierda -->
+  <div class="botones-izquierda">
+    <button [routerLink]="['/taller', 'reparacion', '1', 'vehiculo']">
+      Ver Detalle Vehículo
+    </button> 
 
+    <button [routerLink]="['/taller', 'reparacion', '1', 'cliente']">
+      Ver Detalle Cliente
+    </button>
+  </div>
 
-{{reparacion.fecha_ingreso}}
-{{reparacion.estado}}
-Presupuesto inicial: {{reparacion.presupuesto}}
+  <!-- Card a la derecha -->
+  <div class="card-derecha">
+    <div class="card">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Textarea y botón -->
+    <div class="nota-wrapper">
+      <textarea placeholder="Escribe una nota..." rows="4"></textarea>
+      <button class="btn-enviar-nota">Enviar nota</button>
+    </div>
+  </div>
+</div>

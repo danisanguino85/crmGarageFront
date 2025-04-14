@@ -1,4 +1,4 @@
-<h3>cliente</h3>
+<h3>cliente Detalle</h3>
 {{cliente.nombre}}
 {{cliente.apellidos}}
 {{cliente.dni}}
@@ -8,7 +8,7 @@
 {{cliente.fecha_alta }}
 
 <h3>nueva nota</h3>
-<form [formGroup]="nuevaNotaForm" (ngSubmit)="onSubmitNota()">
+<form [formGroup]="nuevaNotaForm" >
     <label>Nota</label>
     <input type="text" formControlName="notas">
 
@@ -19,3 +19,5 @@
 
 <p>{{nota.notas}}</p>
 }
+
+<!-- (ngSubmit)="onSubmitNota()" -->

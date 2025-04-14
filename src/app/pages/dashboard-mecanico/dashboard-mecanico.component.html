@@ -1,4 +1,66 @@
-<div class="general">
+<div class="general-container">
+  <h2 class="nombre-mecanico">NOMBRE MECANICO</h2>
+
+  <div class="container-cards">
+    <!-- Card de usuario/mecánico -->
+    <div class="card usuario">
+      <h3>mecanico.nombre</h3>
+      <p><strong>DNI:</strong> mecanico.dni</p>
+      <p><strong>Teléfono:</strong> mecanico.telefono</p>
+      <p><strong>Email:</strong> mecanico.email</p>
+      <p><strong>Fecha de nacimiento:</strong> mecanico.fecha_nacimiento</p>
+      <p><strong>Dirección:</strong> mecanico.direccion</p>
+      <p><strong>Especialidad:</strong> mecanico.especialidad</p>
+      <p><strong>Jornada:</strong>mecanico.jornada</p>
+    </div>
+
+    <!-- Card de producto -->
+    <div class="card producto">
+      <button class="btn-ver-todos">Ver todos las reparaciones</button>
+
+      <div class="lista-productos">
+        @for (reparacion of reparaciones; track $index) {
+        <div
+          class="item-producto"
+        >
+          <div class="producto-header">
+            <p>
+              <strong>Fecha Ingreso:</strong> {{ reparacion.fecha_ingreso }}
+            </p>
+            <p><strong>Salida:</strong> {{ reparacion.fecha_salida }}</p>
+          </div>
+
+          <div class="producto-body">
+            <p>
+              <strong>Estado:</strong>
+              <span class="estado">{{ reparacion.estado }}</span>
+            </p>
+            <p>
+              <strong>Finalización:</strong> {{ reparacion.fecha_finalizacion }}
+            </p>
+            <p><strong>Presupuesto:</strong> {{ reparacion.presupuesto }} €</p>
+            <p>
+              <strong>Total:</strong>
+              <span class="precio-total">{{ reparacion.precio_total }} €</span>
+            </p>
+          </div>
+
+          <div class="producto-footer">
+            <button
+              class="ver-reparacion-button"
+              [routerLink]="['/taller','reparacion', reparacion.id]"
+            >
+              Ver Reparación
+            </button>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="general">
     <ul>
         <li [routerLink]="['/taller/reparaciones/']">Reparaciones</li>
         <li></li>
@@ -10,4 +72,5 @@
         <router-outlet />
     </div>
 
-</div>
+</div> -->
+<!-- quiero que me hagas dos card, el primero con los  -->
