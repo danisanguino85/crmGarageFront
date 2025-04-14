@@ -1,0 +1,36 @@
+form {
+	max-width: 500px;
+	margin: 4rem auto;
+	padding: 2rem 2rem;
+	background-color: var(--primary-color);
+
+	h1 {
+		text-align: center;
+	}
+}
+
+form .form-label {
+	font-weight: 600;
+	font-size: 1.1rem;
+	margin-bottom: 0.5rem;
+	display: block;
+}
+
+form .form-control {
+	font-size: 1rem;
+	padding: 0.75rem 1rem;
+	border-radius: 8px;
+	border: 1px solid var(--secondary-color);
+}
+
+form .btn {
+	font-size: 1.05rem;
+	padding: 0.75rem;
+	border-radius: 10px;
+	width: 100%;
+	background-color: var(--secondary-color);
+}
+form .btn:hover {
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+}

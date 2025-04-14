@@ -1,27 +1,47 @@
 <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
+    <h1>Nueva Reparacion</h1>
     <div class="mb-3">
         <label class="form-label">fecha_ingreso</label>
         <input type="date" class="form-control" formControlName="fecha_ingreso">
+        @if (checkControl('fecha_ingreso', 'required')) {
+            <p class="text-danger small">fecha obligatoria</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">fecha_salida</label>
         <input type="date" class="form-control" formControlName="fecha_salida">
+        @if (checkControl('fecha_salida', 'required')) {
+            <p class="text-danger small">fecha obligatoria</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">estado</label>
         <input type="text" class="form-control" formControlName="estado">
+        @if (checkControl('estado', 'required')) {
+            <p class="text-danger small">estado obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">fecha_finalizacion</label>
         <input type="date" class="form-control" formControlName="fecha_finalizacion">
+        @if (checkControl('fecha_finalizacion', 'required')) {
+            <p class="text-danger small">fecha obligatoria</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">presupuesto</label>
         <input type="text" class="form-control" formControlName="presupuesto">
+        @if (checkControl('presupuesto', 'required')) {
+            <p class="text-danger small">presupuesto obligatorio</p>
+            }
     </div>
     <div class="mb-3">
         <label class="form-label">precio_total</label>
         <input type="text" class="form-control" formControlName="precio_total">
+        @if (checkControl('precio_total', 'required')) {
+            <p class="text-danger small">precio obligatoria</p>
+            }
     </div>
-    <input type="submit" value="Registrar"  class="btn btn-info">
+    <input type="submit" value="Registrar" class="btn btn-info">
 </form>
+<ngx-sonner-toaster richColors position="bottom-center" />

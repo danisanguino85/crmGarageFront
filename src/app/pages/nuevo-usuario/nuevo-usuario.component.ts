@@ -37,11 +37,6 @@ export class NuevoUsuarioComponent {
 
   async onSubmit() {
     try {
-      if (this.formRegistro.valid) {
-        toast.error('Formulario invalido. Revisa los campos.');
-        return;
-      }
-
       const usuario = await this.usuarioService.register(this.formRegistro.value);
 
       toast.success('Usuario registrado correctamente');

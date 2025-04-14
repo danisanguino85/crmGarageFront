@@ -1,37 +1,35 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <label>nombre</label>
-    <input type="text" formControlName="nombre">
+    <h1>Nuevo Cliente</h1>
+    <label class="form-label">nombre</label>
+    <input class="form-control" type="text" formControlName="nombre">
     @if(checkError('nombre', 'required') || checkError('nombre', 'minlength')){
     <p class="error">Debes incluir un nombre.</p>
     }
-    <label>apellidos</label>
-    <input type="text" formControlName="apellidos">
+    <label class="form-label">apellidos</label>
+    <input class="form-control" type="text" formControlName="apellidos">
     @if(checkError('apellidos', 'required') || checkError('apellidos', 'minlength')){
     <p class="error">Debes incluir al menos un apellido.</p>
     }
-    <label>dni</label>
-    <input type="text" formControlName="dni">
+    <label class="form-label">dni</label>
+    <input class="form-control" type="text" formControlName="dni">
     @if(checkError('dni', 'required') || checkError('dni', 'minlength')){
     <p class="error">El DNI es obligatorio.</p>
     }
-    <label>telefono</label>
-    <input type="text" formControlName="telefono">
+    <label class="form-label">telefono</label>
+    <input class="form-control" type="text" formControlName="telefono">
     @if(checkError('telefono', 'required') || checkError('telefono', 'minlength')){
     <p class="error">Debes incluir un teléfono válido</p>
     }
-    <label>email</label>
-    <input type="text" formControlName="email">
+    <label class="form-label">email</label>
+    <input class="form-control" type="text" formControlName="email">
     @if(checkError('email', 'required') || checkError('email', 'minlength')){
     <p class="error">Debes incluir un email válido.</p>
     }
-    <label>direccion</label>
-    <input type="text" formControlName="direccion">
+    <label class="form-label">direccion</label>
+    <input class="form-control" type="text" formControlName="direccion">
     @if(checkError('apellidos', 'required') || checkError('apellidos', 'minlength')){
     <p class="error">Debes incluir una dirección.</p>
     }
-
-
-
-    <input type="submit">
+    <input type="submit" class="btn btn-info">
 </form>
 <ngx-sonner-toaster richColors position="bottom-center" />
