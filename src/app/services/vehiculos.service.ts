@@ -21,7 +21,7 @@ export class VehiculosService {
 
   }
 
-  async getVehiculo(body: Vehiculo) {
+  async getVehiculo(body: string) {
     return lastValueFrom(
       this.httpClient.post<Vehiculo>(`${this.baseUrl}/vehiculo`, body)
     )

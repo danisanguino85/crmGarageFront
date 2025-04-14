@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2 class="titulo-seccion">Detalle Reparacion</h2>
 <div class="detalle-wrapper">
   <!-- Botones a la izquierda -->
@@ -5,12 +6,21 @@
     <button [routerLink]="['/taller', 'reparacion', '1', 'vehiculo']">
       Ver Detalle Vehículo
     </button> 
+=======
+@if(reparacion){
+<h1>Detalle Reparacion</h1>
+<li>Vehiculo</li>
+<li>Cliente</li>
+<li>Entrada</li>
+<li>Estado</li>
+>>>>>>> feature5
 
     <button [routerLink]="['/taller', 'reparacion', '1', 'cliente']">
       Ver Detalle Cliente
     </button>
   </div>
 
+<<<<<<< HEAD
   <!-- Card a la derecha -->
   <div class="card-derecha">
     <div class="card">
@@ -24,3 +34,9 @@
     </div>
   </div>
 </div>
+=======
+{{reparacion.fecha_ingreso}}
+{{reparacion.estado}}
+Presupuesto inicial: {{reparacion.presupuesto}}
+}
+>>>>>>> feature5

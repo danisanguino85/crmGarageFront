@@ -1,3 +1,49 @@
+<div class="general">
+    <div class="lateral">
+        <ul>
+            <li [routerLink]="['/admin', 'clientes']">Clientes</li>
+            <li [routerLink]="['/admin', 'usuarios']">Empleados</li>
+            <li [routerLink]="['/admin', 'reparaciones']">Notas de taller</li>
+        </ul>
+        <form class="mb-3" [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
+            <label class="form-label">Teléfono</label>
+            <input type="text" class="form-control" formControlName="telefono">
+            <input type="submit">
+        </form>
+        <form class="mb-3" [formGroup]="searchReparacionForm" (ngSubmit)="onSubmitReparacion()">
+            <label class="form-label">Nota de taller</label>
+            <input type="text" class="form-control" formControlName="notaTaller">
+            <input type="submit">
+
+        </form>
+        <form class="mb-3" [formGroup]="searchVehiculoForm" (ngSubmit)="onSubmitMatricula()">
+            <label class="form-label">Vehículo</label>
+            <input type="text" class="form-control" formControlName="matricula">
+            <input type="submit">
+
+        </form>
+    </div>
+
+    <div class="main">
+
+        <div class="routerOutlet">
+            <router-outlet />
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!--
 <form [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
     <label for="">cliente</label>
     <input type="text" formControlName="email">
@@ -17,10 +63,8 @@
 <button [routerLink]="['/admin', 'usuarios']">Ver lista de Usuarios</button>
 <button [routerLink]="['/admin', 'usuario', 'usuarioId']">Ver un usuario concreto</button>
 
-<div>
-    <router-outlet />
-</div>
 
+-->
 
 
 
