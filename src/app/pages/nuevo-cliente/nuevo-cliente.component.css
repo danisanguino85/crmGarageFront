@@ -1,5 +1,47 @@
-@import url(../../../styles.css);
+form {
+	max-width: 900px;
+	margin: 40px auto;
+	padding: 30px;
+	background-color: var(--primary-color);
 
-* {
-	color: var(--primary-color);
+	h1 {
+		text-align: center;
+	}
+}
+
+.form-label {
+	font-weight: bold;
+	font-size: 1rem;
+	margin-bottom: 5px;
+	display: block;
+	color: var(--secondary-color);
+}
+
+.form-control .form-select {
+	border: 1px solid var(--primary-color);
+	border-radius: 8px;
+	padding: 10px;
+	font-size: 10px;
+	font-size: 0.95rem;
+	width: 100%;
+}
+
+.text-danger {
+	margin-top: 5px;
+	font-size: 0.85rem;
+}
+
+.btn-info {
+	background-color: var(--primary-color);
+	border: none;
+	color: var(--secondary-color);
+	padding: 12px 25px;
+	font-size: 1rem;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: 1s;
+}
+
+.btn-info:hover {
+	background-color: var(--secondary-color);
 }

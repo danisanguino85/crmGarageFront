@@ -54,20 +54,19 @@ export class NuevoClienteComponent {
 
   async onSubmit() {
     try {
-      if (this.registerForm.valid) {
-        const nuevoCliente = await this.clientesService.register(this.registerForm.value)
-        const clienteId = nuevoCliente.id
-        toast.success('Cliente resitrado', {
-          description: 'Se ha añadido un nuevo cliente a la base de datos'
-        })
-        setTimeout(() => {
-          this.router.navigate([`/cliente/${clienteId}`])
-        }, 2000)
+      const nuevoCliente = await this.clientesService.register(this.registerForm.value)
+      const clienteId = nuevoCliente.id
 
-        this.registerForm.reset()
-      }
+      toast.success('Cliente registrado correctamente')
+
+      setTimeout(() => {
+        this.router.navigate([`/cliente/${clienteId}`])
+      }, 1500)
+
+      this.registerForm.reset()
+
     } catch (error) {
-
+      toast.error('Hubo un error al registrar el cliente')
     }
   }
 

@@ -1,11 +1,21 @@
-<form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+<form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="garage-form">
+    <h1 class="text-center text-light mb-4"> Ingreso al Taller</h1>
+  
     <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" formControlName="email">
+      <label class="form-label text-light">Email</label>
+      <input type="email" class="form-control" formControlName="email">
+      @if (checkControl('email', 'required')) {
+        <p class="text-danger small">email obligatorio</p>
+      }
     </div>
+  
     <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="password" class="form-control" formControlName="password">
+      <label class="form-label text-light">Password</label>
+      <input type="password" class="form-control" formControlName="password">
+      @if (checkControl('password', 'required')) {
+        <p class="text-danger small">password obligatoria</p>
+      }
     </div>
     <input type="submit" value="Enviar" class="btn btn-info">
-</form>
+  </form>
+<ngx-sonner-toaster richColors position="bottom-center" />
