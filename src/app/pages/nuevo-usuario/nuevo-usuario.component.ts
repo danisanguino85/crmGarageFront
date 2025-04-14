@@ -35,27 +35,6 @@ export class NuevoUsuarioComponent {
     especialidad: new FormControl('', [Validators.required])
   })
 
-  /* async onSubmit() {
-    try {
-      const usuario = await this.usuarioService.register(this.formRegistro.value)
-      if (this.formRegistro.valid) {
-        toast.success('Usuario registrado correctamente')
-      }
-      setTimeout(() => {
-
-      }, 2000)
-      if (usuario.rol === 'admin') {
-        this.router.navigateByUrl('/admin');
-      }
-      if (usuario.rol === 'mecanico') {
-        this.router.navigateByUrl('/taller');
-      }
-
-    } catch (error) {
-      console.error(error)
-    }
-  } */
-
   async onSubmit() {
     try {
       if (this.formRegistro.valid) {
