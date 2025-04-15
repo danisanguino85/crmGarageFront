@@ -1,3 +1,7 @@
+.general {
+	height: 76vh;
+	align-content: center;
+}
 .container {
 	max-width: 460px;
 	width: 100%;
@@ -5,7 +9,6 @@
 	border-radius: 10px;
 	padding: 40px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-	margin: 150px auto;
 }
 
 .header {

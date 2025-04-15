@@ -1,3 +1,5 @@
+@import url("../../../styles.css");
+
 .general {
 	display: flex;
 	height: 100vh;
@@ -31,10 +33,9 @@ ul {
 	list-style: none;
 	padding: 20px;
 	font-size: 20px;
-	margin-left: 40px;
 }
 input {
-	width: 70%;
+	width: 90%;
 	margin: 10px;
 }
 form {

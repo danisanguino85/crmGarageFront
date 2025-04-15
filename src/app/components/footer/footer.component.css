@@ -1,0 +1,14 @@
+footer {
+	background-color: var(--secondary-color);
+
+	li {
+		display: inline-block;
+	}
+	.flex {
+		display: flex;
+		justify-content: space-between;
+	}
+	i {
+		font-size: 150%;
+	}
+}
