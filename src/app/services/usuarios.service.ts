@@ -58,6 +58,14 @@ export class UsuariosService {
     return false;
   }
 
+  tokenDecodificado() {
+    const token = localStorage.getItem(environment.tokenName);
+    if (!token) return null;
+    
+    const data = jwtDecode<{ rol: string, id: number }>(token);
+    return data;
+  }
+
   update(usuarioId: number, body: Body) {
     return lastValueFrom(
       this.httpClient.put<Usuario>(`${this.baseUrl}/update/${usuarioId}`, body)

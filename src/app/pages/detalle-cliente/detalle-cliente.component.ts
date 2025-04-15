@@ -4,6 +4,8 @@ import { ClientesService } from '../../services/clientes.service';
 import { NotasService } from '../../services/notas.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { Nota } from '../../interfaces/nota';
+import { ActivatedRoute } from '@angular/router';
+import { ReparacionesService } from '../../services/reparaciones.service';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -13,13 +15,15 @@ import type { Nota } from '../../interfaces/nota';
 })
 export class DetalleClienteComponent {
   @Input() clienteId = 0
-  @Input() reparacionId: String | undefined
 
   cliente!: Cliente
   nota!: Nota
   notas: Nota[] = []
-  clientesService = inject(ClientesService)
+  clientesService = inject(ClientesService);
+  reparacionesService = inject(ReparacionesService);
   notasService = inject(NotasService)
+  activatedRoute = inject(ActivatedRoute)
+  reparacionId: number = 0
 
 
   nuevaNotaForm: FormGroup = new FormGroup({
@@ -28,8 +32,20 @@ export class DetalleClienteComponent {
 
   async ngOnInit() {
 
-    console.log(this.reparacionId);
+    this.activatedRoute.params.subscribe((params:any)  => {
+      console.log(params)
+    });
 
+    /* const cliente = await this.clientesService.getAll()
+    const reparaciones = await this.reparacionesService.getAllReparaciones();
+    console.log(reparaciones)
+    console.log(this.reparacionId) */
+
+   /*  console.log(this.reparacionId) */
+/* 
+    const reparacion =  reparaciones.find(reparacion => reparacion.id === this.reparacionId) */
+
+     
     await this.loadCliente()
     await this.loadNotas()
 

@@ -14,18 +14,9 @@ export class DetalleReparacionComponent {
   @Input() reparacionId = 0
   reparacion!: Reparacion
 
-  activatedRoute = inject(ActivatedRoute);
-
-
   async ngOnInit() {
-
-
-    this.activatedRoute.params.subscribe(params => {
-      console.log(params);
-    });
       //getById  reparaciones
       try {
-        console.log(this.reparacionId);
         this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
       } catch (error) {
         console.log(error)
