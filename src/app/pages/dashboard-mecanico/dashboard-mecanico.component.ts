@@ -17,15 +17,21 @@ export class DashboardMecanicoComponent {
 
   reparacionesServices = inject(ReparacionesService);
   reparacionSeleccionada!: Reparacion
-  reparaciones: Reparacion[] = []
+  /* reparaciones: Reparacion[] = []; */
+  mecanicoReparaciones: Reparacion[]=[];
   router = inject(Router)
 
   async ngOnInit() {
 
+
+/* falta por sacar del local el storage el token, decoficarlo el pasarle el id de mecanico o usuario para que bussque sis  reparaciones */
     try {
-      this.reparaciones = await this.reparacionesServices.getAllReparaciones()
+      const mecanicoReparaciones = await this.reparacionesServices.getReparacionesByMecanico()
+      /* this.mecanicoReparaciones = mecanicoReparaciones; */
     } catch (error) {
-      console.log(error)
+      
     }
   }
+
+  
 }

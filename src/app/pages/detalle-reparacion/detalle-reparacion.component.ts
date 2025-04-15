@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import type { Reparacion } from '../../interfaces/reparacion';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-reparacion',
@@ -14,18 +14,25 @@ export class DetalleReparacionComponent {
   @Input() reparacionId = 0
   reparacion!: Reparacion
 
+  activatedRoute = inject(ActivatedRoute);
+
+
   async ngOnInit() {
-    await this.getReparacion()
-  }
 
-  async getReparacion() {
-    //getById  reparaciones
-    try {
-      console.log(this.reparacionId);
-      this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
-    } catch (error) {
-      console.log(error)
+
+    this.activatedRoute.params.subscribe(params => {
+      console.log(params);
+    });
+      //getById  reparaciones
+      try {
+        console.log(this.reparacionId);
+        this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
+      } catch (error) {
+        console.log(error)
+      }
     }
+   
+    
+
   }
 
-}
