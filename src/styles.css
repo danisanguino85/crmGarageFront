@@ -1,6 +1,11 @@
 :root {
-	--primary-color: #fa573a;
-	--secondary-color: #21242e;
+	--primary-color: #0e0e55;
+	--secondary-color: #ebedf1;
+	--tertiary-color: gold;
 	--primary-font: "Montserrat", serif;
 	--secondary-font: "Handlee", serif;
+}
+
+.wrapper {
+	padding: 20px;
 }

@@ -1,11 +1,25 @@
-li {
-	cursor: pointer;
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--secondary-color);
 }
-ul {
-	margin: 20px;
+
+header .derecha {
+	display: flex;
+	gap: 20px;
 }
-.crm {
-	font-weight: bolder;
-	font-size: 200%;
-	padding-left: 40px;
+.logoTaller {
+	display: flex;
+	text-align: center;
+
+	i {
+		font-size: 150%;
+	}
+}
+h1 {
+	font-size: 150%;
+}
+p:hover {
+	color: var(--primary-color);
 }

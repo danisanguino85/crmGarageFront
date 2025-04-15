@@ -1,6 +1,7 @@
 <div class="general">
+
     <div class="lateral">
-        <div class="fijo">
+        <div class="wrapper fijo">
             <ul>
                 <li [routerLink]="['/admin', 'clientes']">Clientes</li>
                 <li [routerLink]="['/admin', 'usuarios']">Empleados</li>
@@ -34,7 +35,7 @@
 
     </div>
 
-    <div class="main">
+    <div class="main wrapper">
 
         <div class="routerOutlet">
             <router-outlet />
@@ -43,9 +44,8 @@
     </div>
 
 
-
-
 </div>
+
 
 
 
