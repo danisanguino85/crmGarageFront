@@ -1,11 +1,22 @@
 <h2>REPARACIONES</h2>
-@for(reparacion of reparaciones;track $index){
-<ul class="list-group list-group-horizontal" [routerLink]="[`/admin/reparacion/${reparacion.id}`]">
-    <li class="list-group-item w-100">{{reparacion.id}}</li>
-    <li class="list-group-item w-100">VEHICULO</li>
-    <li class="list-group-item w-100">{{reparacion.fecha_ingreso}}</li>
-    <li class="list-group-item w-100">{{reparacion.estado}}</li>
+<div class="table table-responsive">
+    <table>
+        <th>Ref.</th>
+        <th>Entrada</th>
+        <th>Vehículo</th>
+        <th>Mecánico</th>
+        <th>Estado</th>
+        @for(reparacion of reparaciones;track $index){
 
-</ul>
+        <tr [routerLink]="[`/admin/reparacion/${reparacion.id}`]">
+            <td>{{reparacion.id}}</td>
+            <td>{{reparacion.fecha_ingreso| date}}</td>
+            <td>{{reparacion.vehiculo}}</td>
+            <td>{{reparacion.mecanico}}</td>
+            <td>{{reparacion.estado}}</td>
+        </tr>
 
-}
+
+        }
+    </table>
+</div>

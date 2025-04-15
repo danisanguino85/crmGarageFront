@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import type { Cliente } from '../../interfaces/cliente';
 import { ClientesService } from '../../services/clientes.service';
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-lista-clientes',
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './lista-clientes.component.html',
   styleUrl: './lista-clientes.component.css'
 })

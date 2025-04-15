@@ -3,6 +3,9 @@ import { ReparacionesService } from '../../services/reparaciones.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import type { Usuario } from '../../interfaces/usuario';
+import { lastValueFrom } from 'rxjs';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-nueva-reparacion',
@@ -11,9 +14,12 @@ import { NgxSonnerToaster, toast } from 'ngx-sonner';
   styleUrl: './nueva-reparacion.component.css'
 })
 export class NuevaReparacionComponent {
-
+  usuariosService = inject(UsuariosService)
   reparacionesServices = inject(ReparacionesService);
   router = inject(Router)
+  mecanicos: Usuario[] = []
+
+  private url = 'http://localhost:3000/api/usuarios'
 
   formRegistro: FormGroup = new FormGroup({
     fecha_ingreso: new FormControl('', [
@@ -36,6 +42,10 @@ export class NuevaReparacionComponent {
     ])
   })
 
+  async ngOnInit() {
+    await this.loadMecanicos()
+  }
+
   async onSubmit() {
     try {
       if (this.formRegistro.valid) {
@@ -53,6 +63,17 @@ export class NuevaReparacionComponent {
       console.log(error);
       toast.error('Hubo un error al registrar la reparación');
     }
+  }
+
+  async loadMecanicos() {
+    try {
+      const usuarios = await this.usuariosService.getAll()
+
+      this.mecanicos = usuarios.filter((usuario) => usuario.rol === 'mecanico');
+    } catch (error) {
+
+    }
+
   }
 
   checkControl(controlName: string, errorName: string): boolean {
