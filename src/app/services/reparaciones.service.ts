@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import type { Reparacion } from '../interfaces/reparacion';
+import { environment } from '../../environments/enviroment';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +35,10 @@ export class ReparacionesService {
 /* http://localhost:3000/api/reparaciones/usuario */
   getReparacionesByMecanico(){
     return lastValueFrom(
-      this.httpClient.get<Reparacion>(`${this.baseUrl}/usuario}`)
+      this.httpClient.get<Reparacion[]>(`${this.baseUrl}/usuario`)
     )
   }
+
+  
 }
 

@@ -18,30 +18,16 @@
 
     <div class="card-reparaciones">
       <h3>Reparaciones del Mecánico</h3>
-
+     @for (reparacion of arrMecanicoReparaciones; track $index) {
       <div class="item-reparacion">
-        <p><strong>Estado:</strong> <span>Pendiente</span></p>
-        <p><strong>Finalización:</strong> reparacion.fecha_finalizacion</p>
-        <p><strong>Presupuesto:</strong> reparacion.presupuesto</p>
-        <p><strong>Total:</strong> <span>reparacion.precio_total €</span></p>
-        <button [routerLink]="['/reparacion', 'reparacionId']">Ver Detalle Reparación</button>
+        <p><strong>Estado:</strong> <span>{{reparacion.estado}}</span></p>
+        <p><strong>Ingreso:</strong> {{reparacion.fecha_ingreso}}</p>
+        <p><strong>Finalización:</strong> {{reparacion.fecha_finalizacion}}</p>
+        <p><strong>Presupuesto:</strong> {{reparacion.presupuesto}}</p>
+        <p><strong>Total:</strong> <span>{{reparacion.precio_total}} €</span></p>
+        <button [routerLink]="['/reparacion', reparacion.id]">Ver Detalle Reparación</button>
       </div>
-
-      <div class="item-reparacion">
-        <p><strong>Estado:</strong> <span>Pendiente</span></p>
-        <p><strong>Finalización:</strong> reparacion.fecha_finalizacion</p>
-        <p><strong>Presupuesto:</strong> reparacion.presupuesto</p>
-        <p><strong>Total:</strong> <span>reparacion.precio_total €</span></p>
-        <button>Ver Detalle Reparación</button>
-      </div>
-
-      <div class="item-reparacion">
-        <p><strong>Estado:</strong> <span>Pendiente</span></p>
-        <p><strong>Finalización:</strong> reparacion.fecha_finalizacion</p>
-        <p><strong>Presupuesto:</strong> reparacion.presupuesto</p>
-        <p><strong>Total:</strong> <span>reparacion.precio_total €</span></p>
-        <button>Ver Detalle Reparación</button>
-      </div>
+    }
     </div>
   </div>
 </div>

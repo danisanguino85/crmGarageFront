@@ -43,7 +43,7 @@ export const routes: Routes = [
     { path: 'taller', component: DashboardMecanicoComponent},
     { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent, children: [
         {path: 'vehiculo', component: DetalleVehiculoComponent},
-        
+        {path: 'cliente', component: DetalleClienteComponent},  
     ]},
 
 

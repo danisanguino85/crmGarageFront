@@ -1,8 +1,8 @@
-<h2 class="titulo-seccion">Detalle Reparacion</h2>
+<!-- <h2 class="titulo-seccion">Detalle Reparacion</h2>
 
 
 <div class="detalle-wrapper">
-  <!-- Botones a la izquierda -->
+
   <div class="botones-izquierda">
     <button [routerLink]="['/taller', 'reparacion', '1', 'vehiculo']">
       Ver Detalle Vehículo
@@ -13,20 +13,81 @@
     </button>
   <div></div>
 
-  <!-- Card a la derecha -->
+
   <div class="card-derecha">
     <div class="card">
       <router-outlet></router-outlet>
     </div>
 
-    <!-- Textarea y botón -->
+   
     <div class="nota-wrapper">
       <textarea placeholder="Escribe una nota..." rows="4"></textarea>
       <button class="btn-enviar-nota">Enviar nota</button>
     </div>
   </div>
 
-<!-- {{reparacion.fecha_ingreso}}
-{{reparacion.estado}}
-Presupuesto inicial: {{reparacion.presupuesto}} -->
 
+  quiero hacer un panel de detalle reparacion, donde mediante un botton(dos botones a la derecha de forma elegante) aparece a la derecha un card u otro, y abajo un un textarea para añadir notas.que la ocupe gran parte de la pantalla. Que sea responsiva en el movil. Te paso la maquetacion que he hecho: -->
+<!--   <div class="wrapper">
+    <div class="contenedor-detalle">
+
+    </div>
+      <h2>Nombre del Mecanico</h2>
+
+  <div class="cards">
+    <aside>
+        <button [routerLink]="['/taller', 'reparacion', '1', 'vehiculo']">
+          Ver Detalle Vehículo
+        </button> 
+    
+        <button [routerLink]="['/taller', 'reparacion', '1', 'cliente']">
+          Ver Detalle Cliente
+        </button>
+    </aside>
+
+    <div class="card-derecha">
+      <div class="card">
+        <router-outlet></router-outlet>
+      </div>
+
+      <div class="nota-wrapper">
+        <textarea placeholder="Escribe una nota..." rows="4"></textarea>
+        <button class="btn-enviar-nota">Enviar nota</button>
+      </div>
+  </div>
+    
+  </div> -->
+
+<div class="detalle-panel">
+  <div class="wrapper">
+    <h2 class="titulo">Panel de Reparación: Jean Franco</h2>
+
+    <div class="contenido-principal">
+      <!-- Zona derecha: botones -->
+      <div class="acciones">
+        <button [routerLink]="['/reparacion', this.reparacionId, 'vehiculo']">
+          🚗 Vehículo
+        </button>
+        <button [routerLink]="['/reparacion', this.reparacionId, 'cliente']">
+          👤 Cliente
+        </button>
+      </div>
+
+      <!-- Zona central: card + nota -->
+      <div class="contenido-dinamico">
+        <div class="card-detalle">
+          <router-outlet></router-outlet>
+        </div>
+
+        <div class="zona-nota">
+          <label for="nota">Añadir nota:</label>
+          <textarea
+            id="nota"
+            placeholder="Escribe una nota importante..."
+          ></textarea>
+          <button class="btn-nota">Enviar nota</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

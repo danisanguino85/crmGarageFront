@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import type { Usuario } from '../interfaces/usuario';
 import { jwtDecode } from 'jwt-decode';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/enviroment';
 
 type Body = {
   email: string,
@@ -46,6 +46,14 @@ export class UsuariosService {
     const data = jwtDecode<{ rol: string, id: number }>(token);
     if (data.rol === 'admin') return true;
     return false;
+  }
+
+  tokenDecodificado() {
+    const token = localStorage.getItem(environment.tokenName);
+    if (!token) return null;
+    
+    const data = jwtDecode<{ rol: string, id: number }>(token);
+    return data;
   }
 
   update(usuarioId: number, body: Body) {
