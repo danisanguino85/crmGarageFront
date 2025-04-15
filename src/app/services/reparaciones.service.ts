@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import type { Reparacion } from '../interfaces/reparacion';
-import { environment } from '../../environments/enviroment';
-import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +18,21 @@ export class ReparacionesService {
     )
   }
 
+  getFinalizado() {
+    return lastValueFrom
+      (this.httpClient.get<Reparacion[]>(`${this.baseUrl}/finalizado`))
+  }
+
+  getEnProgreso() {
+    return lastValueFrom
+      (this.httpClient.get<Reparacion[]>(`${this.baseUrl}/progreso`))
+  }
+
+  getPendiente() {
+    return lastValueFrom
+      (this.httpClient.get<Reparacion[]>(`${this.baseUrl}/pendiente`))
+  }
+
   register(body: Reparacion) {
     return lastValueFrom
       (this.httpClient.post<Reparacion>(`${this.baseUrl}/new`, body))
@@ -32,13 +45,13 @@ export class ReparacionesService {
     )
   }
 
-/* http://localhost:3000/api/reparaciones/usuario */
-  getReparacionesByMecanico(){
+  /* http://localhost:3000/api/reparaciones/usuario */
+  getReparacionesByMecanico() {
     return lastValueFrom(
       this.httpClient.get<Reparacion[]>(`${this.baseUrl}/usuario`)
     )
   }
 
-  
+
 }
 
