@@ -1,3 +1,4 @@
+<!-- <div class="container">
 <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
     <h1>Registar Usuario</h1>
     <div class="mb-3">
@@ -113,4 +114,145 @@
     </div>
     <input type="submit" value="Registrar" class="btn btn-info">
 </form>
-<ngx-sonner-toaster richColors position="bottom-center" />
+</div> -->
+
+<div class="container">
+    <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
+        <div class="header">
+            <h1>Registrar Usuario</h1>
+            <p class="subtitle">Completa los datos para registrar un nuevo usuario</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            @if (checkControl('nombre', 'required')) {
+            <p class="text-danger">Nombre obligatorio</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Apellidos</label>
+            <input type="text" class="form-control" formControlName="apellidos">
+            @if (checkControl('apellidos', 'required')) {
+            <p class="text-danger">Apellidos obligatorio</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">DNI</label>
+            <input type="text" class="form-control" formControlName="dni">
+            @if (checkControl('dni', 'required')) {
+            <p class="text-danger">DNI obligatorio</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="text" class="form-control" formControlName="telefono">
+            @if (checkControl('telefono', 'required')) {
+            <p class="text-danger">Teléfono obligatorio</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+            @if (checkControl('email', 'required')) {
+            <p class="text-danger">Email obligatorio</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" formControlName="fecha_nacimiento">
+            @if (checkControl('fecha de nacimiento', 'required')) {
+            <p class="text-danger">Fecha de nacimiento obligatoria</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Dirección</label>
+            <input type="text" class="form-control" formControlName="direccion">
+            @if (checkControl('direccion', 'required')) {
+            <p class="text-danger">Dirección obligatoria</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Número SS</label>
+            <input type="text" class="form-control" formControlName="numero_ss">
+            @if (checkControl('numeross', 'required')) {
+            <p class="text-danger">Número SS obligatorio</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Rol</label>
+            <select class="form-control" formControlName="rol">
+                <option value="admin">Admin</option>
+                <option value="mecanico">Mecánico</option>
+            </select>
+            @if (checkControl('rol', 'required')) {
+            <p class="text-danger">Rol obligatorio</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Activo</label>
+            <select class="form-control" formControlName="activo">
+                <option [value]="1">Sí</option>
+                <option [value]="0">No</option>
+            </select>
+            @if (checkControl('activo', 'required')) {
+            <p class="text-danger">Campo obligatorio</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-control" formControlName="password">
+            @if (checkControl('password', 'required')) {
+            <p class="text-danger">Contraseña obligatoria</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Jornada</label>
+            <select class="form-control" formControlName="jornada">
+                <option value="parcial">Parcial</option>
+                <option value="completa">Completa</option>
+            </select>
+            @if (checkControl('jornada', 'required')) {
+            <p class="text-danger">Jornada obligatoria</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Foto de Perfil</label>
+            <input type="text" class="form-control" formControlName="foto_perfil">
+            @if (checkControl('foto de perfil', 'required')) {
+            <p class="text-danger">Foto de perfil obligatoria</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Especialidad</label>
+            <select class="form-control" formControlName="especialidad">
+                @for (especialidad of especialidades; track $index) {
+                <option value="{{especialidad}}">{{especialidad}}</option>
+                }
+            </select>
+            @if (checkControl('especialidad', 'required')) {
+            <p class="text-danger">Especialidad obligatoria</p>
+            }
+        </div>
+
+        <input type="submit" value="Registrar" class="btn">
+    </form>
+
+    <div class="footer-note">
+        ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
+    </div>
+</div>
+<ngx-sonner-toaster richColors position="bottom-center" /> 

@@ -1,21 +1,32 @@
-<form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="garage-form">
-    <h1 class="text-center text-light mb-4"> Ingreso al Taller</h1>
+     <div class="container">
+      <header class="header">
+        <h1>Login</h1>
+        <p class="subtitle">Inicia sesión para continuar</p>
+      </header>
   
-    <div class="mb-3">
-      <label class="form-label text-light">Email</label>
-      <input type="email" class="form-control" formControlName="email">
-      @if (checkControl('email', 'required')) {
-        <p class="text-danger small">email obligatorio</p>
-      }
-    </div>
+      <div class="login-form">
+        <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="garage-form">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+            @if (checkControl('email', 'required')) {
+              <p class="text-danger small">Email obligatorio</p>
+            }
+          </div>
   
-    <div class="mb-3">
-      <label class="form-label text-light">Password</label>
-      <input type="password" class="form-control" formControlName="password">
-      @if (checkControl('password', 'required')) {
-        <p class="text-danger small">password obligatoria</p>
-      }
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+            @if (checkControl('password', 'required')) {
+              <p class="text-danger small">Password obligatoria</p>
+            }
+          </div>
+  
+          <input type="submit" value="Ingresar" class="btn">
+        </form>
+  
+        <p class="footer-note">¿Olvidaste tu contraseña? <a href="registro/usuario">Recupérala aquí</a></p>
+      </div>
     </div>
-    <input type="submit" value="Enviar" class="btn btn-info">
-  </form>
+
 <ngx-sonner-toaster richColors position="bottom-center" />
