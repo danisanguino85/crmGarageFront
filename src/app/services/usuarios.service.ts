@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import type { Usuario } from '../interfaces/usuario';
 import { jwtDecode } from 'jwt-decode';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/enviroment';
 
 type Body = {
   email: string,
@@ -21,6 +21,16 @@ export class UsuariosService {
   getAll() {
     return lastValueFrom
       (this.httpClient.get<Usuario[]>(`${this.baseUrl}`))
+  }
+
+  getMecanico() {
+    return lastValueFrom
+      (this.httpClient.get<Usuario[]>(`${this.baseUrl}/mecanico`))
+  }
+
+  getAdmin() {
+    return lastValueFrom
+      (this.httpClient.get<Usuario[]>(`${this.baseUrl}/admin`))
   }
 
   getById(usuarioId: number) {

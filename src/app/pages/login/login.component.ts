@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/enviroment';
 
 @Component({
   selector: 'app-login',

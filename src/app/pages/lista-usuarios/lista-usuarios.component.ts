@@ -12,11 +12,22 @@ import { RouterLink } from '@angular/router';
 export class ListaUsuariosComponent {
 
   arrUsuario: Usuario[] = []
-
   usuarioService = inject(UsuariosService);
 
   async ngOnInit() {
     this.arrUsuario = await this.usuarioService.getAll()
   }
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  async filtrarPorRol($event: any) {
+    console.log($event.target.value)
+    if ($event.target.value === 'admin') {
+      this.arrUsuario = await this.usuarioService.getAdmin()
+    } else {
+      this.arrUsuario = await this.usuarioService.getMecanico()
+    } if ($event.target.value === '') {
+      this.arrUsuario = await this.usuarioService.getAll()
+    }
+  }
 }
+

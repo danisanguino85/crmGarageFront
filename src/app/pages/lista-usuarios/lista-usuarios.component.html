@@ -1,4 +1,9 @@
 <h2>EMPLEADOS</h2>
+<select (change)="filtrarPorRol($event)">
+    <option value="">Todas</option>
+    <option value="admin">Admin</option>
+    <option value="mecanico">Mecanico</option>
+  </select>
 @for(usuario of arrUsuario;track $index){
 <ul class="list-group list-group-horizontal" [routerLink]="[`/admin/usuario/${usuario.id}`]">
     <li class="list-group-item w-100">{{usuario.nombre}} {{usuario.apellidos}}</li>
