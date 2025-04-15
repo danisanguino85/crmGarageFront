@@ -9,7 +9,7 @@
             </ul>
             <form class="mb-3" [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
                 <label class="form-label">Cliente</label>
-                <input type="text" class="form-control" placeholder="número de teléfono" formControlName="telefono">
+                <input type="text" class="form-control" placeholder="Teléfono" formControlName="telefono">
                 <input type="submit" value="Enviar">
             </form>
 
@@ -18,11 +18,14 @@
                 <input type="text" class="form-control" placeholder="número de nota" formControlName="notaTaller">
                 <input type="submit" value="Enviar">
 
+
             </form>
             <form class="mb-3" [formGroup]="searchVehiculoForm" (ngSubmit)="onSubmitMatricula()">
                 <label class="form-label">Vehículo</label>
                 <input type="text" class="form-control" placeholder="matrícula" formControlName="matricula">
                 <input type="submit" value="Enviar">
+
+
 
             </form>
             <div class="logoTaller">

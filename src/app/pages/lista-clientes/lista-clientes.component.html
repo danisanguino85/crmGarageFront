@@ -1,16 +1,16 @@
 <h2>CLIENTES</h2>
 <div class="table table-responsive">
     <table>
-        <th>NOMBRE</th>
-        <th>APELLIDOS</th>
-        <th>TELÉFONO</th>
-        <th>EMAIL</th>
+        <th>Nombre</th>
+        <th>Usuarios</th>
+        <th>Teléfono</th>
+        <th>Email</th>
         @for(cliente of clientes;track $index){
 
         <tr [routerLink]="[`/admin/cliente/${cliente.id}`]">
             <td>{{cliente.nombre}}</td>
             <td>{{cliente.apellidos}}</td>
-            <td>{{cliente.telefono| date}}</td>
+            <td>{{cliente.telefono| date: 'dd/MM/yyyy'}}</td>
             <td>{{cliente.email}}</td>
 
         </tr>

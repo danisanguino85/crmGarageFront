@@ -6,15 +6,15 @@
 </select>
 <div class="table table-responsive">
     <table>
-        <th>EMPLEADO</th>
-        <th>TELÉFONO</th>
-        <th>EMAIL</th>
-        <th>ROL</th>
+        <th>Empleados</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Rol</th>
         @for(usuario of usuarios;track $index){
 
         <tr [routerLink]="[`/admin/usuario/${usuario.id}`]">
             <td>{{usuario.nombre}}</td>
-            <td>{{usuario.telefono| date}}</td>
+            <td>{{usuario.telefono| date: 'dd/MM/yyyy'}}</td>
             <td>{{usuario.email}}</td>
             <td>{{usuario.rol}}</td>
         </tr>
