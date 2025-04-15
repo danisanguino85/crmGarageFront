@@ -1,8 +1,59 @@
-<div class="general-container">
+<div class="wrapper">
+  <h2 class="titulo-mecanico">Jean Franco Mechanics</h2>
+
+  <div class="general-container">
+  
+    <div class="card-mecanico">
+      <figure>
+        <img src="https://via.placeholder.com/150" alt="Foto mecanico" />
+      </figure>
+      <p><strong>DNI:</strong> mecanico.dni</p>
+      <p><strong>Teléfono:</strong> mecanico.telefono</p>
+      <p><strong>Email:</strong> mecanico.email</p>
+      <p><strong>Fecha de nacimiento:</strong> mecanico.fecha_nacimiento</p>
+      <p><strong>Dirección:</strong> mecanico.direccion</p>
+      <p><strong>Especialidad:</strong> mecanico.especialidad</p>
+      <p><strong>Jornada:</strong> mecanico.jornada</p>
+    </div>
+
+    <div class="card-reparaciones">
+      <h3>Reparaciones del Mecánico</h3>
+
+      <div class="item-reparacion">
+        <p><strong>Estado:</strong> <span>Pendiente</span></p>
+        <p><strong>Finalización:</strong> reparacion.fecha_finalizacion</p>
+        <p><strong>Presupuesto:</strong> reparacion.presupuesto</p>
+        <p><strong>Total:</strong> <span>reparacion.precio_total €</span></p>
+        <button [routerLink]="['/reparacion', 'reparacionId']">Ver Detalle Reparación</button>
+      </div>
+
+      <div class="item-reparacion">
+        <p><strong>Estado:</strong> <span>Pendiente</span></p>
+        <p><strong>Finalización:</strong> reparacion.fecha_finalizacion</p>
+        <p><strong>Presupuesto:</strong> reparacion.presupuesto</p>
+        <p><strong>Total:</strong> <span>reparacion.precio_total €</span></p>
+        <button>Ver Detalle Reparación</button>
+      </div>
+
+      <div class="item-reparacion">
+        <p><strong>Estado:</strong> <span>Pendiente</span></p>
+        <p><strong>Finalización:</strong> reparacion.fecha_finalizacion</p>
+        <p><strong>Presupuesto:</strong> reparacion.presupuesto</p>
+        <p><strong>Total:</strong> <span>reparacion.precio_total €</span></p>
+        <button>Ver Detalle Reparación</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="general-container">
   <h2 class="nombre-mecanico">NOMBRE MECANICO</h2>
 
   <div class="container-cards">
-    <!-- Card de usuario/mecánico -->
+   
     <div class="card usuario">
       <h3>mecanico.nombre</h3>
       <p><strong>DNI:</strong> mecanico.dni</p>
@@ -14,7 +65,7 @@
       <p><strong>Jornada:</strong>mecanico.jornada</p>
     </div>
 
-    <!-- Card de producto -->
+ 
     <div class="card producto">
       <button class="btn-ver-todos">Ver todos las reparaciones</button>
 
@@ -33,7 +84,7 @@
           <div class="producto-body">
             <p>
               <strong>Estado:</strong>
-              <span class="estado">{{ reparacion.estado }}</span>
+              <span class="estado"></span>
             </p>
             <p>
               <strong>Finalización:</strong> {{ reparacion.fecha_finalizacion }}
@@ -58,7 +109,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- <div class="general">
     <ul>

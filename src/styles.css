@@ -4,3 +4,7 @@
 	--primary-font: "Montserrat", serif;
 	--secondary-font: "Handlee", serif;
 }
+
+.wrapper{
+	padding: 20px;
+}

@@ -39,18 +39,18 @@ export const routes: Routes = [
         ]
     },
 
+    //rutas del mecanico
+    { path: 'taller', component: DashboardMecanicoComponent},
+    { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent, children: [
+        {path: 'vehiculo', component: DetalleVehiculoComponent},
+        
+    ]},
+
+
 
 
 
     { path: 'reparaciones', component: ListaReparacionesComponent },
-    /* desde el panel mecanico acceder a los diferentes componentes */
-    {
-        path: 'taller/reparacion/:reparacionId', component: DetalleReparacionComponent, children: [
-            { path: 'vehiculo', component: DetalleVehiculoComponent },
-            { path: 'cliente', component: DetalleClienteComponent },
-        ]
-    },
-
 
     {
         path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent, children: [
@@ -63,14 +63,9 @@ export const routes: Routes = [
     { path: 'vehiculos', component: ListaVehiculosComponent },
     { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent },
 
-    {
-        path: 'taller', component: DashboardMecanicoComponent, children: [
-            /*   { path: 'reparaciones/:reparacionId', component: DetalleReparacionComponent, children:[
-                  { path: 'vehiculo', component: DetalleVehiculoComponent },
-                  { path: 'cliente', component: DetalleClienteComponent }, 
-              ] }, */
-        ]
-    },
+    
+
+
 
 
     { path: '**', redirectTo: '/inicio' },
@@ -80,4 +75,20 @@ export const routes: Routes = [
 ];
 
 
+/* {path: 'taller/reparacion/:reparacionId', component: DetalleReparacionComponent, children: [
+            { path: 'vehiculo', component: DetalleVehiculoComponent },
+            { path: 'cliente', component: DetalleClienteComponent },
+        ]
+    },
+ */
+
+
 /*   /*  { path: 'reparaciones/:idReparaciones', component: ListaReparacionesComponent }, */ 
+
+
+/* children: [
+               { path: 'reparaciones/:reparacionId', component: DetalleReparacionComponent, children:[
+                  { path: 'vehiculo', component: DetalleVehiculoComponent },
+                  { path: 'cliente', component: DetalleClienteComponent }, 
+              ] }, 
+        ] */

@@ -24,12 +24,17 @@ export class ReparacionesService {
   }
 
   getReparacionById(idReparacion: number) {
-    console.log(idReparacion);
 
     return lastValueFrom(
       this.httpClient.get<Reparacion>(`${this.baseUrl}/${idReparacion}`)
     )
   }
 
+/* http://localhost:3000/api/reparaciones/usuario */
+  getReparacionesByMecanico(){
+    return lastValueFrom(
+      this.httpClient.get<Reparacion>(`${this.baseUrl}/usuario}`)
+    )
+  }
 }
 
