@@ -2,21 +2,23 @@ import { Component, inject } from '@angular/core';
 import type { Usuario } from '../../interfaces/usuario';
 import { UsuariosService } from '../../services/usuarios.service';
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-lista-usuarios',
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './lista-usuarios.component.html',
   styleUrl: './lista-usuarios.component.css'
 })
 export class ListaUsuariosComponent {
 
-  arrUsuario: Usuario[] = []
-
+  usuarios: Usuario[] = []
+  mecanicos: Usuario[] = []
+  administradores: Usuario[] = []
   usuarioService = inject(UsuariosService);
 
   async ngOnInit() {
-    this.arrUsuario = await this.usuarioService.getAll()
+    this.usuarios = await this.usuarioService.getAll()
   }
 
 }

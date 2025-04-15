@@ -1,9 +1,20 @@
 <h2>EMPLEADOS</h2>
-@for(usuario of arrUsuario;track $index){
-<ul class="list-group list-group-horizontal" [routerLink]="[`/admin/usuario/${usuario.id}`]">
-    <li class="list-group-item w-100">{{usuario.nombre}} {{usuario.apellidos}}</li>
-    <li class="list-group-item w-100">{{usuario.telefono}}</li>
-    <li class="list-group-item  w-100">{{usuario.email}}</li>
-    <li class="list-group-item w-100">{{usuario.rol}}</li>
-</ul>
-}
+<div class="table table-responsive">
+    <table>
+        <th>EMPLEADO</th>
+        <th>TELÉFONO</th>
+        <th>EMAIL</th>
+        <th>ROL</th>
+        @for(usuario of usuarios;track $index){
+
+        <tr [routerLink]="[`/admin/usuario/${usuario.id}`]">
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.telefono| date}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.rol}}</td>
+        </tr>
+
+
+        }
+    </table>
+</div>

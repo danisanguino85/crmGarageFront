@@ -7,4 +7,6 @@ export interface Reparacion {
     fecha_finalizacion: Date,
     presupuesto: number,
     precio_total: number,
+    mecanico: string,
+    vehiculo: string
 }

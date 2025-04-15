@@ -1,10 +1,21 @@
 <h2>CLIENTES</h2>
-@for(cliente of clientes;track $index){
-<ul class="list-group list-group-horizontal" [routerLink]="[`/admin/cliente/${cliente.id}`]">
-    <li class="list-group-item w-100">{{cliente.nombre}} {{cliente.apellidos}}</li>
-    <li class="list-group-item w-100">{{cliente.telefono}}</li>
-    <li class="list-group-item w-100">{{cliente.email}}</li>
+<div class="table table-responsive">
+    <table>
+        <th>NOMBRE</th>
+        <th>APELLIDOS</th>
+        <th>TELÉFONO</th>
+        <th>EMAIL</th>
+        @for(cliente of clientes;track $index){
 
-</ul>
+        <tr [routerLink]="[`/admin/cliente/${cliente.id}`]">
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellidos}}</td>
+            <td>{{cliente.telefono| date}}</td>
+            <td>{{cliente.email}}</td>
 
-}
+        </tr>
+
+
+        }
+    </table>
+</div>
