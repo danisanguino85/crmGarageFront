@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -27,14 +28,22 @@ export class LoginComponent {
     try {
       const response = await this.usuarioService.login(this.formLogin.value)
 
+
+
       toast.success('Usuario logado correctamente')
 
-      setTimeout(() => {
-        this.router.navigateByUrl('/');
-      }, 1500)
+      localStorage.setItem(environment.tokenName, response.token)
 
-      localStorage.setItem('crm_garage_token', response.token)
-      console.log(response)
+      const isAdmin = this.usuarioService.isAdmin()
+
+
+      setTimeout(() => {
+        if (isAdmin) {
+          this.router.navigateByUrl('/admin');
+        } else {
+          this.router.navigateByUrl('/taller');
+        }
+      }, 1500)
     } catch (error) {
       console.log(error)
       toast.error('Hubo un error al logar el usuario');

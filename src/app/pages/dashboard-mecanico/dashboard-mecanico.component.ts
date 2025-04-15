@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ListaReparacionesComponent } from "../lista-reparaciones/lista-reparaciones.component";
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { Reparacion } from '../../interfaces/reparacion';
+import type { Reparacion } from '../../interfaces/reparacion';
 import { ReparacionesService } from '../../services/reparaciones.service';
 
 @Component({
@@ -12,9 +12,9 @@ import { ReparacionesService } from '../../services/reparaciones.service';
 })
 export class DashboardMecanicoComponent {
 
-  arrRepaciones: Reparacion[]=[];
+  arrRepaciones: Reparacion[] = [];
 
-  
+
   reparacionesServices = inject(ReparacionesService);
   reparacionSeleccionada!: Reparacion
   reparaciones: Reparacion[] = []
