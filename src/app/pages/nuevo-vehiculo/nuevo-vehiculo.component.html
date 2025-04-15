@@ -1,0 +1,50 @@
+<div class="container">
+    <form [formGroup]="nuevoVehiculoForm" (ngSubmit)="onSubmit()">
+        <div class="header">
+            <h1>Nuevo vehículo</h1>
+            <p class="subtitle">Rellena los datos para registrar un nuevo vehículo</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Matrícula</label>
+            <input class="form-control" type="text" formControlName="matricula">
+            <!-- @if(checkError('nombre', 'required') || checkError('nombre', 'minlength')){
+            <p class="text-danger">Debes incluir un nombre.</p>
+            } -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Bstidor</label>
+            <input class="form-control" type="text" formControlName="bastidor">
+            <!-- @if(checkError('apellidos', 'required') || checkError('apellidos', 'minlength')){
+            <p class="text-danger">Debes incluir al menos un apellido.</p>
+            } -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Marca</label>
+            <input class="form-control" type="text" formControlName="marca">
+            <!-- @if(checkError('dni', 'required') || checkError('dni', 'minlength')){
+            <p class="text-danger">El DNI es obligatorio.</p>
+            } -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Modelo</label>
+            <input class="form-control" type="text" formControlName="modelo">
+            <!-- @if(checkError('telefono', 'required') || checkError('telefono', 'minlength')){
+            <p class="text-danger">Debes incluir un teléfono válido.</p>
+            } -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fecha matriculación</label>
+            <input class="form-control" type="date" formControlName="fecha_matriculacion">
+            <!-- @if(checkError('email', 'required') || checkError('email', 'minlength')){
+            <p class="text-danger">Debes incluir un email válido.</p>
+            } -->
+        </div>
+
+        <input type="submit" value="Registrar" class="btn">
+    </form>
+</div>

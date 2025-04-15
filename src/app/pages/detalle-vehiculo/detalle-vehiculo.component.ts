@@ -29,7 +29,7 @@ export class DetalleVehiculoComponent {
       }
       this.vehiculo = await this.vehiculosService.getVehiculoByReparacion(body)
     });
-    
+
     await this.loadVehiculo()
   }
 

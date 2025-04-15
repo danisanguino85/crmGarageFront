@@ -20,6 +20,11 @@ export class VehiculosService {
     )
 
   }
+  async registerVehiculo(body: Vehiculo) {
+    return lastValueFrom(
+      this.httpClient.post<Vehiculo>(`${this.baseUrl}/nuevoVehiculo`, body)
+    )
+  }
 
   async getVehiculo(body: string) {
     return lastValueFrom(
@@ -35,8 +40,8 @@ export class VehiculosService {
 
   /* http://localhost:3000/api/vehiculos/reparacion */
 
-  async getVehiculoByReparacion(body: any){
-    
+  async getVehiculoByReparacion(body: Vehiculo) {
+
     return lastValueFrom(
       this.httpClient.post<Vehiculo>(`${this.baseUrl}/reparacion`, body)
     )

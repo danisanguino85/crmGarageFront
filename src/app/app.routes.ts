@@ -13,6 +13,7 @@ import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.co
 import { DetalleUsuarioComponent } from './pages/detalle-usuario/detalle-usuario.component';
 import { DashboardMecanicoComponent } from './pages/dashboard-mecanico/dashboard-mecanico.component';
 import { NuevaReparacionComponent } from './pages/nueva-reparacion/nueva-reparacion.component';
+import { NuevoVehiculoComponent } from './pages/nuevo-vehiculo/nuevo-vehiculo.component';
 
 export const routes: Routes = [
 
@@ -29,22 +30,29 @@ export const routes: Routes = [
     //rutas hija del admin
     {
         path: 'admin', component: DashboardAdminComponent, children: [
-            { path: 'clientes', component: ListaClientesComponent },
-            { path: 'cliente/:clienteId', component: DetalleClienteComponent },
             { path: 'usuarios', component: ListaUsuariosComponent },
             { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
             { path: 'reparaciones', component: ListaReparacionesComponent },
             { path: 'vehiculo/:vehiculoId', component: DetalleVehiculoComponent },
             { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent },
+            { path: 'clientes', component: ListaClientesComponent },
+            {
+                path: 'cliente/:clienteId', component: DetalleClienteComponent, children: [
+                    { path: 'nuevoVehiculo', component: NuevoVehiculoComponent },
+                    { path: 'nuevaNota', component: NuevaReparacionComponent },
+                ]
+            },
         ]
     },
 
     //rutas del mecanico
-    { path: 'taller', component: DashboardMecanicoComponent},
-    { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent, children: [
-        {path: 'vehiculo', component: DetalleVehiculoComponent},
-        {path: 'cliente', component: DetalleClienteComponent},  
-    ]},
+    { path: 'taller', component: DashboardMecanicoComponent },
+    {
+        path: 'reparacion/:reparacionId', component: DetalleReparacionComponent, children: [
+            { path: 'vehiculo', component: DetalleVehiculoComponent },
+            { path: 'cliente', component: DetalleClienteComponent },
+        ]
+    },
 
 
 
@@ -63,7 +71,7 @@ export const routes: Routes = [
     { path: 'vehiculos', component: ListaVehiculosComponent },
     { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent },
 
-    
+
 
 
 
@@ -83,7 +91,7 @@ export const routes: Routes = [
  */
 
 
-/*   /*  { path: 'reparaciones/:idReparaciones', component: ListaReparacionesComponent }, */ 
+/*   /*  { path: 'reparaciones/:idReparaciones', component: ListaReparacionesComponent }, */
 
 
 /* children: [
