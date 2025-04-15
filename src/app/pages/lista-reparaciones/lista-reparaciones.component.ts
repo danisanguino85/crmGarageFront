@@ -30,6 +30,20 @@ export class ListaReparacionesComponent {
     }
   }
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  async filtrarPorEstado($event: any) {
+    console.log($event.target.value)
+    if ($event.target.value === 'pendiente') {
+      this.reparaciones = await this.reparacionesServices.getPendiente()
+    } else {
+      this.reparaciones = await this.reparacionesServices.getEnProgreso()
+    } if ($event.target.value === 'finalizado') {
+      this.reparaciones = await this.reparacionesServices.getFinalizado()
+    } if ($event.target.value === '') {
+      this.reparaciones = await this.reparacionesServices.getAllReparaciones()
+    }
+  }
+
   async loadMecanico() {
     this.usuarios = await this.usuariosService.getAll()
   }
