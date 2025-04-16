@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 import type { Usuario } from '../../interfaces/usuario';
-import { lastValueFrom } from 'rxjs';
 import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
@@ -19,7 +18,7 @@ export class NuevaReparacionComponent {
   router = inject(Router)
   mecanicos: Usuario[] = []
 
-  private url = 'http://localhost:3000/api/usuarios'
+
 
   formRegistro: FormGroup = new FormGroup({
     fecha_ingreso: new FormControl('', [

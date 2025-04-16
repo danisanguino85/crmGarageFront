@@ -1,0 +1,23 @@
+.general {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+.nombre {
+	background-color: var(--primary-color);
+	color: white;
+	font-weight: bolder;
+}
+.cliente {
+	width: 50%;
+}
+.router {
+	width: 40%;
+}
+
+ul {
+	width: 85%;
+}
+button {
+	margin: 10px 10px 0 0;
+}
