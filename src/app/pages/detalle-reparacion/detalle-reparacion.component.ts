@@ -15,15 +15,15 @@ export class DetalleReparacionComponent {
   reparacion!: Reparacion
 
   async ngOnInit() {
-      //getById  reparaciones
-      try {
-        this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
-      } catch (error) {
-        console.log(error)
-      }
+    //getById  reparaciones
+    try {
+      this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
+    } catch (error) {
+      console.log(error)
     }
-   
-    
-
   }
+
+
+
+}
 
