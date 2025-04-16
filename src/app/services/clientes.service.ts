@@ -46,6 +46,12 @@ export class ClientesService {
     )
   }
 
+  getClienteByReparacion(reparacionId: number){
+    return lastValueFrom(
+      this.httpClient.get<Cliente>(`${this.baseUrl}/cliente/${reparacionId}`)
+    )
+  }
+
 
 
 }

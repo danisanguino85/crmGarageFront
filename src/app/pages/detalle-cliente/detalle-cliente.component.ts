@@ -42,14 +42,15 @@ export class DetalleClienteComponent {
       this.mecanicoAdmin = true;
     };
 
-
+    this.activatedRoute.parent!.params.subscribe(async (params: any) => {   
+      this.cliente = await this.clientesService.getClienteByReparacion(params.reparacionId)
+    });
   }
 
 
   async loadCliente() {
     try {
       this.cliente = await this.clientesService.getById(this.clienteId)
-
     } catch (error) {
 
     }
