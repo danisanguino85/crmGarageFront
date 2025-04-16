@@ -29,6 +29,8 @@ export class ListaReparacionesComponent {
     } catch (error) {
       console.log(error)
     }
+
+    this.ordenarPorFechaIngreso();
   }
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -43,10 +45,30 @@ export class ListaReparacionesComponent {
     } if ($event.target.value === '') {
       this.reparaciones = await this.reparacionesServices.getAllReparaciones()
     }
+    this.ordenarPorFechaIngreso()
   }
 
   async loadMecanico() {
     this.usuarios = await this.usuariosService.getAll()
+  }
+
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  getEstiloEstado(estado: string): any {
+    switch (estado.toLowerCase()) {
+      case 'pendiente':
+        return { color: 'white', backgroundColor: 'red' };
+      case 'en_progreso':
+        return { color: 'white', backgroundColor: 'orange' };
+      case 'finalizado':
+        return { color: 'white', backgroundColor: 'green' };
+    }
+  }
+
+  ordenarPorFechaIngreso() {
+    for (let i = 0; i < this.reparaciones.length; i++) {
+      this.reparaciones[i].fecha_ingreso = new Date(this.reparaciones[i].fecha_ingreso)
+    }
+    this.reparaciones.sort((a, b) => a.fecha_ingreso.getTime() - b.fecha_ingreso.getTime());
   }
 }
 
