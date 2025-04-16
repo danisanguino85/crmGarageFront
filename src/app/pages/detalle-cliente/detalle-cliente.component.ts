@@ -16,6 +16,7 @@ type Body = {
   vehiculoId: 0
 }
 
+
 @Component({
   selector: 'app-detalle-cliente',
   imports: [ReactiveFormsModule, DatePipe, RouterLink, RouterOutlet],

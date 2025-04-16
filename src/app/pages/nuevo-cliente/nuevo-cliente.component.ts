@@ -66,7 +66,7 @@ export class NuevoClienteComponent {
       this.registerForm.reset()
 
     } catch (error) {
-      toast.error('Hubo un error al registrar el cliente')
+      toast.error('Hubo un error al registrar al cliente')
     }
   }
 
