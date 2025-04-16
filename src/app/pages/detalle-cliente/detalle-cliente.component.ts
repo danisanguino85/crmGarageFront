@@ -28,7 +28,7 @@ export class DetalleClienteComponent {
   notasService = inject(NotasService)
   activatedRoute = inject(ActivatedRoute)
   reparacionId = 0
-  mecanicoAdmin: boolean = false
+  mecanicoAdmin?: boolean = false
 
 
   nuevaNotaForm: FormGroup = new FormGroup({
@@ -36,13 +36,13 @@ export class DetalleClienteComponent {
   })
 
   async ngOnInit() {
-
+    this.loadCliente()
     const data = this.usuarioService.tokenDecodificado()
     if (data?.rol === 'mecanico') {
       this.mecanicoAdmin = true;
     };
 
-    
+
   }
 
 
