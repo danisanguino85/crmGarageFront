@@ -21,6 +21,7 @@ export class ListaReparacionesComponent {
   reparaciones: Reparacion[] = []
   router = inject(Router)
 
+
   async ngOnInit() {
     try {
       this.reparaciones = await this.reparacionesServices.getAllReparaciones()
