@@ -1,3 +1,4 @@
+@if (cliente) {
 @if (!mecanicoAdmin) {
 <div class="general">
     <div class="cliente">
@@ -65,9 +66,9 @@
           <li><strong>Dirección:</strong> {{ cliente.direccion }}</li>
           <li><strong>Fecha de alta:</strong> {{ cliente.fecha_alta }}</li>
         </ul>
-      </div>
+    </div>
 }
-
+}
 <!--
 
 <h3>nueva nota</h3>

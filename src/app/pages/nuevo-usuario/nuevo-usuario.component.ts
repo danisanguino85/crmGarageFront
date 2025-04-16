@@ -51,7 +51,8 @@ export class NuevoUsuarioComponent {
     ]),
     numero_ss: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^\d{12}$/)
+      Validators.minLength(12),
+      Validators.maxLength(12)
     ]),
     rol: new FormControl('', [
       Validators.required,

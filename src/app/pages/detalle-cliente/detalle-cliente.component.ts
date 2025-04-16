@@ -11,6 +11,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import type { Vehiculo } from '../../interfaces/vehiculo';
 import { VehiculosService } from '../../services/vehiculos.service';
 
+
 @Component({
   selector: 'app-detalle-cliente',
   imports: [ReactiveFormsModule, DatePipe, RouterLink, RouterOutlet],
@@ -53,8 +54,10 @@ export class DetalleClienteComponent {
     } catch (error) {
 
     }
-    this.activatedRoute.parent!.params.subscribe(async (params: any) => {   
-      this.cliente = await this.clientesService.getClienteByReparacion(params.reparacionId)
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+      //this.cliente = await this.clientesService.getClienteByReparacion(params.reparacionId)
     });
   }
 

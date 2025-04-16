@@ -3,17 +3,20 @@
     <div>
         <div class="derecha">
 
+            @if(usuario){
             <div>
                 <p>{{usuario.nombre}} {{usuario.apellidos}}</p>
             </div>
+        }
 
             <div class="logoTaller">
                 <p (click)="logout()">Logout</p>
             </div>
 
         </div>
+        </div>
 
-
+</header>
 
 
 

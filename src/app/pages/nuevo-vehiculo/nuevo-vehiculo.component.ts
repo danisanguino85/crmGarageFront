@@ -2,11 +2,13 @@ import { Component, inject, Input } from '@angular/core';
 import { VehiculosService } from '../../services/vehiculos.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSonnerToaster, toast } from 'ngx-sonner';
+
 
 
 @Component({
   selector: 'app-nuevo-vehiculo',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgxSonnerToaster],
   templateUrl: './nuevo-vehiculo.component.html',
   styleUrl: './nuevo-vehiculo.component.css'
 })
@@ -37,29 +39,27 @@ export class NuevoVehiculoComponent {
     ]),
     fecha_matriculacion: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)
     ]),
     km: new FormControl('', [
       Validators.required,
-      Validators.min(0),
       Validators.max(1000000),
-      Validators.pattern(/^\d+$/)
     ]),
 
   })
 
-
-
   async onSubmit() {
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+    if (this.nuevoVehiculoForm.valid) {
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+        this.clienteId = params.clienteId
+        await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
+      });
 
-      this.clienteId = params.clienteId
-      console.log(this.clienteId)
-      await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
-      console.log(this.nuevoVehiculoForm.value)
-    });
+      toast.success('Vehiculo registrado correctamente')
+    } else {
+      toast.error('Hubo un error al registrar el vehiculo')
+    }
   }
 
   checkControl(controlName: string, errorName: string): boolean {
