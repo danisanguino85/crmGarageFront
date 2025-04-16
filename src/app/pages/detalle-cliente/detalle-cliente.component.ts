@@ -7,6 +7,8 @@ import type { Nota } from '../../interfaces/nota';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../environments/enviroment';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -22,9 +24,11 @@ export class DetalleClienteComponent {
   notas: Nota[] = []
   clientesService = inject(ClientesService);
   reparacionesService = inject(ReparacionesService);
+  usuarioService = inject(UsuariosService)
   notasService = inject(NotasService)
   activatedRoute = inject(ActivatedRoute)
   reparacionId = 0
+  mecanicoAdmin: boolean = false
 
 
   nuevaNotaForm: FormGroup = new FormGroup({
@@ -33,8 +37,14 @@ export class DetalleClienteComponent {
 
   async ngOnInit() {
 
-    await this.loadCliente()
+    const data = this.usuarioService.tokenDecodificado()
+    if (data?.rol === 'mecanico') {
+      this.mecanicoAdmin = true;
+    };
+
+    
   }
+
 
   async loadCliente() {
     try {
@@ -45,37 +55,3 @@ export class DetalleClienteComponent {
     }
   }
 }
-// this.activatedRoute.params.subscribe((params:any)  => {
-// console.log(params)
-//});
-
-/* const cliente = await this.clientesService.getAll()
-const reparaciones = await this.reparacionesService.getAllReparaciones();
-console.log(reparaciones)
-console.log(this.reparacionId) */
-
-/*  console.log(this.reparacionId) */
-/*
-    const reparacion =  reparaciones.find(reparacion => reparacion.id === this.reparacionId) */
-
-
-/*  async onSubmitNota() {
-
-    try {
-      this.nota = await this.notasService.create(this.nuevaNotaForm.value)
-      this.nuevaNotaForm.reset()
-    } catch (error) {
-
-    }
-
-  }
-  async loadNotas() {
-
-    try {
-      this.notas = await this.notasService.getAllNotas()
-    } catch (error) {
-
-    }
-  }
-}
-*/
