@@ -45,37 +45,3 @@ export class DetalleClienteComponent {
     }
   }
 }
-// this.activatedRoute.params.subscribe((params:any)  => {
-// console.log(params)
-//});
-
-/* const cliente = await this.clientesService.getAll()
-const reparaciones = await this.reparacionesService.getAllReparaciones();
-console.log(reparaciones)
-console.log(this.reparacionId) */
-
-/*  console.log(this.reparacionId) */
-/*
-    const reparacion =  reparaciones.find(reparacion => reparacion.id === this.reparacionId) */
-
-
-/*  async onSubmitNota() {
-
-    try {
-      this.nota = await this.notasService.create(this.nuevaNotaForm.value)
-      this.nuevaNotaForm.reset()
-    } catch (error) {
-
-    }
-
-  }
-  async loadNotas() {
-
-    try {
-      this.notas = await this.notasService.getAllNotas()
-    } catch (error) {
-
-    }
-  }
-}
-*/

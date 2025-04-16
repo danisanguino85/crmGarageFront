@@ -39,6 +39,7 @@
     <div class="mb-3">
       <label class="form-label">Mecánico</label>
       <select class="form-control">
+        <option value="">Mecánicos</option>
         @for(mecanico of mecanicos;track $index){
         <option value="">{{mecanico.nombre}} {{mecanico.apellidos}}</option>
         }
