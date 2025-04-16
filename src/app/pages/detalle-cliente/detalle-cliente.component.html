@@ -27,13 +27,26 @@
                 <strong>Dirección: </strong>{{ cliente.direccion }}
             </li>
         </ul>
-        <button [routerLink]="['/admin', 'cliente', cliente.id, 'nuevoVehiculo']">
-            Nuevo vehículo
-        </button>
-        <button [routerLink]="['/admin', 'cliente', cliente.id, 'nuevaNota']">
-            Nueva nota de taller
-        </button>
+        <div class="botones">
+            <button [routerLink]="['/admin', 'cliente', cliente.id, 'nuevoVehiculo']">
+                Nuevo vehículo
+            </button>
+            <button [routerLink]="['/admin', 'cliente', cliente.id, 'nuevaNota']">
+                Nueva nota de taller
+            </button>
+        </div>
+        <ul class="list-group">
+            <li class="nombre list-group-item list-group-item-action" aria-current="true">
+                Veículos
 
+            </li>
+            @for(vehiculo of vehiculos;track $index){
+
+            <li class="list-group-item list-group-item-action disabled" aria-current="true">
+                {{ vehiculo.marca }} {{ vehiculo.modelo }} {{ vehiculo.matricula }}
+            </li>
+            }
+        </ul>
 
     </div>
 

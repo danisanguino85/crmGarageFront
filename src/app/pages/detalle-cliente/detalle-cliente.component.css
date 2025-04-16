@@ -17,7 +17,16 @@
 
 ul {
 	width: 85%;
+	margin-bottom: 20px;
 }
-button {
-	margin: 10px 10px 0 0;
+ul:last-child {
+	margin-top: 20px;
+}
+.botones {
+	width: 85%;
+	display: flex;
+	justify-content: space-between;
+	button {
+		width: 45%;
+	}
 }

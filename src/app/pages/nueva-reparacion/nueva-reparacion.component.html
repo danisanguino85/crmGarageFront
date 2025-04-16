@@ -4,36 +4,26 @@
       <h1>Nueva Reparación</h1>
       <p class="subtitle">Rellena los campos para registrar una nueva reparación</p>
     </div>
-
     <div class="mb-3">
-      <label class="form-label">Fecha de Ingreso</label>
-      <input type="date" class="form-control" formControlName="fecha_ingreso">
-      @if (checkControl('fecha_ingreso', 'required')) {
-      <p class="text-danger">Fecha obligatoria</p>
+      <label class="form-label">Vehículo</label>
+      <input type="text" class="form-control" formControlName="vehiculo">
+      @if (checkControl('vehiculo', 'required')) {
+      <p class="text-danger"></p>
+      }
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Comentarios</label>
+      <input type="text" class="form-control" formControlName="comentarios">
+      @if (checkControl('comentarios', 'required')) {
+      <p class="text-danger"></p>
       }
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Fecha de Salida</label>
-      <input type="date" class="form-control" formControlName="fecha_salida">
-      @if (checkControl('fecha_salida', 'required')) {
-      <p class="text-danger">Fecha obligatoria</p>
-      }
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Estado</label>
-      <input type="text" class="form-control" formControlName="estado">
-      @if (checkControl('estado', 'required')) {
-      <p class="text-danger">Estado obligatorio</p>
-      }
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Fecha de Finalización</label>
-      <input type="date" class="form-control" formControlName="fecha_finalizacion">
-      @if (checkControl('fecha_finalizacion', 'required')) {
-      <p class="text-danger">Fecha obligatoria</p>
+      <label class="form-label">Presupuesto</label>
+      <input type="text" class="form-control" formControlName="presupuesto">
+      @if (checkControl('presupuesto', 'required')) {
+      <p class="text-danger">Presupuesto obligatorio</p>
       }
     </div>
     <div class="mb-3">
@@ -50,21 +40,7 @@
       }
     </div>
 
-    <div class="mb-3">
-      <label class="form-label">Presupuesto</label>
-      <input type="text" class="form-control" formControlName="presupuesto">
-      @if (checkControl('presupuesto', 'required')) {
-      <p class="text-danger">Presupuesto obligatorio</p>
-      }
-    </div>
 
-    <div class="mb-3">
-      <label class="form-label">Precio Total</label>
-      <input type="text" class="form-control" formControlName="precio_total">
-      @if (checkControl('precio_total', 'required')) {
-      <p class="text-danger">Precio obligatorio</p>
-      }
-    </div>
 
     <input type="submit" value="Registrar" class="btn">
   </form>

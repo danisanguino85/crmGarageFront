@@ -21,18 +21,7 @@ export class NuevaReparacionComponent {
 
 
   formRegistro: FormGroup = new FormGroup({
-    fecha_ingreso: new FormControl('', [
-      Validators.required
-    ]),
-    fecha_salida: new FormControl('', [
-      Validators.required
-    ]),
-    estado: new FormControl('', [
-      Validators.required
-    ]),
-    fecha_finalizacion: new FormControl('', [
-      Validators.required
-    ]),
+
     presupuesto: new FormControl('', [
       Validators.required
     ]),

@@ -39,7 +39,11 @@ export class VehiculosService {
   }
 
 
-
+  async getVehiculosByClienteId(clienteId: number) {
+    return lastValueFrom(
+      this.httpClient.get<Vehiculo[]>(`${this.baseUrl}/vehiculo/${clienteId}`)
+    )
+  }
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   async getVehiculoByReparacion(body: any) {
