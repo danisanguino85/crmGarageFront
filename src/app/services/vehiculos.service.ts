@@ -40,7 +40,8 @@ export class VehiculosService {
 
   /* http://localhost:3000/api/vehiculos/reparacion */
 
-  async getVehiculoByReparacion(body: Vehiculo) {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  async getVehiculoByReparacion(body: any) {
 
     return lastValueFrom(
       this.httpClient.post<Vehiculo>(`${this.baseUrl}/reparacion`, body)

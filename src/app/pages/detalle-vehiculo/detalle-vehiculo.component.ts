@@ -23,6 +23,8 @@ export class DetalleVehiculoComponent {
 
   async ngOnInit() {
 
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     this.activatedRoute.parent!.params.subscribe(async (params: any) => {
       const body = {
         id: params.reparacionId

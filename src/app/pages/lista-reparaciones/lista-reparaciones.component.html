@@ -1,6 +1,6 @@
 <h2>REPARACIONES</h2>
 <select (change)="filtrarPorEstado($event)">
-    <option value="">Todas</option>
+    <option value="">Todas las Reparaciones</option>
     <option value="pendiente">pendiente</option>
     <option value="en_progreso">en_progreso</option>
     <option value="finalizado">finalizado</option>
@@ -16,10 +16,10 @@
 
         <tr [routerLink]="[`/admin/reparacion/${reparacion.id}`]">
             <td>{{reparacion.id}}</td>
-            <td>{{reparacion.fecha_ingreso| date: 'dd/MM/yyyy'}}</td>
+            <td>{{reparacion.fecha_ingreso | date: 'dd/MM/yyyy'}}</td>
             <td>{{reparacion.vehiculo}}</td>
             <td>{{reparacion.mecanico}}</td>
-            <td>{{reparacion.estado}}</td>
+            <td  [style]="getEstiloEstado(reparacion.estado)">{{reparacion.estado}}</td>
         </tr>
 
 
