@@ -30,3 +30,41 @@ ul:last-child {
 		width: 45%;
 	}
 }
+
+
+.card-cliente {
+	background-color: #fefefe;
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	border-left: 5px solid #198754; /* verde para diferenciar */
+	font-family: 'Segoe UI', sans-serif;
+	max-width: 600px;
+	margin: auto;
+	color: #333;
+  }
+  
+  .card-cliente h3 {
+	font-size: 1.5rem;
+	color: #198754;
+	margin-bottom: 16px;
+  }
+  
+  .card-cliente ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+  
+  .card-cliente li {
+	margin-bottom: 10px;
+	font-size: 1rem;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 6px;
+  }
+  
+  .card-cliente li strong {
+	width: 160px;
+	display: inline-block;
+	color: #555;
+  }
