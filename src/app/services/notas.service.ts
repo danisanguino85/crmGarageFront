@@ -14,14 +14,18 @@ export class NotasService {
   create(body: Nota) {
 
     return lastValueFrom(
-
       this.httpClient.post<Nota>(this.baseUrl, body)
     )
-
   }
   getAllNotas() {
     return lastValueFrom(
       this.httpClient.get<Nota[]>(this.baseUrl))
   }
 
+
+  getReparacionAllNotas(reparacionId: number){
+    return lastValueFrom(
+      this.httpClient.get<Nota[]>(`${this.baseUrl}/nota/${reparacionId}`))
+  }
 }
+
