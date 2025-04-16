@@ -7,8 +7,9 @@ import type { Nota } from '../../interfaces/nota';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import { DatePipe } from '@angular/common';
-import { environment } from '../../../environments/enviroment';
 import { UsuariosService } from '../../services/usuarios.service';
+import type { Vehiculo } from '../../interfaces/vehiculo';
+import { VehiculosService } from '../../services/vehiculos.service';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -26,10 +27,11 @@ export class DetalleClienteComponent {
   reparacionesService = inject(ReparacionesService);
   usuarioService = inject(UsuariosService)
   notasService = inject(NotasService)
+  vehiculosService = inject(VehiculosService)
   activatedRoute = inject(ActivatedRoute)
   reparacionId = 0
   mecanicoAdmin?: boolean = false
-
+  vehiculos: Vehiculo[] = []
 
   nuevaNotaForm: FormGroup = new FormGroup({
     notas: new FormControl()
@@ -37,12 +39,20 @@ export class DetalleClienteComponent {
 
   async ngOnInit() {
     this.loadCliente()
+    this.loadVehiculo()
     const data = this.usuarioService.tokenDecodificado()
     if (data?.rol === 'mecanico') {
       this.mecanicoAdmin = true;
     };
+  }
 
+  async loadVehiculo() {
+    try {
+      this.vehiculos = await this.vehiculosService.getVehiculosByClienteId(this.clienteId)
+      console.log(this.vehiculos)
+    } catch (error) {
 
+    }
   }
 
 
