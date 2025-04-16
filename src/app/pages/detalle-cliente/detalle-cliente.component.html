@@ -1,3 +1,4 @@
+@if(cliente){
 @if (!mecanicoAdmin) {
 <div class="general">
     <div class="cliente">
@@ -14,16 +15,16 @@
             <li href="#" class="list-group-item list-group-item-action">
                 <strong>Teléfono: </strong>{{ cliente.telefono }}
             </li>
-            <li class="list-group-item list-group-item-action disabled" aria-disabled="true">
+            <li class="list-group-item list-group-item-action ">
                 <strong>Email: </strong>{{ cliente.email }}
             </li>
-            <li class="list-group-item list-group-item-action disabled" aria-disabled="true">
+            <li class="list-group-item list-group-item-action ">
                 <strong>Dirección: </strong>{{ cliente.direccion }}
             </li>
-            <li class="list-group-item list-group-item-action disabled" aria-disabled="true">
+            <li class="list-group-item list-group-item-action ">
                 <strong>Fecha de alta: </strong>{{ cliente.fecha_alta | date : "dd-MM-yyyy" }}
             </li>
-            <li class="list-group-item list-group-item-action disabled" aria-disabled="true">
+            <li class="list-group-item list-group-item-action ">
                 <strong>Dirección: </strong>{{ cliente.direccion }}
             </li>
         </ul>
@@ -37,13 +38,23 @@
         </div>
         <ul class="list-group">
             <li class="nombre list-group-item list-group-item-action" aria-current="true">
-                Veículos
+                Vehículos
 
             </li>
             @for(vehiculo of vehiculos;track $index){
-
-            <li class="list-group-item list-group-item-action disabled" aria-current="true">
+            <li class="list-group-item list-group-item-action " (click)="onClick(vehiculo.id)">
                 {{ vehiculo.marca }} {{ vehiculo.modelo }} {{ vehiculo.matricula }}
+            </li>
+            }
+        </ul>
+        <ul class="list-group">
+            <li class="nombre list-group-item list-group-item-action">
+                Notas de taller</li>
+            @for(reparacion of reparaciones;track $index){
+            <li class="list-group-item list-group-item-action">
+                {{ reparacion.id }} {{ reparacion.estado }} {{ reparacion.fecha_ingreso |date :'dd-MM-yyyy' }}
+
+
             </li>
             }
         </ul>
@@ -55,17 +66,18 @@
     </div>
 </div>
 }@else {
-    <div class="card-cliente">
-        <h3>👤 Detalle del Cliente</h3>
-        <ul>
-          <li><strong>Nombre:</strong> {{ cliente.nombre }} {{ cliente.apellidos }}</li>
-          <li><strong>DNI:</strong> {{ cliente.dni }}</li>
-          <li><strong>Teléfono:</strong> {{ cliente.telefono }}</li>
-          <li><strong>Email:</strong> {{ cliente.email }}</li>
-          <li><strong>Dirección:</strong> {{ cliente.direccion }}</li>
-          <li><strong>Fecha de alta:</strong> {{ cliente.fecha_alta }}</li>
-        </ul>
-      </div>
+<div class="card-cliente">
+    <h3>👤 Detalle del Cliente</h3>
+    <ul>
+        <li><strong>Nombre:</strong> {{ cliente.nombre }} {{ cliente.apellidos }}</li>
+        <li><strong>DNI:</strong> {{ cliente.dni }}</li>
+        <li><strong>Teléfono:</strong> {{ cliente.telefono }}</li>
+        <li><strong>Email:</strong> {{ cliente.email }}</li>
+        <li><strong>Dirección:</strong> {{ cliente.direccion }}</li>
+        <li><strong>Fecha de alta:</strong> {{ cliente.fecha_alta }}</li>
+    </ul>
+</div>
+}
 }
 
 <!--

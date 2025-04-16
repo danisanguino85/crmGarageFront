@@ -55,6 +55,12 @@ export class ReparacionesService {
     )
   }
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  getReparacionesByVehiculo(body: any) {
+    return lastValueFrom(
+      this.httpClient.post<Reparacion[]>(`${this.baseUrl}/vehiculo`, body))
+  }
+
   /* http://localhost:3000/api/reparaciones/usuario */
   getReparacionesByMecanico() {
     return lastValueFrom(

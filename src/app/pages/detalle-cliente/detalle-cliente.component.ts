@@ -10,6 +10,11 @@ import { DatePipe } from '@angular/common';
 import { UsuariosService } from '../../services/usuarios.service';
 import type { Vehiculo } from '../../interfaces/vehiculo';
 import { VehiculosService } from '../../services/vehiculos.service';
+import type { Reparacion } from '../../interfaces/reparacion';
+
+type Body = {
+  vehiculoId: 0
+}
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -32,32 +37,53 @@ export class DetalleClienteComponent {
   reparacionId = 0
   mecanicoAdmin?: boolean = false
   vehiculos: Vehiculo[] = []
+  reparaciones: Reparacion[] = []
+  coche!: Vehiculo
 
   nuevaNotaForm: FormGroup = new FormGroup({
     notas: new FormControl()
   })
 
-  async ngOnInit() {
+  ngOnInit() {
     this.loadCliente()
-    this.loadVehiculo()
+    this.loadVehiculos()
     const data = this.usuarioService.tokenDecodificado()
     if (data?.rol === 'mecanico') {
       this.mecanicoAdmin = true;
     };
   }
 
-  async loadVehiculo() {
+  async loadVehiculos() {
     try {
       this.vehiculos = await this.vehiculosService.getVehiculosByClienteId(this.clienteId)
-      console.log(this.vehiculos)
+
     } catch (error) {
 
     }
-    this.activatedRoute.parent!.params.subscribe(async (params: any) => {   
-      this.cliente = await this.clientesService.getClienteByReparacion(params.reparacionId)
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+      //   this.cliente = await this.clientesService.getClienteByReparacion(params.reparacionId)
     });
   }
+  async onClick(vehiculoId: number) {
 
+    try {
+      this.reparaciones = await this.reparacionesService.getReparacionesByVehiculo({ vehiculoId })
+
+
+    } catch (error) {
+
+    }
+  }
+
+  /*async loadVehiculoByreparacion(reparacionId: number) {
+    try {
+      this.coche = await this.vehiculosService.getVehiculoByReparacion({ reparacionId })
+    } catch (error) {
+
+    }
+  }*/
 
   async loadCliente() {
     try {

@@ -37,13 +37,10 @@ export class NuevoVehiculoComponent {
     ]),
     fecha_matriculacion: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)
     ]),
     km: new FormControl('', [
       Validators.required,
-      Validators.min(0),
       Validators.max(1000000),
-      Validators.pattern(/^\d+$/)
     ]),
 
   })
