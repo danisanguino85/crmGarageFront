@@ -18,21 +18,62 @@ export class NuevoUsuarioComponent {
   especialidades: string[] = ESPECIALIDADES
 
   formRegistro: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    apellidos: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-    dni: new FormControl('', [Validators.required]),
-    telefono: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
-    fecha_nacimiento: new FormControl('', [Validators.required]),
-    direccion: new FormControl('', [Validators.required]),
-    numero_ss: new FormControl('', [Validators.required]),
-    rol: new FormControl('', [Validators.required]),
-    activo: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6),
-    Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/)]),
-    jornada: new FormControl('', [Validators.required]),
-    foto_perfil: new FormControl('', Validators.pattern(/https?:\/\/.+/)),
-    especialidad: new FormControl('', [Validators.required])
+    nombre: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(50)
+    ]),
+    apellidos: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(50)
+    ]),
+    dni: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d{8}[A-HJ-NP-TV-Z]$/i)
+    ]),
+    telefono: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^(\+34|0034|34)?[6-7][0-9]{8}$/)
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+    fecha_nacimiento: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)
+    ]),
+    direccion: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(100)
+    ]),
+    numero_ss: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d{12}$/)
+    ]),
+    rol: new FormControl('', [
+      Validators.required,
+    ]),
+    activo: new FormControl('', [
+      Validators.required
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/)
+    ]),
+    jornada: new FormControl('', [
+      Validators.required,
+    ]),
+    foto_perfil: new FormControl('', [
+      Validators.pattern(/https?:\/\/.+/)
+    ]),
+    especialidad: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(50)
+    ])
   })
 
   async onSubmit() {

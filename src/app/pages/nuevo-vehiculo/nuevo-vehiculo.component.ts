@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { VehiculosService } from '../../services/vehiculos.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -16,12 +16,35 @@ export class NuevoVehiculoComponent {
   activatedRoute = inject(ActivatedRoute)
 
   nuevoVehiculoForm: FormGroup = new FormGroup({
-    matricula: new FormControl(''),
-    bastidor: new FormControl(''),
-    marca: new FormControl(''),
-    modelo: new FormControl(''),
-    fecha_matriculacion: new FormControl(''),
-    km: new FormControl(''),
+    matricula: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[0-9]{4}[A-Z]{3}$/)
+    ]),
+    bastidor: new FormControl('', [
+      Validators.required,
+      Validators.minLength(17),
+      Validators.maxLength(17)
+    ]),
+    marca: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(30)
+    ]),
+    modelo: new FormControl('', [
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(30)
+    ]),
+    fecha_matriculacion: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)
+    ]),
+    km: new FormControl('', [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(1000000),
+      Validators.pattern(/^\d+$/)
+    ]),
 
   })
 
@@ -37,7 +60,11 @@ export class NuevoVehiculoComponent {
       await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
       console.log(this.nuevoVehiculoForm.value)
     });
+  }
 
+  checkControl(controlName: string, errorName: string): boolean {
+    const control = this.nuevoVehiculoForm.get(controlName);
+    return !!control && control.hasError(errorName) && control.touched;
   }
 
 

@@ -5,6 +5,11 @@
     <option value="en_progreso">en_progreso</option>
     <option value="finalizado">finalizado</option>
 </select>
+<select (change)="filtrarPorFecha($event)">
+    <option value="">Todas las fechas</option>
+    <option value="fecha_ingreso">Filtrar mas reciente</option>
+    <option value="filtrarPorFecha">Filtrar mas antigua</option>
+</select>
 <div class="table table-responsive">
     <table>
         <th>Ref.</th>

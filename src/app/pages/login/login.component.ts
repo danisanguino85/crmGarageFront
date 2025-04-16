@@ -46,7 +46,11 @@ export class LoginComponent {
       }, 1500)
     } catch (error) {
       console.log(error)
-      toast.error('Hubo un error al logar el usuario');
+      toast.error('Error al iniciar sesión',
+        {
+          description: 'Por favor, verifica tu email y contraseña.'
+        }
+      )
     }
   }
 

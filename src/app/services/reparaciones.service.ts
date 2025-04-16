@@ -33,6 +33,16 @@ export class ReparacionesService {
       (this.httpClient.get<Reparacion[]>(`${this.baseUrl}/pendiente`))
   }
 
+  getFecha() {
+    return lastValueFrom
+      (this.httpClient.get<Reparacion[]>(`${this.baseUrl}/fecha`))
+  }
+
+  getFechaAntigua() {
+    return lastValueFrom
+      (this.httpClient.get<Reparacion[]>(`${this.baseUrl}/fechaAntigua`))
+  }
+
   register(body: Reparacion) {
     return lastValueFrom
       (this.httpClient.post<Reparacion>(`${this.baseUrl}/new`, body))

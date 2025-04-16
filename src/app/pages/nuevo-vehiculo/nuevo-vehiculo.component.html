@@ -8,48 +8,48 @@
         <div class="mb-3">
             <label class="form-label">Matrícula</label>
             <input class="form-control" type="text" formControlName="matricula">
-            <!-- @if(checkError('nombre', 'required') || checkError('nombre', 'minlength')){
-            <p class="text-danger">Debes incluir un nombre.</p>
-            } -->
+            @if (checkControl('matricula', 'required')) {
+                <p class="text-danger">Matricula obligatoria</p>
+                }
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Bstidor</label>
+            <label class="form-label">Bastidor</label>
             <input class="form-control" type="text" formControlName="bastidor">
-            <!-- @if(checkError('apellidos', 'required') || checkError('apellidos', 'minlength')){
-            <p class="text-danger">Debes incluir al menos un apellido.</p>
-            } -->
+            @if (checkControl('bastidor', 'required')) {
+                <p class="text-danger">Bastidor obligatorio</p>
+                }
         </div>
 
         <div class="mb-3">
             <label class="form-label">Marca</label>
             <input class="form-control" type="text" formControlName="marca">
-            <!-- @if(checkError('dni', 'required') || checkError('dni', 'minlength')){
-            <p class="text-danger">El DNI es obligatorio.</p>
-            } -->
+            @if (checkControl('marca', 'required')) {
+                <p class="text-danger">Marca obligatoria</p>
+                }
         </div>
 
         <div class="mb-3">
             <label class="form-label">Modelo</label>
             <input class="form-control" type="text" formControlName="modelo">
-            <!-- @if(checkError('telefono', 'required') || checkError('telefono', 'minlength')){
-            <p class="text-danger">Debes incluir un teléfono válido.</p>
-            } -->
+            @if (checkControl('modelo', 'required')) {
+                <p class="text-danger">Modelo obligatorio</p>
+                }
         </div>
 
         <div class="mb-3">
             <label class="form-label">Fecha matriculación</label>
             <input class="form-control" type="date" formControlName="fecha_matriculacion">
-            <!-- @if(checkError('email', 'required') || checkError('email', 'minlength')){
-            <p class="text-danger">Debes incluir un email válido.</p>
-            } -->
+            @if (checkControl('Fecha_matriculacion', 'required')) {
+                <p class="text-danger">fecha de matriculacion obligatoria</p>
+                }
         </div>
         <div class="mb-3">
             <label class="form-label">km</label>
             <input class="form-control" type="text" formControlName="km">
-            <!-- @if(checkError('email', 'required') || checkError('email', 'minlength')){
-            <p class="text-danger">Debes incluir un email válido.</p>
-            } -->
+            @if (checkControl('km', 'required')) {
+                <p class="text-danger">Km obligatorio</p>
+                }
         </div>
 
         <input type="submit" value="Registrar" class="btn">

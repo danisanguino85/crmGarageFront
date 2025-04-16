@@ -48,6 +48,19 @@ export class ListaReparacionesComponent {
     this.ordenarPorFechaIngreso()
   }
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  async filtrarPorFecha($event: any) {
+    console.log($event.target.value)
+    /* ordenar por fecha de mas reciente a mas antigua */
+    if ($event.target.value === 'fecha_ingreso') {
+      this.reparaciones = await this.reparacionesServices.getFecha()
+    } else {
+      this.reparaciones = await this.reparacionesServices.getFechaAntigua()
+    } if ($event.target.value === '') {
+      this.reparaciones = await this.reparacionesServices.getAllReparaciones()
+    }
+  }
+
   async loadMecanico() {
     this.usuarios = await this.usuariosService.getAll()
   }
