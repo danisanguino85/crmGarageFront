@@ -1,0 +1,28 @@
+header {
+	display: flex;
+	justify-content: space-between;
+	i {
+		margin-right: 20px;
+		font-size: 200%;
+		cursor: pointer;
+	}
+}
+
+h2 {
+	margin-bottom: 20px;
+}
+
+table {
+	text-align: center;
+	border: 1px solid black;
+
+	width: 100%;
+	th,
+	td {
+		border: 1px solid black;
+	}
+	td,
+	th {
+		padding: 10px;
+	}
+}

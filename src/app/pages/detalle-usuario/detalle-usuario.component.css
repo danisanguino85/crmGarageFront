@@ -1,0 +1,14 @@
+.nombre {
+	background-color: var(--primary-color);
+	color: white;
+	font-weight: bold;
+	font-size: 120%;
+}
+
+.list-group {
+	width: 60%;
+	margin: 0 auto;
+}
+h1 {
+	text-align: center;
+}

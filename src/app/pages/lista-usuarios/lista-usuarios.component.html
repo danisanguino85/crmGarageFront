@@ -1,4 +1,7 @@
-<h2>EMPLEADOS</h2>
+<header>
+    <h2>EMPLEADOS</h2>
+    <i class="fa-solid fa-print"></i>
+</header>
 <select (change)="filtrarPorRol($event)">
     <option value="">Todas</option>
     <option value="admin">Admin</option>
@@ -12,11 +15,12 @@
         <th>Rol</th>
         @for(usuario of usuarios;track $index){
 
-        <tr [routerLink]="[`/admin/usuario/${usuario.id}`]">
+        <tr>
             <td>{{usuario.nombre}}</td>
             <td>{{usuario.telefono| date: 'dd/MM/yyyy'}}</td>
             <td>{{usuario.email}}</td>
             <td>{{usuario.rol}}</td>
+            <td><button class="btn btn-info" [routerLink]="[`/admin/usuario/${usuario.id}`]">Ver detalle</button>
         </tr>
 
 

@@ -16,11 +16,13 @@ export class DashboardAdminComponent {
   vehiculosService = inject(VehiculosService)
   clientesService = inject(ClientesService)
   reparacionesService = inject(ReparacionesService)
+  selectedTab = ''
 
   router = inject(Router)
   @Input() clienteId = 0
   @Input() vehiculoId = 0
   @Input() reparacionId? = 0
+
 
   searchClienteForm: FormGroup = new FormGroup({
     telefono: new FormControl(),
@@ -55,6 +57,10 @@ export class DashboardAdminComponent {
     this.searchVehiculoForm.reset()
     this.vehiculoId = response.id
     this.router.navigate([`/admin/vehiculo/${this.vehiculoId}`])
+  }
+
+  selectTab(tab: string) {
+    this.selectedTab = tab
   }
 
 }

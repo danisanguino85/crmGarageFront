@@ -6,6 +6,11 @@
 	overflow: auto;
 }
 
+.tab {
+	display: flex;
+	justify-content: space-around;
+}
+
 .lateral {
 	width: 20%;
 	border-right: 1px solid black;
@@ -34,7 +39,8 @@ ul {
 	padding: 20px;
 	font-size: 20px;
 }
-input {
+input,
+button {
 	width: 90%;
 	margin: 10px;
 }

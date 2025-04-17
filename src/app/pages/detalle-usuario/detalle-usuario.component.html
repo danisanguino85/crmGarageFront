@@ -1,31 +1,39 @@
-<h1>Detalle usuario</h1>
-<div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-        {{usuario.nombre}}
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">{{usuario.apellidos}}</a>
-    <a href="#" class="list-group-item list-group-item-action">{{usuario.dni}}</a>
-    <a href="#" class="list-group-item list-group-item-action">{{usuario.telefono}}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.email}}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.direccion }}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.fecha_alta }}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.fecha_baja }}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.fecha_nacimiento
-        }}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">
-        <p>{{usuario.numero_ss}}</p>
-    </a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">
-        <p>{{usuario.rol}}</p>
-    </a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">
-        <p>{{usuario.activo}}</p>
-    </a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.direccion }}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.password}}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.fecha_actualizacion}}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.jornada}}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.foto_perfil}}</a>
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">{{usuario.especialidad}}</a>
+<h1>Vista empleado</h1>
+<ul class="list-group">
+    <li class="nombre list-group-item list-group-item-action">
+        {{usuario.nombre}} {{usuario.apellidos}}
+    </li>
+    <li class="list-group-item list-group-item-action"><strong>DNI: </strong>{{usuario.dni}}</li>
+    <li class="list-group-item list-group-item-action"><strong>Teléfono: </strong>{{usuario.telefono}}</li>
+    <li class="list-group-item list-group-item-action"><strong>Email:
+        </strong>{{usuario.email}}</li>
+    <li class="list-group-item list-group-item-action">
+        <strong>Dirección: </strong>{{usuario.direccion }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <strong>Fecha de alta: </strong>{{usuario.fecha_alta }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <strong>Fecha de baja: </strong>{{usuario.fecha_baja }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <strong>Fecha de nacimiento: </strong>{{usuario.fecha_nacimiento
+        }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <p><strong>Número de la Seguridad social: </strong>{{usuario.numero_ss}}</p>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <p><strong>Rol: </strong>{{usuario.rol}}</p>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <p><strong>Estado: </strong>{{usuario.activo}}</p>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <strong>Jornada: </strong>{{usuario.jornada}}
+    </li>
 
-</div>
+    <li class="list-group-item list-group-item-action">
+        <strong>Especialidad: </strong>{{usuario.especialidad}}
+    </li>
+</ul>

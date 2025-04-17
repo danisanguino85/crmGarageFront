@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-@if(cliente){
-=======
 @if (cliente) {
->>>>>>> feature19
 @if (!mecanicoAdmin) {
 <div class="general">
     <div class="cliente">
@@ -10,13 +6,13 @@
             <li class="nombre list-group-item list-group-item-action" aria-current="true">
                 {{ cliente.nombre }}
             </li>
-            <li href="#" class="list-group-item list-group-item-action">
+            <li class="list-group-item list-group-item-action">
                 <strong>Apellidos: </strong>{{ cliente.apellidos }}
             </li>
-            <li href="#" class="list-group-item list-group-item-action">
+            <li class="list-group-item list-group-item-action">
                 <strong>DNI: </strong>{{ cliente.dni }}
             </li>
-            <li href="#" class="list-group-item list-group-item-action">
+            <li class="list-group-item list-group-item-action">
                 <strong>Teléfono: </strong>{{ cliente.telefono }}
             </li>
             <li class="list-group-item list-group-item-action ">
@@ -40,28 +36,38 @@
                 Nueva nota de taller
             </button>
         </div>
-        <ul class="list-group">
-            <li class="nombre list-group-item list-group-item-action" aria-current="true">
-                Vehículos
-
-            </li>
+        <table>
+            <thead class="nombre ">
+                <th colspan="3"> Vehiculos asociados</th>
+            </thead>
+            <th>ID</th>
+            <th>Estado</th>
+            <th>Entrada</th>
             @for(vehiculo of vehiculos;track $index){
-            <li class="list-group-item list-group-item-action " (click)="onClick(vehiculo.id)">
-                {{ vehiculo.marca }} {{ vehiculo.modelo }} {{ vehiculo.matricula }}
-            </li>
+            <tr (click)="onClick(vehiculo.id)">
+                <td>{{ vehiculo.marca}}</td>
+                <td>{{ vehiculo.modelo }}</td>
+                <td>{{ vehiculo.matricula }}</td>
+            </tr>
             }
-        </ul>
-        <ul class="list-group">
-            <li class="nombre list-group-item list-group-item-action">
-                Notas de taller</li>
+        </table>
+        <table>
+            <thead class="nombre ">
+                <th colspan="4"> Notas de taller</th>
+            </thead>
+            <th>ID</th>
+            <th>Estado</th>
+            <th>Entrada</th>
+            <th>Salida</th>
             @for(reparacion of reparaciones;track $index){
-            <li class="list-group-item list-group-item-action">
-                {{ reparacion.id }} {{ reparacion.estado }} {{ reparacion.fecha_ingreso |date :'dd-MM-yyyy' }}
-
-
-            </li>
+            <tr>
+                <td>{{ reparacion.id }}</td>
+                <td>{{ reparacion.estado }}</td>
+                <td>{{ reparacion.fecha_ingreso |date :'dd-MM-yyyy' }}</td>
+                <td>{{ reparacion.fecha_salida |date :'dd-MM-yyyy' }}</td>
+            </tr>
             }
-        </ul>
+        </table>
 
     </div>
 

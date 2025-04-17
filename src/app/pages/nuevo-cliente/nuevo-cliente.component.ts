@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../services/clientes.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 @Component({
@@ -55,12 +55,12 @@ export class NuevoClienteComponent {
   async onSubmit() {
     try {
       const nuevoCliente = await this.clientesService.register(this.registerForm.value)
-      const clienteId = nuevoCliente.id
+
 
       toast.success('Cliente registrado correctamente')
 
       setTimeout(() => {
-        this.router.navigate([`/cliente/${clienteId}`])
+        this.router.navigate([`/admin/cliente/${nuevoCliente.id}`])
       }, 1500)
 
       this.registerForm.reset()

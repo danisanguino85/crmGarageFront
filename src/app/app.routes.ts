@@ -23,11 +23,10 @@ export const routes: Routes = [
     { path: 'registro/usuario', component: NuevoUsuarioComponent },
     { path: 'login', component: LoginComponent },
     { path: 'usuarios', component: ListaUsuariosComponent },
-    { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
-    { path: 'nuevo', component: NuevoClienteComponent },
     { path: 'cliente/:clienteId', component: DetalleClienteComponent },
     { path: 'clientes', component: ListaClientesComponent },
-    
+
+
 
     //rutas hija del admin
     {
@@ -37,9 +36,17 @@ export const routes: Routes = [
             { path: 'reparaciones', component: ListaReparacionesComponent },
             { path: 'vehiculo/:vehiculoId', component: DetalleVehiculoComponent },
             { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent },
+            { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
             { path: 'clientes', component: ListaClientesComponent },
+            { path: 'nuevoCliente', component: NuevoClienteComponent },
+            { path: 'nuevoEmpleado', component: NuevoUsuarioComponent },
+            { path: 'nuevaReparacion', component: NuevaReparacionComponent },
+
+            { path: 'vehiculos', component: ListaVehiculosComponent },
+
             {
                 path: 'cliente/:clienteId', component: DetalleClienteComponent, children: [
+
                     { path: 'nuevoVehiculo', component: NuevoVehiculoComponent },
                     { path: 'nuevaNota', component: NuevaReparacionComponent },
                 ]
@@ -71,7 +78,6 @@ export const routes: Routes = [
     },
     { path: 'cliente/:clienteId', component: DetalleClienteComponent },
     { path: 'registro/reparaciones', component: NuevaReparacionComponent },
-    { path: 'vehiculos', component: ListaVehiculosComponent },
     { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent },
 
 

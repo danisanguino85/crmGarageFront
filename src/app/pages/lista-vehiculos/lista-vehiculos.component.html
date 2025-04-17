@@ -1,13 +1,29 @@
-@for(vehiculo of vehiculos;track $index){
+<header>
+    <h2>VEHÍCULOS</h2>
+    <i class="fa-solid fa-print"></i><!--(click)="exportarPdf()"-->
+</header>
 
-{{vehiculo.id}}
-{{vehiculo.bastidor}}
-{{vehiculo.marca}}
-{{vehiculo.modelo}}
-{{vehiculo.fecha_matriculacion}}
-{{vehiculo.km}}
-{{vehiculo.fecha_entrada }}
-{{vehiculo.fecha_salida}}
+<div class="table table-responsive" id="pdf-content">
+    <table>
+        <th>ID</th>
+        <th>MARCA</th>
+        <th>Modelo</th>
+        <th>Km</th>
+        <th>Entrada</th>
+        <th>Salida</th>
 
-}
-<h1>hola</h1>
+        @for(vehiculo of vehiculos;track $index){
+
+        <tr>
+            <td>{{vehiculo.id}}</td>
+            <td>{{vehiculo.marca}}</td>
+            <td>{{vehiculo.modelo}}</td>
+            <td>{{vehiculo.km}}</td>
+            <td>{{vehiculo.fecha_entrada | date: 'dd/MM/yyyy'}}</td>
+            <td>{{vehiculo.fecha_salida | date: 'dd/MM/yyyy'}}</td>
+            <td><button class="btn btn-info" [routerLink]="[`/admin/vehiculo/${vehiculo.id}`]">Ver detalle</button></td>
+
+        </tr>
+        }
+    </table>
+</div>
