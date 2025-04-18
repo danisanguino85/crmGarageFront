@@ -32,12 +32,14 @@ export class NuevaReparacionComponent {
 
   async ngOnInit() {
     await this.loadMecanicos()
+
   }
 
   async onSubmit() {
     try {
       if (this.formRegistro.valid) {
         const reparaciones = await this.reparacionesServices.register(this.formRegistro.value);
+        console.log(reparaciones);
 
         toast.success('Reparación registrada correctamente');
 
@@ -52,7 +54,6 @@ export class NuevaReparacionComponent {
       toast.error('Hubo un error al registrar la reparación');
     }
   }
-
 
   async loadMecanicos() {
     try {

@@ -68,5 +68,11 @@ export class ReparacionesService {
     )
   }
 
+  updateReparacion(idReparaciones: number, body: Reparacion) {
+    return lastValueFrom(
+      this.httpClient.put<Reparacion>(`${this.baseUrl}/${idReparaciones}`, body)
+    )
+  }
+
 }
 
