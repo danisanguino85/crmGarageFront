@@ -24,7 +24,6 @@ export class ListaUsuariosComponent {
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   async filtrarPorRol($event: any) {
-    console.log($event.target.value)
     if ($event.target.value === 'admin') {
       this.usuarios = await this.usuarioService.getAdmin()
     } else {

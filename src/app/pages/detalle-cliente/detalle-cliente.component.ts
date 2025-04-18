@@ -57,7 +57,6 @@ export class DetalleClienteComponent {
   async loadVehiculos() {
     try {
       this.vehiculos = await this.vehiculosService.getVehiculosByClienteId(this.clienteId)
-      console.log(this.vehiculos)
     } catch (error) {
 
     }
@@ -71,8 +70,6 @@ export class DetalleClienteComponent {
 
     try {
       this.reparaciones = await this.reparacionesService.getReparacionesByVehiculo({ vehiculoId })
-      console.log(vehiculoId)
-
     } catch (error) {
 
     }

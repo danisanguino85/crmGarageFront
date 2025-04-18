@@ -1,5 +1,6 @@
-@import url("../../../styles.css");
-
+h2 {
+	text-transform: capitalize;
+}
 .general {
 	display: flex;
 	height: 100vh;
@@ -85,8 +86,15 @@ button {
 		width: 100%;
 		border-right: none;
 		border-bottom: 1px solid black;
+		form {
+			width: 70%;
+			margin: 0 auto;
+		}
 	}
-
+	.menuSelectedTab {
+		text-align: center;
+		margin-top: 20px;
+	}
 	.main {
 		width: 100%;
 	}
@@ -95,5 +103,9 @@ button {
 @media (max-width: 480px) {
 	.routerOutlet {
 		padding: 15px;
+	}
+	.lateral form {
+		width: 90%;
+		margin: 0 auto;
 	}
 }

@@ -21,7 +21,12 @@ export class NuevaReparacionComponent {
 
 
   formRegistro: FormGroup = new FormGroup({
-
+    vehiculo: new FormControl('', [
+      Validators.required
+    ]),
+    comentarios: new FormControl('', [
+      Validators.required
+    ]),
     presupuesto: new FormControl('', [
       Validators.required
     ]),

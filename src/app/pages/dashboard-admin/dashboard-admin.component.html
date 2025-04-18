@@ -5,7 +5,7 @@
 
             <ul class=" tab nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="Clientes" (click)="selectTab('clientes')"
+                    <a class="nav-link" (click)="selectTab('clientes')"
                         [class.active]="selectedTab==='clientes'">Clientes</a>
                 </li>
                 <li class="nav-item">
@@ -24,7 +24,7 @@
 
 
             @if(selectedTab=== 'clientes'){
-            <ul>
+            <ul class="menuSelectedTab">
                 <li [routerLink]="['/admin', 'clientes']">Lista de clientes</li>
                 <li [routerLink]="['/admin', 'nuevoCliente']">Nuevo cliente</li>
             </ul>
@@ -37,7 +37,7 @@
 
             }
             @if(selectedTab=== 'taller'){
-            <ul>
+            <ul class="menuSelectedTab">
                 <li [routerLink]="['/admin', 'reparaciones']">Notas de taller</li>
                 <li [routerLink]="['/admin', 'nuevaReparacion']">Nueva nota de taller</li>
             </ul>
@@ -48,24 +48,24 @@
             </form>
             }
             @if(selectedTab=== 'vehiculos'){
-            <ul>
+            <ul class="menuSelectedTab">
                 <li [routerLink]="['/admin', 'vehiculos']">Lista de vehículos</li>
                 <li (click)="selectTab('clientes')">Nuevo vehículo</li>
             </ul>
             <form class="mb-3" [formGroup]="searchVehiculoForm" (ngSubmit)="onSubmitMatricula()">
-                <label class="form-label">Vehículo</label>
+                <label class="form-label">Búsqueda</label>
                 <input type="text" class="form-control" placeholder="matrícula" formControlName="matricula">
                 <input type="submit" value="Enviar">
             </form>
             }
             @if(selectedTab=== 'empleados'){
-            <ul>
+            <ul class="menuSelectedTab">
                 <li [routerLink]="['/admin', 'usuarios']">Lista de empleados</li>
                 <li [routerLink]="['/admin', 'nuevoEmpleado']">Nuevo empleado</li>
             </ul>
-            <form class="mb-3" [formGroup]="searchVehiculoForm" (ngSubmit)="onSubmitMatricula()">
+            <form class="mb-3" [formGroup]="searchEmpleadoForm" (ngSubmit)="onSubmitEmpleado()">
                 <label class="form-label">Búsqueda</label>
-                <input type="text" class="form-control" placeholder="email" formControlName="empleado">
+                <input type="text" class="form-control" placeholder="email" formControlName="email">
                 <input type="submit" value="Enviar">
             </form>
             }
@@ -83,15 +83,10 @@
     <div class="main wrapper">
         @if(activatedRoute===false){
         <div class="home">
-            <h2>Bienvenido {{usuario.nombre}} {{usuario.apellidos}} </h2>
-            <ul>
-                <li>Hora entrada: </li>
-                <li>Ver nóminas: </li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-
+            @if(usuario){
+            <h2>Hola {{usuario.nombre}} {{usuario.apellidos}}</h2>
+            <h3>Login a las {{horaRegistro}} </h3>
+            }
         </div>
         }
         <div class="router">

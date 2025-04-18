@@ -19,7 +19,6 @@ export class DetalleReparacionComponent {
     try {
       this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
     } catch (error) {
-      console.log(error)
     }
   }
 

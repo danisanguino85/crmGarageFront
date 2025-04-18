@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { ClientesService } from '../../services/clientes.service';
-import { FormControl, FormControlName, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { VehiculosService } from '../../services/vehiculos.service';
 import { ReparacionesService } from '../../services/reparaciones.service';
@@ -23,11 +23,15 @@ export class DashboardAdminComponent {
   usuario!: Usuario
   selectedTab = ''
   activatedRoute = false
-
+  horaRegistro = ''
   router = inject(Router)
+
   @Input() clienteId = 0
   @Input() vehiculoId = 0
   @Input() reparacionId? = 0
+  @Input() usuarioId? = 0
+
+
 
 
   searchClienteForm: FormGroup = new FormGroup({
@@ -42,8 +46,14 @@ export class DashboardAdminComponent {
     notaTaller: new FormControl(),
 
   })
+  searchEmpleadoForm: FormGroup = new FormGroup({
+    email: new FormControl(),
+
+  })
+
   ngOnInit() {
     this.loadUsuario()
+    this.horaRegistro = localStorage.getItem('horaRegistro') || ''
   }
 
   async onSubmitCliente() {
@@ -55,7 +65,6 @@ export class DashboardAdminComponent {
 
   async onSubmitReparacion() {
     const response = await this.reparacionesService.getReparacionById(this.searchReparacionForm.value.notaTaller);
-    this.searchReparacionForm.reset()
     this.reparacionId = response.id
     this.searchReparacionForm.reset()
     this.router.navigate([`/admin/reparacion/${this.reparacionId}`])
@@ -64,13 +73,16 @@ export class DashboardAdminComponent {
   async onSubmitMatricula() {
     const response = await this.vehiculosService.getVehiculo(this.searchVehiculoForm.value)
     this.searchVehiculoForm.reset()
-    this.searchVehiculoForm.reset()
     this.vehiculoId = response.id
     this.router.navigate([`/admin/vehiculo/${this.vehiculoId}`])
   }
 
-  selectTab(tab: string) {
-    this.selectedTab = tab
+  async onSubmitEmpleado() {
+    const response = await this.usuariosService.getByEmail(this.searchEmpleadoForm.value)
+    this.searchEmpleadoForm.reset()
+    this.usuarioId = response.id
+    this.router.navigate([`/admin/usuario/${this.usuarioId}`])
+
   }
 
   async loadUsuario() {
@@ -83,11 +95,17 @@ export class DashboardAdminComponent {
 
   }
 
+  selectTab(tab: string) {
+    this.selectedTab = tab
+  }
+
   activated() {
     this.activatedRoute = true
   }
   nonActivated() {
     this.activatedRoute = false
   }
+
+
 
 }

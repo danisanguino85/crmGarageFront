@@ -1,12 +1,14 @@
 <header>
-    <h2>EMPLEADOS</h2>
+    <div>
+        <h2>LISTADO DE EMPLEADOS</h2>
+        <select (change)="filtrarPorRol($event)">
+            <option value="">Todas</option>
+            <option value="admin">Admin</option>
+            <option value="mecanico">Mecanico</option>
+        </select>
+    </div>
     <i class="fa-solid fa-print"></i>
 </header>
-<select (change)="filtrarPorRol($event)">
-    <option value="">Todas</option>
-    <option value="admin">Admin</option>
-    <option value="mecanico">Mecanico</option>
-</select>
 <div class="table table-responsive">
     <table>
         <th>Empleados</th>

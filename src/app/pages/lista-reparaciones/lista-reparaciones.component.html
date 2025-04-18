@@ -1,18 +1,20 @@
 <header>
-    <h2>NOTAS DE TALLER</h2>
+    <div>
+        <h2>NOTAS DE TALLER</h2>
+        <select (change)="filtrarPorEstado($event)">
+            <option value="">Todas las Reparaciones</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="en_progreso">En progreso</option>
+            <option value="finalizado">Finalizada</option>
+        </select>
+        <select (change)="filtrarPorFecha($event)">
+            <option value="">Todas las fechas</option>
+            <option value="fecha_ingreso">Filtrar mas reciente</option>
+            <option value="filtrarPorFecha">Filtrar mas antigua</option>
+        </select>
+    </div>
     <i class="fa-solid fa-print"></i>
 </header>
-<select (change)="filtrarPorEstado($event)">
-    <option value="">Todas las Reparaciones</option>
-    <option value="pendiente">pendiente</option>
-    <option value="en_progreso">en_progreso</option>
-    <option value="finalizado">finalizado</option>
-</select>
-<select (change)="filtrarPorFecha($event)">
-    <option value="">Todas las fechas</option>
-    <option value="fecha_ingreso">Filtrar mas reciente</option>
-    <option value="filtrarPorFecha">Filtrar mas antigua</option>
-</select>
 <div class="table table-responsive">
     <table>
         <th>Ref.</th>

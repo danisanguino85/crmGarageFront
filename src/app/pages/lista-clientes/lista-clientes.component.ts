@@ -22,9 +22,7 @@ export class ListaClientesComponent {
   async getClientes() {
     try {
       this.clientes = await this.clientesService.getAll()
-      console.log(this.clientes)
     } catch (error) {
-      console.log(error)
     }
   }
 

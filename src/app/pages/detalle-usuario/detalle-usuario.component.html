@@ -1,8 +1,8 @@
-<h1>Vista empleado</h1>
+@if(usuario){
 <ul class="list-group">
-    <li class="nombre list-group-item list-group-item-action">
-        {{usuario.nombre}} {{usuario.apellidos}}
-    </li>
+    <li class="nombre list-group-item list-group-item-action">Datos del empleado</li>
+    <li class="list-group-item list-group-item-action"><strong>Nombre: </strong>{{usuario.nombre}}</li>
+    <li class="list-group-item list-group-item-action"><strong>Apellidos: </strong>{{usuario.apellidos}}</li>
     <li class="list-group-item list-group-item-action"><strong>DNI: </strong>{{usuario.dni}}</li>
     <li class="list-group-item list-group-item-action"><strong>Teléfono: </strong>{{usuario.telefono}}</li>
     <li class="list-group-item list-group-item-action"><strong>Email:
@@ -37,3 +37,4 @@
         <strong>Especialidad: </strong>{{usuario.especialidad}}
     </li>
 </ul>
+}

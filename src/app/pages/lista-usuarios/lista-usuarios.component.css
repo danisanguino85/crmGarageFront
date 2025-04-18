@@ -1,14 +1,18 @@
 header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	padding: 20px 0 20px 0;
+	div {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
 	i {
 		margin-right: 20px;
 		font-size: 200%;
 		cursor: pointer;
 	}
-}
-h2 {
-	margin-bottom: 20px;
 }
 
 table {

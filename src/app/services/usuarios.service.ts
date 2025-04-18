@@ -38,6 +38,12 @@ export class UsuariosService {
       (this.httpClient.get<Usuario>(`${this.baseUrl}/${usuarioId}`))
   }
 
+  getByEmail(body: string) {
+    return lastValueFrom(
+      this.httpClient.post<Usuario>(`${this.baseUrl}/email`, body)
+    )
+  }
+
   register(body: Usuario) {
     return lastValueFrom
       (this.httpClient.post<Usuario>(`${this.baseUrl}/register`, body))

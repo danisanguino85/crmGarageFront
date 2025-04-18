@@ -14,6 +14,8 @@ import { environment } from '../../../environments/enviroment';
 export class LoginComponent {
   usuarioService = inject(UsuariosService);
   router = inject(Router);
+  loginTime = ''
+
 
   formLogin: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -25,11 +27,9 @@ export class LoginComponent {
   })
 
   async onSubmit() {
+    this.horaRegistro()
     try {
       const response = await this.usuarioService.login(this.formLogin.value)
-
-
-
       toast.success('Usuario logado correctamente')
 
       localStorage.setItem(environment.tokenName, response.token)
@@ -54,6 +54,13 @@ export class LoginComponent {
     }
   }
 
+
+  horaRegistro() {
+    const loginTime = new Date
+    this.loginTime = loginTime.toLocaleString().substring(11)
+    localStorage.setItem('horaRegistro', this.loginTime)
+
+  }
 
   checkControl(controlName: string, errorName: string): boolean {
     const control = this.formLogin.get(controlName);

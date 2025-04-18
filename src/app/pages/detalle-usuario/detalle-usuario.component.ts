@@ -21,7 +21,6 @@ export class DetalleUsuarioComponent {
   async getUsuario() {
     try {
       this.usuario = await this.usuariosService.getById(this.usuarioId)
-      console.log(this.usuario)
     } catch (error) {
 
     }
