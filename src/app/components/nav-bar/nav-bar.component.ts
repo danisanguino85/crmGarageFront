@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import type { Usuario } from '../../interfaces/usuario';
 import { UsuariosService } from '../../services/usuarios.service';
 
@@ -7,7 +7,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })

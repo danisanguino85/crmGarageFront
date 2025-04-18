@@ -11,16 +11,17 @@
     <table>
         <th>Empleados</th>
         <th>Teléfono</th>
-        <th>Email</th>
+        <th class="email">Email</th>
         <th>Rol</th>
         @for(usuario of usuarios;track $index){
 
-        <tr>
+        <tr [routerLink]="[`/admin/usuario/${usuario.id}`]"><!--ver cómo lo desactivo para tamaños inferiores-->
             <td>{{usuario.nombre}}</td>
-            <td>{{usuario.telefono| date: 'dd/MM/yyyy'}}</td>
-            <td>{{usuario.email}}</td>
+            <td>{{usuario.telefono}}</td>
+            <td class="email">{{usuario.email}}</td>
             <td>{{usuario.rol}}</td>
-            <td><button class="btn btn-info" [routerLink]="[`/admin/usuario/${usuario.id}`]">Ver detalle</button>
+            <td class="boton"><button class="btn btn-info" [routerLink]="[`/admin/usuario/${usuario.id}`]">Ver
+                    detalle</button>
         </tr>
 
 

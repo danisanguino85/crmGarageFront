@@ -26,3 +26,13 @@ table {
 		padding: 10px;
 	}
 }
+@media (max-width: 1024px) {
+	.boton {
+		display: none;
+	}
+}
+@media (max-width: 768px) {
+	.vehiculo {
+		display: none;
+	}
+}

@@ -69,20 +69,33 @@
                 <input type="submit" value="Enviar">
             </form>
             }
+            @if(!selectedTab){
             <div class="logoTaller">
                 <i class="fa-solid fa-car"></i>
                 <p>TALLERES MACARRONI</p>
-
             </div>
+            }
         </div>
 
 
     </div>
 
     <div class="main wrapper">
+        @if(activatedRoute===false){
+        <div class="home">
+            <h2>Bienvenido {{usuario.nombre}} {{usuario.apellidos}} </h2>
+            <ul>
+                <li>Hora entrada: </li>
+                <li>Ver nóminas: </li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
 
-        <div class="routerOutlet">
-            <router-outlet />
+        </div>
+        }
+        <div class="router">
+            <router-outlet (activate)="activated()" (deactivate)="nonActivated()" />
         </div>
 
     </div>

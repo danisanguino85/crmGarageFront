@@ -1,5 +1,5 @@
 <header>
-    <h2>EMPLEADOS</h2>
+    <h2>NOTAS DE TALLER</h2>
     <i class="fa-solid fa-print"></i>
 </header>
 <select (change)="filtrarPorEstado($event)">
@@ -16,19 +16,20 @@
 <div class="table table-responsive">
     <table>
         <th>Ref.</th>
-        <th>Entrada</th>
+        <th class="entrada">Entrada</th>
         <th>Vehículo</th>
         <th>Mecánico</th>
         <th>Estado</th>
         @for(reparacion of reparaciones;track $index){
 
-        <tr>
+        <tr [routerLink]="[`/admin/reparacion/${reparacion.id}`]"><!--ver cómo lo desactivo para tamaños inferiores-->
             <td>{{reparacion.id}}</td>
-            <td>{{reparacion.fecha_ingreso | date: 'dd/MM/yyyy'}}</td>
+            <td class="entrada">{{reparacion.fecha_ingreso | date: 'dd/MM/yyyy'}}</td>
             <td>{{reparacion.vehiculo}}</td>
             <td>{{reparacion.mecanico}}</td>
             <td [style]="getEstiloEstado(reparacion.estado)">{{reparacion.estado}}</td>
-            <td><button class="btn btn-info" [routerLink]="[`/admin/reparacion/${reparacion.id}`]">Ver detalle</button>
+            <td class="boton"><button class="btn btn-info" [routerLink]="[`/admin/reparacion/${reparacion.id}`]">Ver
+                    detalle</button>
             </td>
         </tr>
 

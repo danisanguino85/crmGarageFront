@@ -3,6 +3,8 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	background-color: var(--secondary-color);
+	color: white;
+	border-bottom: white 1px solid;
 }
 
 header .derecha {
@@ -17,11 +19,23 @@ header .derecha {
 		font-size: 150%;
 	}
 }
+.usuario {
+	display: flex;
+	gap: 10px;
+	i {
+		margin-top: 3px;
+	}
+}
 h1 {
 	font-size: 150%;
+	cursor: pointer;
+	&:hover {
+		color: var(--tertiary-color);
+	}
 }
-p:hover {
-	color: var(--primary-color);
+p:hover,
+.usuario:hover {
+	color: var(--tertiary-color);
 }
 p {
 	text-transform: capitalize;

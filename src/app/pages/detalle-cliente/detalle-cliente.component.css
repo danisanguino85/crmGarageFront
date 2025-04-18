@@ -88,3 +88,16 @@ table {
 		text-align: left;
 	}
 }
+@media (max-width: 1024px) {
+	.general {
+		flex-direction: column;
+		ul,
+		table {
+			width: 100%;
+		}
+		.cliente,
+		.router {
+			width: 100%;
+		}
+	}
+}

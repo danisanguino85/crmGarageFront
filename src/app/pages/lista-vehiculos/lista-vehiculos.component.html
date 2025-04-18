@@ -6,22 +6,21 @@
 <div class="table table-responsive" id="pdf-content">
     <table>
         <th>ID</th>
-        <th>MARCA</th>
-        <th>Modelo</th>
-        <th>Km</th>
+        <th class="vehiculo">Vehículo</th>
+        <th>Matrícula</th>
         <th>Entrada</th>
         <th>Salida</th>
 
         @for(vehiculo of vehiculos;track $index){
 
-        <tr>
+        <tr [routerLink]="[`/admin/vehiculo/${vehiculo.id}`]"><!--ver cómo lo desactivo para tamaños inferiores-->
             <td>{{vehiculo.id}}</td>
-            <td>{{vehiculo.marca}}</td>
-            <td>{{vehiculo.modelo}}</td>
-            <td>{{vehiculo.km}}</td>
+            <td class="vehiculo">{{vehiculo.marca}} {{vehiculo.modelo}}</td>
+            <td>{{vehiculo.matricula}}</td>
             <td>{{vehiculo.fecha_entrada | date: 'dd/MM/yyyy'}}</td>
             <td>{{vehiculo.fecha_salida | date: 'dd/MM/yyyy'}}</td>
-            <td><button class="btn btn-info" [routerLink]="[`/admin/vehiculo/${vehiculo.id}`]">Ver detalle</button></td>
+            <td class="boton"><button class="btn btn-info" [routerLink]="[`/admin/vehiculo/${vehiculo.id}`]">Ver
+                    detalle</button></td>
 
         </tr>
         }

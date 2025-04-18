@@ -1,26 +1,26 @@
 <header class="wrapper">
-    <h1>CRM-GARAGE</h1>
+    <h1 [routerLink]="['/admin']">CRM-GARAGE</h1>
     <div>
         <div class="derecha">
             @if(usuario){
-            <div>
+            <div class="usuario">
+                <i class="fa-solid fa-user"></i>
                 <p>{{usuario.nombre}} {{usuario.apellidos}}</p>
             </div>
-        }
-
+            }
             <div class="logoTaller">
                 <p (click)="logout()">Logout</p>
             </div>
 
         </div>
-        </div>
+    </div>
 
 </header>
 
 
 
 
-        <!--<nav class="navbar navbar-expand-lg ">
+<!--<nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
         <a class="navbar-brand crm" href="#">CRM GARAGE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

@@ -9,50 +9,42 @@
             <label class="form-label">Matrícula</label>
             <input class="form-control" type="text" formControlName="matricula">
             @if (checkControl('matricula', 'required')) {
-                <p class="text-danger">Matricula obligatoria</p>
-                }
+            <p class="text-danger">Matricula obligatoria</p>
+            }
         </div>
 
         <div class="mb-3">
             <label class="form-label">Bastidor</label>
             <input class="form-control" type="text" formControlName="bastidor">
             @if (checkControl('bastidor', 'required')) {
-                <p class="text-danger">Bastidor obligatorio</p>
-                }
+            <p class="text-danger">Bastidor obligatorio</p>
+            }
         </div>
 
         <div class="mb-3">
             <label class="form-label">Marca</label>
             <input class="form-control" type="text" formControlName="marca">
             @if (checkControl('marca', 'required')) {
-                <p class="text-danger">Marca obligatoria</p>
-                }
+            <p class="text-danger">Marca obligatoria</p>
+            }
         </div>
 
         <div class="mb-3">
             <label class="form-label">Modelo</label>
             <input class="form-control" type="text" formControlName="modelo">
             @if (checkControl('modelo', 'required')) {
-                <p class="text-danger">Modelo obligatorio</p>
-                }
+            <p class="text-danger">Modelo obligatorio</p>
+            }
         </div>
 
         <div class="mb-3">
             <label class="form-label">Fecha matriculación</label>
             <input class="form-control" type="date" formControlName="fecha_matriculacion">
             @if (checkControl('Fecha_matriculacion', 'required')) {
-                <p class="text-danger">fecha de matriculacion obligatoria</p>
-                }
+            <p class="text-danger">fecha de matriculacion obligatoria</p>
+            }
         </div>
-        <div class="mb-3">
-            <label class="form-label">km</label>
-            <input class="form-control" type="text" formControlName="km">
-            @if (checkControl('km', 'required')) {
-                <p class="text-danger">Km obligatorio</p>
-                }
-        </div>
-
         <input type="submit" value="Registrar" class="btn">
     </form>
 </div>
-<ngx-sonner-toaster richColors position="bottom-center" /> 
+<ngx-sonner-toaster richColors position="bottom-center" />
