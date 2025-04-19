@@ -3,11 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ClientesService } from '../../services/clientes.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
-<<<<<<< HEAD
 import { MailingService } from '../../services/mailing.service';
-=======
-import { Cliente } from '../../interfaces/cliente';
->>>>>>> feature23
+import type { Cliente } from '../../interfaces/cliente';
 
 @Component({
   selector: 'app-nuevo-cliente',
@@ -20,13 +17,10 @@ export class NuevoClienteComponent {
   route = inject(ActivatedRoute)
   router = inject(Router)
   clientesService = inject(ClientesService)
-<<<<<<< HEAD
   mailingService = inject(MailingService)
 
-=======
   clienteId!: number;
   cliente: Cliente | null = null;
->>>>>>> feature23
 
   registerForm: FormGroup = new FormGroup({
     nombre: new FormControl('', [
@@ -78,7 +72,6 @@ export class NuevoClienteComponent {
 
   async loadCliente() {
     try {
-<<<<<<< HEAD
       const nuevoCliente = await this.clientesService.register(this.registerForm.value)
 
 
@@ -132,7 +125,6 @@ No dudes en escribirnos si necesitas ayuda o tienes alguna pregunta.
 
       this.registerForm.reset()
 
-=======
       this.cliente = await this.clientesService.getById(this.clienteId);
       console.log(this.cliente);
       if (this.cliente) {
@@ -145,7 +137,6 @@ No dudes en escribirnos si necesitas ayuda o tienes alguna pregunta.
           direccion: this.cliente.direccion
         });
       }
->>>>>>> feature23
     } catch (error) {
       console.error('Error al cargar los datos del cliente', error);
       toast.error('Error al cargar los datos del cliente');
