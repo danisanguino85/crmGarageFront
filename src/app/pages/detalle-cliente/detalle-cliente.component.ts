@@ -4,7 +4,7 @@ import { ClientesService } from '../../services/clientes.service';
 import { NotasService } from '../../services/notas.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { Nota } from '../../interfaces/nota';
-import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import { DatePipe } from '@angular/common';
 import { UsuariosService } from '../../services/usuarios.service';
@@ -32,6 +32,7 @@ export class DetalleClienteComponent {
   clientesService = inject(ClientesService);
   reparacionesService = inject(ReparacionesService);
   usuarioService = inject(UsuariosService)
+  route = inject(ActivatedRoute);
   notasService = inject(NotasService)
   vehiculosService = inject(VehiculosService)
   activatedRoute = inject(ActivatedRoute)
@@ -40,10 +41,11 @@ export class DetalleClienteComponent {
   vehiculos: Vehiculo[] = []
   reparaciones: Reparacion[] = []
   coche!: Vehiculo
+  router = inject(Router)
 
   nuevaNotaForm: FormGroup = new FormGroup({
     notas: new FormControl()
-  })
+  });
 
   ngOnInit() {
     this.loadCliente()
@@ -86,8 +88,15 @@ export class DetalleClienteComponent {
   async loadCliente() {
     try {
       this.cliente = await this.clientesService.getById(this.clienteId)
-    } catch (error) {
 
+    } catch (error) {
+      console.log(error)
     }
   }
+
+  actualizarCliente() {
+    this.clientesService.setCliente(this.cliente);
+    this.router.navigate(['/admin/cliente/nuevoCliente']);
+  }
 }
+

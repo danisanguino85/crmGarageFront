@@ -20,7 +20,7 @@ export class NuevoVehiculoComponent {
   nuevoVehiculoForm: FormGroup = new FormGroup({
     matricula: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[0-9]{4}[A-Z]{3}$/)
+      Validators.pattern(/^[0-9]{4}[a-zA-Z]{3}$/)
     ]),
     bastidor: new FormControl('', [
       Validators.required,
@@ -45,16 +45,28 @@ export class NuevoVehiculoComponent {
 
   async onSubmit() {
     if (this.nuevoVehiculoForm.valid) {
+      console.log('Formulario válido, enviando datos...');
+
       // biome-ignore lint/style/noNonNullAssertion: <explanation>
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-        this.clienteId = params.clienteId
-        await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
+        this.clienteId = params.clienteId;
+        console.log('clienteId extraído:', this.clienteId);
+
+        try {
+          await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId);
+          console.log('Vehículo registrado correctamente:', this.nuevoVehiculoForm.value);
+
+          toast.success('Vehiculo registrado correctamente');
+        } catch (error) {
+          console.error('Error al registrar el vehículo:', error);
+          toast.error('Hubo un error al registrar el vehiculo');
+        }
       });
 
-      toast.success('Vehiculo registrado correctamente')
     } else {
-      toast.error('Hubo un error al registrar el vehiculo')
+      console.log('Formulario inválido');
+      toast.error('Hubo un error al registrar el vehiculo');
     }
   }
 

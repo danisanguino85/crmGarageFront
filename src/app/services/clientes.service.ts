@@ -11,6 +11,7 @@ import type { Cliente } from '../interfaces/cliente';
 export class ClientesService {
   private httpClient = inject(HttpClient)
   private baseUrl = 'http://localhost:3000/api/clientes'
+  private clienteSeleccionado: Cliente | null = null;
 
 
   getAll() {
@@ -42,16 +43,25 @@ export class ClientesService {
 
   update(clienteId: number, body: Cliente) {
     return lastValueFrom(
-      this.httpClient.post<Cliente>(`${this.baseUrl}/${clienteId}`, body)
+      this.httpClient.put<Cliente>(`${this.baseUrl}/${clienteId}`, body)
     )
   }
 
-  getClienteByReparacion(reparacionId: number){
+  getClienteByReparacion(reparacionId: number) {
     return lastValueFrom(
       this.httpClient.get<Cliente>(`${this.baseUrl}/cliente/${reparacionId}`)
     )
   }
 
+  // Método para almacenar un cliente
+  setCliente(cliente: Cliente): void {
+    this.clienteSeleccionado = cliente;
+  }
+
+  // Método para obtener el cliente almacenado
+  getCliente(): Cliente | null {
+    return this.clienteSeleccionado;
+  }
 
 
 }
