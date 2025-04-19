@@ -27,5 +27,13 @@ export class NotasService {
     return lastValueFrom(
       this.httpClient.get<Nota[]>(`${this.baseUrl}/nota/${reparacionId}`))
   }
+
+  insertReparacionNota(reparacionId: number, body: Nota) {
+    return lastValueFrom(
+      this.httpClient.post<Nota>(`${this.baseUrl}/nota/${reparacionId}`, body)
+    )
+  }
+
+  /* http://localhost:3000/api/notas/nota/1 */
 }
 

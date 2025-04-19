@@ -15,6 +15,7 @@ import { DashboardMecanicoComponent } from './pages/dashboard-mecanico/dashboard
 import { NuevaReparacionComponent } from './pages/nueva-reparacion/nueva-reparacion.component';
 import { NuevoVehiculoComponent } from './pages/nuevo-vehiculo/nuevo-vehiculo.component';
 import { ListaNotasComponent } from './pages/lista-notas/lista-notas.component';
+import { DetalleNotasComponent } from './pages/detalle-notas/detalle-notas.component';
 
 export const routes: Routes = [
 
@@ -56,14 +57,17 @@ export const routes: Routes = [
 
     //rutas del mecanico
     { path: 'taller', component: DashboardMecanicoComponent },
-    {
-        path: 'reparacion/:reparacionId', component: DetalleReparacionComponent, children: [
+    { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent,
+        children: [
             { path: 'vehiculo', component: DetalleVehiculoComponent },
             { path: 'cliente', component: DetalleClienteComponent },
             { path: 'notas', component: ListaNotasComponent },
+            { path: 'create', component: DetalleNotasComponent,
+                outlet: 'notaPanel'
+            },
+            { path: 'notas/:notaId', component: ListaNotasComponent},
         ]
     },
-
 
 
 

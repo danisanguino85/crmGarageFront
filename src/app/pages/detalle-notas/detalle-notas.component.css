@@ -1,0 +1,25 @@
+.zona-nota textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    background-color: #f9f9f9;
+  }
+  
+  .btn-nota {
+    padding: 8px 14px;
+    background-color: #198754;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-nota:hover {
+    background-color: #157347;
+  }
