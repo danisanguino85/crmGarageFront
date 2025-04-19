@@ -62,11 +62,11 @@ export class DetalleClienteComponent {
     } catch (error) {
 
     }
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-      this.cliente = await this.clientesService.getClienteByReparacion(params.reparacionId)
-    });
+
+
+    // this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+    // this.cliente = await this.clientesService.getClienteByReparacion(params.reparacionId)
+    //});
   }
   async onClick(vehiculoId: number) {
 
