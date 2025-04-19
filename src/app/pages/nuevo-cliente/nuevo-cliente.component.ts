@@ -106,9 +106,9 @@ export class NuevoClienteComponent {
       // Registrar nuevo cliente
       try {
         const nuevoCliente = await this.clientesService.register(this.registerForm.value);
-
+        this.registerForm.reset();
         toast.success('Cliente registrado correctamente');
-
+        this.router.navigate([`/admin/cliente/${nuevoCliente.id}`]);
         await this.mailingService.sendMail({
           nombre: this.registerForm.value.nombre,
           email: this.registerForm.value.email,
@@ -144,8 +144,8 @@ export class NuevoClienteComponent {
   **Taller Macarroni – Donde tu coche está en buenas manos.**`
         });
 
-        this.router.navigate([`/admin/cliente/${nuevoCliente.id}`]);
-        this.registerForm.reset();
+
+
       } catch (error) {
         toast.error('Hubo un error al registrar al cliente');
       }

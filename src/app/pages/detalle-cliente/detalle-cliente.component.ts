@@ -77,13 +77,6 @@ export class DetalleClienteComponent {
     }
   }
 
-  /*async loadVehiculoByreparacion(reparacionId: number) {
-    try {
-      this.coche = await this.vehiculosService.getVehiculoByReparacion({ reparacionId })
-    } catch (error) {
-
-    }
-  }*/
 
   async loadCliente() {
     try {
@@ -94,9 +87,6 @@ export class DetalleClienteComponent {
     }
   }
 
-  /*  actualizarCliente() {
-     this.clientesService.setCliente(this.cliente);
-     this.router.navigate(['/admin/cliente/nuevoCliente']);
-   } */
+
 }
 

@@ -6,38 +6,43 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Vehículo</label>
-      <input type="text" class="form-control" formControlName="vehiculo">
-      @if (checkControl('vehiculo', 'required')) {
+      <select formControlName="vehiculos_id">
+        <option>Vehículo</option>
+        @for(vehiculo of vehiculos;track $index){
+        <option value="{{vehiculo.id}}">{{vehiculo.marca}} {{vehiculo.modelo}} {{vehiculo.matricula}}</option>
+        }
+      </select>
+      <!-- @if (checkControl('vehiculo', 'required')) {
       <p class="text-danger"></p>
-      }
+      } -->
     </div>
     <div class="mb-3">
       <label class="form-label">Comentarios</label>
       <input type="text" class="form-control" formControlName="comentarios">
-      @if (checkControl('comentarios', 'required')) {
+      <!-- @if (checkControl('comentarios', 'required')) {
       <p class="text-danger"></p>
-      }
+      } -->
     </div>
 
     <div class="mb-3">
       <label class="form-label">Presupuesto</label>
       <input type="text" class="form-control" formControlName="presupuesto">
-      @if (checkControl('presupuesto', 'required')) {
+      <!-- @if (checkControl('presupuesto', 'required')) {
       <p class="text-danger">Presupuesto obligatorio</p>
-      }
+      } -->
     </div>
     <div class="mb-3">
       <label class="form-label">Mecánico</label>
-      <select class="form-control">
+      <select class="form-control" formControlName="usuarios_id">
         <option value="">Mecánicos</option>
         @for(mecanico of mecanicos;track $index){
-        <option value="">{{mecanico.nombre}} {{mecanico.apellidos}}</option>
+        <option value={{mecanico.id}}>{{mecanico.nombre}} {{mecanico.apellidos}}</option>
         }
       </select>
 
-      @if (checkControl('fecha_finalizacion', 'required')) {
+      <!--@if (checkControl('fecha_finalizacion', 'required')) {
       <p class="text-danger">Debes asignar un mecánico</p>
-      }
+      }-->
     </div>
 
 
