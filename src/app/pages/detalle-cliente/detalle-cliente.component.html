@@ -35,6 +35,9 @@
             <button [routerLink]="['/admin', 'cliente', cliente.id, 'nuevaNota']">
                 Nueva nota de taller
             </button>
+           <button [routerLink]="['/admin', 'cliente', cliente.id, 'editarCliente']">
+                Actualizar cliente
+            </button> 
         </div>
         <table>
             <thead class="nombre ">
@@ -89,6 +92,7 @@
 </div>
 }
 }
+
 <!--
 
 <h3>nueva nota</h3>

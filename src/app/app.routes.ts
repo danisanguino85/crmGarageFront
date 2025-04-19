@@ -32,7 +32,6 @@ export const routes: Routes = [
     {
         path: 'admin', component: DashboardAdminComponent, children: [
             { path: 'usuarios', component: ListaUsuariosComponent },
-            { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
             { path: 'reparaciones', component: ListaReparacionesComponent },
             { path: 'vehiculo/:vehiculoId', component: DetalleVehiculoComponent },
             { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent },
@@ -49,6 +48,7 @@ export const routes: Routes = [
 
                     { path: 'nuevoVehiculo', component: NuevoVehiculoComponent },
                     { path: 'nuevaNota', component: NuevaReparacionComponent },
+                    { path: 'editarCliente', component: NuevoClienteComponent }
                 ]
             },
         ]
