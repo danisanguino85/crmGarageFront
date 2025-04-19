@@ -1,9 +1,18 @@
 
 @for (nota of arrReparacionNotas; track $index) {
      
-   
-    <p> {{nota.id}} {{nota.notas}}</p>
-
-
+    <div class="card-nota">
+        <div class="nota-header">
+          <span class="nota-id">📝 Nota #{{ nota.id }}</span>
+        </div>
+      
+        <p class="nota-texto">{{ nota.notas }}</p>
+      
+        <!-- <div class="nota-botones">
+          <button class="btn-ver" >👁 Ver nota</button>
+          <button class="btn-eliminar">🗑 Eliminar</button>
+        </div> -->
+      </div>
 }
 
+<!-- notaId -->

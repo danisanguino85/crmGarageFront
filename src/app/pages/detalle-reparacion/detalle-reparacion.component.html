@@ -1,35 +1,43 @@
 
+
 <div class="detalle-panel">
   <div class="wrapper">
-    <h2 class="titulo">Nota de taller: <strong>{{this.reparacion.id}}</strong></h2>
+    <h2 class="titulo">
+      Detalle Reparación: <strong>{{ reparacion.id }}</strong>
+    </h2>
 
-    <div class="contenido-principal">
-      <!-- Zona derecha: botones -->
-      <div class="acciones">
-        <button [routerLink]="['/reparacion', this.reparacionId, 'vehiculo']">
-          🚗 Vehículo
-        </button>
-        <button [routerLink]="['/reparacion', this.reparacionId, 'cliente']">
-          👤 Cliente
-        </button>
-        <button [routerLink]="['/reparacion', this.reparacionId, 'notas']">
-          😒 Ver Notas
-        </button>
+    <!-- Menú de navegación -->
+    <div class="nav-tabs">
+      <button [routerLink]="['/reparacion', reparacionId, 'vehiculo']">
+        🚗 Vehículo
+      </button>
+      <button [routerLink]="['/reparacion', reparacionId, 'cliente']">
+        👤 Cliente
+      </button>
+      <button [routerLink]="['/reparacion', reparacionId, 'notas']">
+        📝 Notas
+      </button>
+    </div>
+
+    <!-- Contenido principal con zona derecha -->
+    <div class="contenido-wrapper">
+      <!-- Contenido dinámico principal -->
+      <div class="card-detalle">
+        <router-outlet></router-outlet>
       </div>
 
-      <!-- Zona central: card + nota -->
-      <div class="contenido-dinamico">
-        <div class="card-detalle">
-          <router-outlet></router-outlet>
-        </div>
-
+      <!-- Zona derecha: botón + formulario -->
+      <div class="zona-derecha">
+        
         <div class="zona-nota">
+          <form [formGroup]="formAddNota" (ngSubmit)="onSubmitNota()">
           <label for="nota">Añadir nota:</label>
           <textarea
             id="nota"
-            placeholder="Escribe una nota importante..."
+            placeholder="Escribe una nota importante..." formControlName="notas"
           ></textarea>
-          <button class="btn-nota">Enviar nota</button>
+          <input type="submit" class="btn-crear-nota" value="📝 Crear nueva nota" />
+        </form>
         </div>
       </div>
     </div>
