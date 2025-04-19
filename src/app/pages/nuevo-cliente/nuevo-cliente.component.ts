@@ -5,7 +5,10 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 import { MailingService } from '../../services/mailing.service';
 import type { Cliente } from '../../interfaces/cliente';
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature23
 
 @Component({
   selector: 'app-nuevo-cliente',

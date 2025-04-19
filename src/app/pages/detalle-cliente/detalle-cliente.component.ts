@@ -94,9 +94,9 @@ export class DetalleClienteComponent {
     }
   }
 
-  actualizarCliente() {
-    this.clientesService.setCliente(this.cliente);
-    this.router.navigate(['/admin/cliente/nuevoCliente']);
-  }
+  /*  actualizarCliente() {
+     this.clientesService.setCliente(this.cliente);
+     this.router.navigate(['/admin/cliente/nuevoCliente']);
+   } */
 }
 
