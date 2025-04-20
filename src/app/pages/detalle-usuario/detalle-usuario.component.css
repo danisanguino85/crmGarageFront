@@ -23,3 +23,12 @@ h1 {
 		padding: 5px;
 	}
 }
+
+.actualizar {
+	text-align: center;
+	#actualizar {
+		margin: 20px auto;
+		padding: 10px;
+		width: 50%;
+	}
+}

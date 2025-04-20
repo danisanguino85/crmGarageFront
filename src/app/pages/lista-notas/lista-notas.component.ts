@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { NotasService } from '../../services/notas.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Nota } from '../../interfaces/nota';
+import type { Nota } from '../../interfaces/nota';
 
 @Component({
   selector: 'app-lista-notas',
@@ -18,6 +18,8 @@ export class ListaNotasComponent {
 
   ngOnInit() {
 
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     this.activatedRoute.parent!.params.subscribe(async (params: any) => {
 
       const reparacionNotas = await this.notasService.getReparacionAllNotas(params.reparacionId)

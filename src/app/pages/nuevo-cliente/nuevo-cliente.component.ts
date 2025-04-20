@@ -59,14 +59,11 @@ export class NuevoClienteComponent {
   ngOnInit() {
     this.route.parent?.paramMap.subscribe(params => {
       const clienteId = params.get('clienteId');
-
-      console.log('clienteId:', clienteId);
-
       if (clienteId) {
         this.clienteId = Number(clienteId);
         this.loadCliente();
       } else {
-        console.log('No se ha pasado un clienteId válido');
+
       }
     });
   }
@@ -77,8 +74,6 @@ export class NuevoClienteComponent {
       this.cliente = await this.clientesService.getById(this.clienteId);
 
       if (this.cliente) {
-        console.log('Cliente cargado:', this.cliente);
-
         // Si el cliente existe, llenar el formulario con los datos del cliente
         this.registerForm.patchValue({
           nombre: this.cliente.nombre,
@@ -89,7 +84,7 @@ export class NuevoClienteComponent {
           direccion: this.cliente.direccion
         });
       } else {
-        console.log('No se ha encontrado el cliente con ID:', this.clienteId);
+
       }
     } catch (error) {
       console.error('Error al cargar los datos del cliente', error);
@@ -102,7 +97,6 @@ export class NuevoClienteComponent {
       try {
         await this.clientesService.update(this.cliente.id, this.registerForm.value);
         toast.success('Cliente actualizado correctamente');
-        this.router.navigate([`/admin/cliente/${this.cliente.id}`]);
       } catch (error) {
         toast.error('Hubo un error al actualizar el cliente');
       }
@@ -110,9 +104,11 @@ export class NuevoClienteComponent {
       try {
         const nuevoCliente = await this.clientesService.register(this.registerForm.value);
         toast.success('Cliente registrado correctamente');
-
+        setTimeout(() => {
+          this.router.navigate([`/admin/cliente/${nuevoCliente.id}`]);
+        }, 1500)
         this.mailingService.sendMail({
-          nombre: "Taller Macarroni",
+          nombre: this.registerForm.value.nombre,
           email: this.registerForm.value.email,
           mensaje: `Hola ${this.registerForm.value.nombre},
 
@@ -146,8 +142,8 @@ No dudes en escribirnos si necesitas ayuda o tienes alguna pregunta.
 **Taller Macarroni – Donde tu coche está en buenas manos.**`
         });
 
-        this.router.navigate([`/admin/cliente/${nuevoCliente.id}`]);
         this.registerForm.reset();
+
       } catch (error) {
         toast.error('Hubo un error al registrar al cliente');
       }

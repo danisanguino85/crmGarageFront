@@ -45,7 +45,7 @@ export class LoginComponent {
         }
       }, 1500)
     } catch (error) {
-      console.log(error)
+
       toast.error('Error al iniciar sesión',
         {
           description: 'Por favor, verifica tu email y contraseña.'

@@ -39,11 +39,27 @@
             @if(selectedTab=== 'taller'){
             <ul class="menuSelectedTab">
                 <li [routerLink]="['/admin', 'reparaciones']">Notas de taller</li>
-                <li [routerLink]="['/admin', 'nuevaReparacion']">Nueva nota de taller</li>
+                <li (click)="selectTab('cliente')">Nueva nota de taller</li>
             </ul>
             <form class="mb-3" [formGroup]="searchReparacionForm" (ngSubmit)="onSubmitReparacion()">
                 <label class="form-label">Búsqueda</label>
                 <input type="text" class="form-control" placeholder="número de nota" formControlName="notaTaller">
+                <input type="submit" value="Enviar">
+            </form>
+            }
+            @if(selectedTab=== 'cliente'){
+            <ul class="menuSelectedTab">
+                <li [routerLink]="['/admin', 'reparaciones']">Notas de taller</li>
+                <li (click)="selectTab('cliente')">Nueva nota de taller</li>
+            </ul>
+            <form class="mb-3" [formGroup]="searchReparacionForm" (ngSubmit)="onSubmitReparacion()">
+                <label class="form-label">Búsqueda</label>
+                <input type="text" class="form-control" placeholder="número de nota" formControlName="notaTaller">
+                <input type="submit" value="Enviar">
+            </form>
+            <form class="mb-3" [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
+                <label class="form-label">Búsqueda cliente</label>
+                <input type="text" class="form-control" placeholder="Teléfono" formControlName="telefono">
                 <input type="submit" value="Enviar">
             </form>
             }
@@ -97,39 +113,3 @@
 
 
 </div>
-
-
-
-
-
-
-
-
-<!--
-<form [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
-    <label for="">cliente</label>
-    <input type="text" formControlName="email">
-    <label for="">vehiculo</label>
-    <input class="btn btn-info" type="submit">
-</form>
-
-<form [formGroup]="searchVehiculoForm" (ngSubmit)="onSubmitMatricula()">
-    <label for="">matricula</label>
-    <input type="text" formControlName="matricula">
-    <input class="btn btn-info" type="submit">
-</form>
-
-<button [routerLink]="['/admin', 'clientes']">Ver lista de clientes</button>
-<button [routerLink]="['/admin', 'cliente', 'clienteId']">Ver un cliente concreto</button>
-
-<button [routerLink]="['/admin', 'usuarios']">Ver lista de Usuarios</button>
-<button [routerLink]="['/admin', 'usuario', 'usuarioId']">Ver un usuario concreto</button>
-
-
--->
-
-
-
-<!--  
-        { path: 'usuarios', component: ListaUsuariosComponent },
-        { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent }, -->

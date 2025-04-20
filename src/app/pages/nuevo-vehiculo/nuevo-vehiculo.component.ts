@@ -45,27 +45,23 @@ export class NuevoVehiculoComponent {
 
   async onSubmit() {
     if (this.nuevoVehiculoForm.valid) {
-      console.log('Formulario válido, enviando datos...');
-
       // biome-ignore lint/style/noNonNullAssertion: <explanation>
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       this.activatedRoute.parent!.params.subscribe(async (params: any) => {
         this.clienteId = params.clienteId;
-        console.log('clienteId extraído:', this.clienteId);
+      })
 
-        try {
-          await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId);
-          console.log('Vehículo registrado correctamente:', this.nuevoVehiculoForm.value);
+      try {
+        await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
+        toast.success('Vehiculo registrado correctamente');
 
-          toast.success('Vehiculo registrado correctamente');
-        } catch (error) {
-          console.error('Error al registrar el vehículo:', error);
-          toast.error('Hubo un error al registrar el vehiculo');
-        }
-      });
+      } catch (error) {
+        console.error('Error al registrar el vehículo:', error);
+        toast.error('Hubo un error al registrar el vehiculo');
 
+      };
+      this.nuevoVehiculoForm.reset()
     } else {
-      console.log('Formulario inválido');
       toast.error('Hubo un error al registrar el vehiculo');
     }
   }

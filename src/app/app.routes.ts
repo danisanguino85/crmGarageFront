@@ -73,9 +73,6 @@ export const routes: Routes = [
         ]
     },
 
-
-
-
     { path: 'reparaciones', component: ListaReparacionesComponent },
 
     {

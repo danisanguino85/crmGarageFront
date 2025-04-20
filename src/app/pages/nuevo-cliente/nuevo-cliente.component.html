@@ -1,38 +1,3 @@
-<!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <h1>Nuevo Cliente</h1>
-    <label class="form-label">nombre</label>
-    <input class="form-control" type="text" formControlName="nombre">
-    @if(checkError('nombre', 'required') || checkError('nombre', 'minlength')){
-    <p class="error">Debes incluir un nombre.</p>
-    }
-    <label class="form-label">apellidos</label>
-    <input class="form-control" type="text" formControlName="apellidos">
-    @if(checkError('apellidos', 'required') || checkError('apellidos', 'minlength')){
-    <p class="error">Debes incluir al menos un apellido.</p>
-    }
-    <label class="form-label">dni</label>
-    <input class="form-control" type="text" formControlName="dni">
-    @if(checkError('dni', 'required') || checkError('dni', 'minlength')){
-    <p class="error">El DNI es obligatorio.</p>
-    }
-    <label class="form-label">telefono</label>
-    <input class="form-control" type="text" formControlName="telefono">
-    @if(checkError('telefono', 'required') || checkError('telefono', 'minlength')){
-    <p class="error">Debes incluir un teléfono válido</p>
-    }
-    <label class="form-label">email</label>
-    <input class="form-control" type="text" formControlName="email">
-    @if(checkError('email', 'required') || checkError('email', 'minlength')){
-    <p class="error">Debes incluir un email válido.</p>
-    }
-    <label class="form-label">direccion</label>
-    <input class="form-control" type="text" formControlName="direccion">
-    @if(checkError('apellidos', 'required') || checkError('apellidos', 'minlength')){
-    <p class="error">Debes incluir una dirección.</p>
-    }
-    <input type="submit" class="btn btn-info">
-</form> -->
-
 <div class="container">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="header">

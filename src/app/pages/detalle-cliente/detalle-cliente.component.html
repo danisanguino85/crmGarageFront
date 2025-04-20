@@ -3,7 +3,10 @@
 <div class="general">
     <div class="cliente">
         <ul class="list-group">
-            <li class="nombre list-group-item list-group-item-action" aria-current="true">Datos del cliente</li>
+            <li id="span" class="nombre list-group-item list-group-item-action" aria-current="true"><span>Datos del
+                    cliente</span>
+                <span>ID: {{cliente.id}}</span>
+            </li>
             <li class="list-group-item list-group-item-action">
                 <strong>Nombre: </strong>{{ cliente.nombre }}
             </li>
@@ -36,9 +39,9 @@
             <button [routerLink]="['/admin', 'cliente', cliente.id, 'nuevaNota']">
                 Nueva nota de taller
             </button>
-           <button [routerLink]="['/admin', 'cliente', cliente.id, 'editarCliente']">
+            <button [routerLink]="['/admin', 'cliente', cliente.id, 'editarCliente']">
                 Actualizar cliente
-            </button> 
+            </button>
         </div>
         <table>
             <thead class="nombre ">
@@ -57,18 +60,20 @@
         </table>
         <table>
             <thead class="nombre ">
-                <th colspan="4"> Notas de taller</th>
+                <th colspan="5"> Notas de taller</th>
             </thead>
             <th>ID</th>
             <th>Estado</th>
             <th>Entrada</th>
             <th>Salida</th>
+            <th>Mecánico</th>
             @for(reparacion of reparaciones;track $index){
             <tr>
                 <td>{{ reparacion.id }}</td>
                 <td>{{ reparacion.estado }}</td>
                 <td>{{ reparacion.fecha_ingreso |date :'dd-MM-yyyy' }}</td>
                 <td>{{ reparacion.fecha_salida |date :'dd-MM-yyyy' }}</td>
+                <td>{{ reparacion.mecanico}}</td>
             </tr>
             }
         </table>

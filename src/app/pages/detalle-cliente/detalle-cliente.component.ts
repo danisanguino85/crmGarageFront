@@ -77,21 +77,16 @@ export class DetalleClienteComponent {
     }
   }
 
-  /*async loadVehiculoByreparacion(reparacionId: number) {
-    try {
-      this.coche = await this.vehiculosService.getVehiculoByReparacion({ reparacionId })
-    } catch (error) {
-
-    }
-  }*/
 
   async loadCliente() {
     try {
       this.cliente = await this.clientesService.getById(this.clienteId)
 
     } catch (error) {
-      console.log(error)
+
     }
   }
+
+
 }
 

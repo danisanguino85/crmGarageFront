@@ -27,7 +27,7 @@ export class ListaReparacionesComponent {
       this.reparaciones = await this.reparacionesServices.getAllReparaciones()
       await this.loadMecanico()
     } catch (error) {
-      console.log(error)
+
     }
 
     this.ordenarPorFechaIngreso();
@@ -35,7 +35,7 @@ export class ListaReparacionesComponent {
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   async filtrarPorEstado($event: any) {
-    console.log($event.target.value)
+
     if ($event.target.value === 'pendiente') {
       this.reparaciones = await this.reparacionesServices.getPendiente()
     } else {
@@ -50,7 +50,7 @@ export class ListaReparacionesComponent {
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   async filtrarPorFecha($event: any) {
-    console.log($event.target.value)
+
     /* ordenar por fecha de mas reciente a mas antigua */
     if ($event.target.value === 'fecha_ingreso') {
       this.reparaciones = await this.reparacionesServices.getFecha()

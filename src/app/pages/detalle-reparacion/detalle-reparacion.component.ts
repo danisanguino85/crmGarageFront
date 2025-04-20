@@ -4,7 +4,7 @@ import type { Reparacion } from '../../interfaces/reparacion';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NotasService } from '../../services/notas.service';
-import { Nota } from '../../interfaces/nota';
+import type { Nota } from '../../interfaces/nota';
 
 @Component({
   selector: 'app-detalle-reparacion',
@@ -40,7 +40,7 @@ export class DetalleReparacionComponent {
       this.formAddNota.reset();
       this.reloadNotas.emit();
     } catch (error) {
-      console.log(error)
+
     }
   }
 
