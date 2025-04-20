@@ -13,6 +13,7 @@ h2 {
 }
 
 .lateral {
+	position: relative;
 	width: 20%;
 	border-right: 1px solid black;
 	background-color: var(--primary-color);
@@ -60,10 +61,42 @@ button {
 }
 .logoTaller {
 	text-align: center;
-	margin: 50% auto;
+	margin: 100px auto;
 	i {
 		font-size: 300%;
 	}
+}
+.home p {
+	font-size: 150%;
+	margin-bottom: 30px;
+	font-weight: lighter;
+	strong {
+		text-transform: capitalize;
+	}
+}
+.registro {
+	text-align: center;
+
+	h3 {
+		border-bottom: 1px solid black;
+	}
+}
+.listas {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 20px 0 20px 0;
+	justify-content: center;
+
+	h4 {
+		text-align: center;
+	}
+}
+.botonesRegistro {
+	width: 200px;
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 /* Estilos responsivos */

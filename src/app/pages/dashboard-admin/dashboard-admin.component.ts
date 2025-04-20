@@ -6,11 +6,19 @@ import { VehiculosService } from '../../services/vehiculos.service';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import { UsuariosService } from '../../services/usuarios.service';
 import type { Usuario } from '../../interfaces/usuario';
+import { RegistroLaboralService } from '../../services/registro-laboral.service';
+import dayjs from 'dayjs';
+import { DatePipe } from '@angular/common';
 
+type Registros = {
+  entrada?: string,
+  salida?: string,
+  usuarios_id: number
+}
 
 @Component({
   selector: 'app-dashboard-admin',
-  imports: [ReactiveFormsModule, RouterOutlet, RouterLink],
+  imports: [ReactiveFormsModule, RouterOutlet, RouterLink, DatePipe],
   templateUrl: './dashboard-admin.component.html',
   styleUrl: './dashboard-admin.component.css'
 })
@@ -20,11 +28,15 @@ export class DashboardAdminComponent {
   clientesService = inject(ClientesService)
   usuariosService = inject(UsuariosService)
   reparacionesService = inject(ReparacionesService)
+  registroService = inject(RegistroLaboralService)
   usuario!: Usuario
   selectedTab = ''
   activatedRoute = false
   horaRegistro = ''
+  entradas: Registros[] = []
+  salidas: Registros[] = []
   router = inject(Router)
+  trabajando: boolean = false
 
   @Input() clienteId = 0
   @Input() vehiculoId = 0
@@ -54,6 +66,7 @@ export class DashboardAdminComponent {
   ngOnInit() {
     this.loadUsuario()
     this.horaRegistro = localStorage.getItem('horaRegistro') || ''
+    this.loadRegistros()
   }
 
   async onSubmitCliente() {
@@ -94,7 +107,6 @@ export class DashboardAdminComponent {
     }
 
   }
-
   selectTab(tab: string) {
     this.selectedTab = tab
   }
@@ -106,6 +118,48 @@ export class DashboardAdminComponent {
     this.activatedRoute = false
   }
 
+  async registerEntrada() {
+    await this.registroService.insertEntrada(
+      {
+        entrada: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        usuarios_id: this.usuario.id
+      }
+    )
+    this.trabajando = true
+  }
+  async registerSalida() {
+    await this.registroService.inserSalida(
+      {
+        salida: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        usuarios_id: this.usuario.id
+      }
+    )
+    this.trabajando = false
+  }
+  async loadRegistros() {
+    const data = this.usuariosService.tokenDecodificado()
+    if (data) {
+      this.usuario = await this.usuariosService.getById(data.id)
+    }
+    const entradas = await this.registroService.getLatestEntradas(this.usuario.id)
+    const salidas = await this.registroService.getLatestSalidas(this.usuario.id)
 
+    entradas.map((entrada: Registros) => {
+      const fechaEntrada = dayjs(entrada.entrada).format('YYYY-MM-DD HH:mm:ss')
+      this.entradas.push({
+        entrada: fechaEntrada,
+        usuarios_id: entrada.usuarios_id
+      })
+    })
+    salidas.map((salida: Registros) => {
+      const fechaSalida = dayjs(salida.salida).format('YYYY-MM-DD HH:mm:ss')
+      this.salidas.push({
+        salida: fechaSalida,
+        usuarios_id: salida.usuarios_id
+      })
+    })
 
+  }
 }
+
+
