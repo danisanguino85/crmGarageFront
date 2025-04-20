@@ -73,10 +73,13 @@ export class NuevoClienteComponent {
 
   async loadCliente() {
     try {
+      // Intentar obtener el cliente desde el servicio
       this.cliente = await this.clientesService.getById(this.clienteId);
 
       if (this.cliente) {
-        // Poner los datos en el formulario
+        console.log('Cliente cargado:', this.cliente);
+
+        // Si el cliente existe, llenar el formulario con los datos del cliente
         this.registerForm.patchValue({
           nombre: this.cliente.nombre,
           apellidos: this.cliente.apellidos,
@@ -85,6 +88,8 @@ export class NuevoClienteComponent {
           email: this.cliente.email,
           direccion: this.cliente.direccion
         });
+      } else {
+        console.log('No se ha encontrado el cliente con ID:', this.clienteId);
       }
     } catch (error) {
       console.error('Error al cargar los datos del cliente', error);
@@ -94,7 +99,6 @@ export class NuevoClienteComponent {
 
   async onSubmit() {
     if (this.cliente) {
-      // Editar cliente existente
       try {
         await this.clientesService.update(this.cliente.id, this.registerForm.value);
         toast.success('Cliente actualizado correctamente');
@@ -103,45 +107,43 @@ export class NuevoClienteComponent {
         toast.error('Hubo un error al actualizar el cliente');
       }
     } else {
-      // Registrar nuevo cliente
       try {
         const nuevoCliente = await this.clientesService.register(this.registerForm.value);
-
         toast.success('Cliente registrado correctamente');
 
-        await this.mailingService.sendMail({
-          nombre: this.registerForm.value.nombre,
+        this.mailingService.sendMail({
+          nombre: "Taller Macarroni",
           email: this.registerForm.value.email,
           mensaje: `Hola ${this.registerForm.value.nombre},
-  
-  Gracias por confiar en nosotros y darte de alta en Taller Macarroni. Estamos encantados de tenerte como cliente.
-  
-  Nuestro equipo está listo para ofrecerte el mejor servicio en mantenimiento y reparación de tu vehículo, con total transparencia, profesionalidad y compromiso.
-  
-  Primeramente, comprueba que tus datos sean correctos:
-   
-  Nombre: ${this.registerForm.value.nombre}
-  Apellidos: ${this.registerForm.value.apellidos}
-  DNI: ${this.registerForm.value.dni}
-  Teléfono: ${this.registerForm.value.telefono}
-  Email: ${this.registerForm.value.email}
-  Dirección: ${this.registerForm.value.direccion}
-  
-  Si no lo son, contacta con nosotros para poder actualizarlos.
-  
-  A partir de ahora, podrás recibir notificaciones sobre:
-  - El estado de tus reparaciones.
-  - Recordatorios de mantenimientos.
-  - Promociones especiales solo para clientes.
-  
-  📍 Dirección: C/ Rueda nº 123, Ciudad Motor  
-  📞 Teléfono: 123 456 789  
-  🌐 Web: www.tallermacarroni.com
-  
-  No dudes en escribirnos si necesitas ayuda o tienes alguna pregunta.
-  
-  ¡Bienvenido a la familia Macarroni!  
-  **Taller Macarroni – Donde tu coche está en buenas manos.**`
+
+Gracias por confiar en nosotros y darte de alta en Taller Macarroni. Estamos encantados de tenerte como cliente.
+
+Nuestro equipo está listo para ofrecerte el mejor servicio en mantenimiento y reparación de tu vehículo, con total transparencia, profesionalidad y compromiso.
+
+Primeramente, comprueba que tus datos sean correctos:
+ 
+Nombre: ${this.registerForm.value.nombre}
+Apellidos: ${this.registerForm.value.apellidos}
+DNI: ${this.registerForm.value.dni}
+Teléfono: ${this.registerForm.value.telefono}
+Email: ${this.registerForm.value.email}
+Dirección: ${this.registerForm.value.direccion}
+
+Si no lo son, contacta con nosotros para poder actualizarlos.
+
+A partir de ahora, podrás recibir notificaciones sobre:
+- El estado de tus reparaciones.
+- Recordatorios de mantenimientos.
+- Promociones especiales solo para clientes.
+
+📍 Dirección: C/ Rueda nº 123, Ciudad Motor
+📞 Teléfono: 123 456 789
+🌐 Web: www.tallermacarroni.com
+
+No dudes en escribirnos si necesitas ayuda o tienes alguna pregunta.
+
+¡Bienvenido a la familia Macarroni!  
+**Taller Macarroni – Donde tu coche está en buenas manos.**`
         });
 
         this.router.navigate([`/admin/cliente/${nuevoCliente.id}`]);
@@ -152,4 +154,5 @@ export class NuevoClienteComponent {
     }
   }
 }
+
 

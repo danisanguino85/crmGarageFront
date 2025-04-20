@@ -17,6 +17,7 @@ export class UsuariosService {
 
   private baseUrl = 'http://localhost:3000/api/usuarios';
   private httpClient = inject(HttpClient)
+  private usuarioActual: Usuario | null = null;
 
   getAll() {
     return lastValueFrom
@@ -26,6 +27,14 @@ export class UsuariosService {
   getMecanico() {
     return lastValueFrom
       (this.httpClient.get<Usuario[]>(`${this.baseUrl}/mecanico`))
+  }
+
+  getUsuario(): Usuario | null {
+    return this.usuarioActual;
+  }
+
+  setUsuario(usuario: Usuario) {
+    this.usuarioActual = usuario;
   }
 
   getAdmin() {

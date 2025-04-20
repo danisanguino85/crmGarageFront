@@ -17,7 +17,9 @@ export class NuevoUsuarioComponent {
   router = inject(Router);
   especialidades: string[] = ESPECIALIDADES
 
+
   formRegistro: FormGroup = new FormGroup({
+    id: new FormControl(null),
     nombre: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -77,23 +79,86 @@ export class NuevoUsuarioComponent {
     ])
   })
 
+  /*  async onSubmit() {
+     try {
+       const usuario = await this.usuarioService.register(this.formRegistro.value);
+ 
+       toast.success('Usuario registrado correctamente');
+ 
+       setTimeout(() => {
+         if (usuario.rol === 'admin') {
+           this.router.navigateByUrl('/admin');
+         } else if (usuario.rol === 'mecanico') {
+           this.router.navigateByUrl('/taller');
+         }
+       }, 1500);
+ 
+     } catch (error) {
+       console.error(error);
+       toast.error('Hubo un error al registrar el usuario');
+     }
+   }
+ 
+   checkControl(controlName: string, errorName: string): boolean {
+     const control = this.formRegistro.get(controlName);
+     return !!control && control.hasError(errorName) && control.touched;
+   }
+ */
+  ngOnInit() {
+    // Obtener el usuario desde el servicio
+    const usuario = this.usuarioService.getUsuario();
+    if (usuario) {
+      // Si hay usuario, actualizar los campos del formulario con patchValue
+      this.formRegistro.patchValue({
+        id: usuario.id,
+        nombre: usuario.nombre,
+        apellidos: usuario.apellidos,
+        dni: usuario.dni,
+        telefono: usuario.telefono,
+        email: usuario.email,
+        fecha_nacimiento: usuario.fecha_nacimiento,
+        direccion: usuario.direccion,
+        numero_ss: usuario.numero_ss,
+        rol: usuario.rol,
+        activo: usuario.activo,
+        password: usuario.password,
+        jornada: usuario.jornada,
+        foto_perfil: usuario.foto_perfil,
+        especialidad: usuario.especialidad
+      });
+    }
+  }
+
   async onSubmit() {
     try {
-      const usuario = await this.usuarioService.register(this.formRegistro.value);
+      const usuarioData = { ...this.formRegistro.value };
 
-      toast.success('Usuario registrado correctamente');
+      if (usuarioData.fecha_nacimiento) {
+        usuarioData.fecha_nacimiento = new Date(usuarioData.fecha_nacimiento)
+          .toISOString()
+          .split('T')[0];
+      }
+
+      if (usuarioData.id) {
+        await this.usuarioService.update(usuarioData.id, usuarioData);
+        toast.success('Usuario actualizado correctamente');
+      } else {
+        await this.usuarioService.register(usuarioData);
+        toast.success('Usuario registrado correctamente');
+      }
 
       setTimeout(() => {
-        if (usuario.rol === 'admin') {
+        const rol = usuarioData.rol;
+        if (rol === 'admin') {
           this.router.navigateByUrl('/admin');
-        } else if (usuario.rol === 'mecanico') {
+        } else if (rol === 'mecanico') {
           this.router.navigateByUrl('/taller');
         }
       }, 1500);
 
     } catch (error) {
-      console.error(error);
-      toast.error('Hubo un error al registrar el usuario');
+      console.error('Error en onSubmit:', error);
+      toast.error('Hubo un error al guardar el usuario');
     }
   }
 
@@ -101,5 +166,4 @@ export class NuevoUsuarioComponent {
     const control = this.formRegistro.get(controlName);
     return !!control && control.hasError(errorName) && control.touched;
   }
-
 }

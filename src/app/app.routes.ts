@@ -37,6 +37,7 @@ export const routes: Routes = [
             { path: 'vehiculo/:vehiculoId', component: DetalleVehiculoComponent },
             { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent },
             { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
+            { path: 'usuario/:usuarioId/editarUsuario', component: NuevoUsuarioComponent },
             { path: 'clientes', component: ListaClientesComponent },
             { path: 'nuevoCliente', component: NuevoClienteComponent },
             { path: 'nuevoEmpleado', component: NuevoUsuarioComponent },
@@ -49,7 +50,8 @@ export const routes: Routes = [
 
                     { path: 'nuevoVehiculo', component: NuevoVehiculoComponent },
                     { path: 'nuevaNota', component: NuevaReparacionComponent },
-                    { path: 'editarCliente', component: NuevoClienteComponent }
+                    { path: 'editarCliente', component: NuevoClienteComponent },
+                    { path: 'editarUsuario', component: NuevoUsuarioComponent }
                 ]
             },
         ]
@@ -57,15 +59,17 @@ export const routes: Routes = [
 
     //rutas del mecanico
     { path: 'taller', component: DashboardMecanicoComponent },
-    { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent,
+    {
+        path: 'reparacion/:reparacionId', component: DetalleReparacionComponent,
         children: [
             { path: 'vehiculo', component: DetalleVehiculoComponent },
             { path: 'cliente', component: DetalleClienteComponent },
             { path: 'notas', component: ListaNotasComponent },
-            { path: 'create', component: DetalleNotasComponent,
+            {
+                path: 'create', component: DetalleNotasComponent,
                 outlet: 'notaPanel'
             },
-            { path: 'notas/:notaId', component: ListaNotasComponent},
+            { path: 'notas/:notaId', component: ListaNotasComponent },
         ]
     },
 

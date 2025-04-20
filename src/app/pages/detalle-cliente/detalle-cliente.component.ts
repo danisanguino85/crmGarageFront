@@ -93,10 +93,5 @@ export class DetalleClienteComponent {
       console.log(error)
     }
   }
-
-  /*  actualizarCliente() {
-     this.clientesService.setCliente(this.cliente);
-     this.router.navigate(['/admin/cliente/nuevoCliente']);
-   } */
 }
 
