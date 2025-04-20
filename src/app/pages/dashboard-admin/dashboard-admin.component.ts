@@ -7,8 +7,8 @@ import { ReparacionesService } from '../../services/reparaciones.service';
 import { UsuariosService } from '../../services/usuarios.service';
 import type { Usuario } from '../../interfaces/usuario';
 import { RegistroLaboralService } from '../../services/registro-laboral.service';
-import dayjs from 'dayjs';
 import { DatePipe } from '@angular/common';
+import dayjs from 'dayjs';
 
 type Registros = {
   entrada?: string,
@@ -36,7 +36,7 @@ export class DashboardAdminComponent {
   entradas: Registros[] = []
   salidas: Registros[] = []
   router = inject(Router)
-  trabajando: boolean = false
+
 
   @Input() clienteId = 0
   @Input() vehiculoId = 0
@@ -118,24 +118,7 @@ export class DashboardAdminComponent {
     this.activatedRoute = false
   }
 
-  async registerEntrada() {
-    await this.registroService.insertEntrada(
-      {
-        entrada: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-        usuarios_id: this.usuario.id
-      }
-    )
-    this.trabajando = true
-  }
-  async registerSalida() {
-    await this.registroService.inserSalida(
-      {
-        salida: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-        usuarios_id: this.usuario.id
-      }
-    )
-    this.trabajando = false
-  }
+
   async loadRegistros() {
     const data = this.usuariosService.tokenDecodificado()
     if (data) {

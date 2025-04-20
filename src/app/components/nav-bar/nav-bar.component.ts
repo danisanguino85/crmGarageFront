@@ -2,7 +2,8 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import type { Usuario } from '../../interfaces/usuario';
 import { UsuariosService } from '../../services/usuarios.service';
-
+import { RegistroLaboralService } from '../../services/registro-laboral.service';
+import dayjs from 'dayjs';
 
 
 @Component({
@@ -15,17 +16,11 @@ export class NavBarComponent {
   usuario!: Usuario
   router = inject(Router)
   usuariosService = inject(UsuariosService)
+  registroService = inject(RegistroLaboralService)
+  trabajando = false
 
   ngOnInit() {
     this.loadUsuario()
-
-
-  }
-
-  logout() {
-    this.router.navigate(['/login'])
-    localStorage.removeItem('token')
-    this.router.navigateByUrl('/login')
   }
 
   async loadUsuario() {
@@ -36,8 +31,22 @@ export class NavBarComponent {
     }
 
   }
-
-
-
-
+  async registerEntrada() {
+    await this.registroService.insertEntrada(
+      {
+        entrada: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        usuarios_id: this.usuario.id
+      }
+    )
+    this.trabajando = true
+  }
+  async registerSalida() {
+    await this.registroService.inserSalida(
+      {
+        salida: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        usuarios_id: this.usuario.id
+      }
+    )
+    this.trabajando = false
+  }
 }

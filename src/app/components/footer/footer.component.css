@@ -9,7 +9,10 @@ footer {
 		display: flex;
 		justify-content: space-between;
 	}
-	i {
-		font-size: 150%;
+	p {
+		cursor: pointer;
+		&:hover {
+			color: var(--tertiary-color);
+		}
 	}
 }
