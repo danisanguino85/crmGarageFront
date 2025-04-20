@@ -3,6 +3,10 @@
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
+#span {
+	display: flex;
+	justify-content: space-between;
+}
 .nombre {
 	background-color: var(--primary-color);
 	color: white;
