@@ -6,13 +6,9 @@ import { VehiculosService } from '../../services/vehiculos.service';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import { UsuariosService } from '../../services/usuarios.service';
 import type { Usuario } from '../../interfaces/usuario';
-<<<<<<< HEAD
-import { BrowserModule } from '@angular/platform-browser';
-=======
 import { RegistroLaboralService } from '../../services/registro-laboral.service';
 import { DatePipe } from '@angular/common';
 import dayjs from 'dayjs';
->>>>>>> newFeature
 
 type Registros = {
   entrada?: string,
@@ -22,11 +18,7 @@ type Registros = {
 
 @Component({
   selector: 'app-dashboard-admin',
-<<<<<<< HEAD
-  imports: [ReactiveFormsModule, RouterOutlet, RouterLink,],
-=======
   imports: [ReactiveFormsModule, RouterOutlet, RouterLink, DatePipe],
->>>>>>> newFeature
   templateUrl: './dashboard-admin.component.html',
   styleUrl: './dashboard-admin.component.css'
 })
