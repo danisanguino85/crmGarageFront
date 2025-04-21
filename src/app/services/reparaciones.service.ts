@@ -3,6 +3,11 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import type { Reparacion } from '../interfaces/reparacion';
 
+
+type Estado = {
+  estado: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -74,5 +79,11 @@ export class ReparacionesService {
     )
   }
 
+
+  reparacionCompletada(reparacionId: number, body: Estado) {
+    return lastValueFrom(
+      this.httpClient.patch<Reparacion>(`${this.baseUrl}/${reparacionId}`, body)
+    )
+  }
 }
 

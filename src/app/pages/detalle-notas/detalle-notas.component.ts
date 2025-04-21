@@ -18,6 +18,7 @@ export class DetalleNotasComponent {
       
      this.reparacionId = params.reparacionId
         
+     console.log()
     });
   }
 

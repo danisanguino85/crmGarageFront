@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import type { Reparacion } from '../../interfaces/reparacion';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NotasService } from '../../services/notas.service';
 import { Nota } from '../../interfaces/nota';
@@ -20,10 +20,14 @@ export class DetalleReparacionComponent {
   nota: Nota | undefined
   reparacion!: Reparacion
   router = inject(Router)
+  activatedRoute = false;
+  finalizadoBool: boolean = false;
 
   async ngOnInit() {
     try {
       this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
+
+      this.reparacion.estado === 'finalizado'? this.finalizadoBool = true : this.finalizadoBool = false;
     } catch (error) {
     }
   }
@@ -44,5 +48,20 @@ export class DetalleReparacionComponent {
     }
   }
 
+
+ async marcarComoCompletado(){
+
+    const response = await this.reparacionesServices.reparacionCompletada(this.reparacionId = 6, {estado: 'finalizado'});
+    this.ngOnInit()
+    console.log(response)
+  }
+
+
+  activated() {
+    this.activatedRoute = true
+  }
+  nonActivated() {
+    this.activatedRoute = false
+  }
 }
 

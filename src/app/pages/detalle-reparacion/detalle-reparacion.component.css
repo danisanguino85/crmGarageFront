@@ -1,8 +1,12 @@
-/* 
   .detalle-panel {
     padding: 20px;
     font-family: 'Segoe UI', sans-serif;
     color: #333;
+  }
+  
+  .wrapper {
+    max-width: 1200px;
+    margin: auto;
   }
   
   .titulo {
@@ -11,211 +15,85 @@
     color: #2c3e50;
   }
   
-  .contenido-principal {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-
-  .acciones {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex: 0 0 150px;
-  }
-  
-  .acciones button {
-    padding: 10px;
-    background-color: #0d6efd;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .acciones button:hover {
-    background-color: #0b5ed7;
-  }
-  
-  
-  .contenido-dinamico {
-    display: flex;
-    flex: 1;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  
-
-  .card-detalle {
-    flex: 3;
-    background-color: #fefefe;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    min-height: 450px;
-    max-height: 450px;
-    overflow-y: auto;
-    background-color: #f9f9f9;
-
-  }
-  
- 
-  .zona-nota {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-self: stretch;
-  }
-  
-  .zona-nota label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .zona-nota textarea {
-    width: 100%;
-    height: 120px;
-    padding: 10px;
-    font-size: 0.95rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    resize: vertical;
-    background-color: #f9f9f9;
-  }
-  
-  .btn-nota {
-    padding: 8px 14px;
-    background-color: #198754;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .btn-nota:hover {
-    background-color: #157347;
-  }
-  
-
-  @media (max-width: 768px) {
-    .contenido-principal {
-      flex-direction: column;
-    }
-  
-    .contenido-dinamico {
-      flex-direction: column;
-    }
-  
-    .zona-nota,
-    .card-detalle {
-      flex: 1 1 100%;
-    }
-  } */
-
-  .detalle-panel {
-    padding: 20px;
-    font-family: 'Segoe UI', sans-serif;
-    color: #333;
-  }
-  
-  .titulo {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #2c3e50;
-  }
-  
-  /* Menú de navegación superior */
   .nav-tabs {
     display: flex;
-    gap: 15px;
     justify-content: center;
-    margin-bottom: 20px;
+    gap: 15px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
   }
   
   .nav-tabs button {
+    padding: 10px 20px;
     background-color: #0d6efd;
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 10px 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
   }
   
   .nav-tabs button:hover {
     background-color: #0b5ed7;
   }
   
-  /* Zona principal (contenido + lateral) */
   .contenido-wrapper {
     display: flex;
     gap: 20px;
-    align-items: flex-start;
     flex-wrap: wrap;
+    align-items: flex-start;
   }
   
-  /* Contenido central */
+  /* Card principal */
   .card-detalle {
     flex: 2;
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 20px;
+    padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     min-height: 350px;
     max-height: 500px;
     overflow-y: auto;
+    position: relative;
+
   }
   
-  /* Zona lateral derecha */
-  .zona-derecha {
-    flex: 1;
-    min-width: 280px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .crear-nota-wrapper {
+  /* Botón discreto abajo */
+  .footer-detalle {
+    margin: 20px 0px;
     text-align: right;
   }
   
-  .btn-crear-nota {
-    padding: 10px 16px;
-    background-color: #0d6efd;
-    color: white;
+  .btn-marcar {
+    background-color: orange;
+    color: #fff;
     border: none;
+    padding: 10px 20px;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .finalizado{
+    background-color: #198754;
   }
   
-  .btn-crear-nota:hover {
-    background-color: #0b5ed7;
+  .btn-marcar:hover {
+    background-color: #146c43;
   }
+
   
-  /* Formulario nota */
+  
+  /* Zona de notas */
   .zona-nota {
-    background-color: #f1f1f1;
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
     padding: 20px;
     border-radius: 10px;
-    border: 1px dashed #ccc;
-  }
-  
-  .zona-nota label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+    min-width: 280px;
   }
   
   .zona-nota textarea {
@@ -223,41 +101,38 @@
     height: 120px;
     padding: 10px;
     font-size: 0.95rem;
-    border: 1px solid #ccc;
     border-radius: 8px;
+    border: 1px solid #bbb;
     resize: vertical;
-    background-color: white;
+    margin-top: 10px;
   }
   
   .btn-nota {
     margin-top: 10px;
-    padding: 10px 16px;
-    background-color: #198754;
+    background-color: #0d6efd;
     color: white;
     border: none;
+    padding: 10px 16px;
     border-radius: 6px;
-    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
+    font-weight: 600;
   }
   
   .btn-nota:hover {
-    background-color: #157347;
+    background-color: #0a58ca;
   }
   
-  /* Responsive */
   @media (max-width: 768px) {
     .contenido-wrapper {
       flex-direction: column;
     }
   
-    .zona-derecha,
-    .card-detalle {
-      width: 100%;
+    .footer-detalle {
+      text-align: center;
     }
   
-    .crear-nota-wrapper {
-      text-align: center;
+    .zona-nota {
+      width: 100%;
     }
   }
 
