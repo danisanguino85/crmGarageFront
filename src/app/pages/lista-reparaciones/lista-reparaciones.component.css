@@ -22,10 +22,7 @@ table {
 	th,
 	td {
 		border: 1px solid black;
-	}
-	td,
-	th {
-		padding: 5px;
+		padding: 10px;
 	}
 }
 select {

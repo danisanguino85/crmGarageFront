@@ -29,6 +29,7 @@ export class ListaReparacionesComponent {
       await this.loadMecanico()
 
       this.ordenarPorFechaIngreso();
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
@@ -66,6 +67,7 @@ export class ListaReparacionesComponent {
   async loadMecanico() {
     try {
       this.usuarios = await this.usuariosService.getAll()
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }

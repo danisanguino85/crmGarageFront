@@ -55,11 +55,10 @@ export class ReparacionAdminComponent {
     }
 
   }
-
   async getCliente() {
-
     try {
       this.cliente = await this.clientesService.getClienteByReparacion(this.reparacionId)
+      console.log(this.reparacionId)
     } catch (error) {
 
     }
@@ -81,7 +80,7 @@ export class ReparacionAdminComponent {
   async loadNotas() {
     try {
       this.notas = await this.notasService.getReparacionAllNotas(this.reparacionId)
-      console.log(this.notas)
+
     } catch (error) {
 
     }

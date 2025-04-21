@@ -14,9 +14,9 @@ export class ClientesService {
   private clienteSeleccionado: Cliente | null = null;
 
 
-  getAll() {
+  getAll(desde: number, hasta: number) {
     return lastValueFrom(
-      this.httpClient.get<Cliente[]>(this.baseUrl)
+      this.httpClient.get<Cliente[]>(`${this.baseUrl}/${desde}/${hasta}`)
     )
   }
   getById(clienteId: number) {

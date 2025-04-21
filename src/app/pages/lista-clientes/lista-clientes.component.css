@@ -6,6 +6,10 @@ header {
 	i {
 		font-size: 200%;
 		cursor: pointer;
+		margin-left: 10px;
+	}
+	button {
+		margin-right: 10px;
 	}
 }
 table {

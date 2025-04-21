@@ -69,6 +69,7 @@ export class DashboardAdminComponent {
     this.loadUsuario()
     this.horaRegistro = localStorage.getItem('horaRegistro') || ''
     this.loadRegistros()
+
   }
 
   async onSubmitCliente() {
@@ -81,8 +82,8 @@ export class DashboardAdminComponent {
   async onSubmitReparacion() {
     const response = await this.reparacionesService.getReparacionById(this.searchReparacionForm.value.notaTaller);
     this.reparacionId = response.id
-    this.searchReparacionForm.reset()
     this.router.navigate([`/admin/reparacion/${this.reparacionId}`])
+    this.searchReparacionForm.reset()
   }
 
   async onSubmitMatricula() {
@@ -94,9 +95,10 @@ export class DashboardAdminComponent {
 
   async onSubmitEmpleado() {
     const response = await this.usuariosService.getByEmail(this.searchEmpleadoForm.value)
-    this.searchEmpleadoForm.reset()
+
     this.usuarioId = response.id
     this.router.navigate([`/admin/usuario/${this.usuarioId}`])
+    this.searchEmpleadoForm.reset()
 
   }
 
@@ -108,6 +110,7 @@ export class DashboardAdminComponent {
         this.usuario = await this.usuariosService.getById(data.id)
 
       }
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
@@ -150,12 +153,14 @@ export class DashboardAdminComponent {
         })
       })
 
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
-
-
   }
+
+
+
 
 }
 

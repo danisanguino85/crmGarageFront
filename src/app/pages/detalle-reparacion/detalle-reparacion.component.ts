@@ -24,13 +24,14 @@ export class DetalleReparacionComponent {
   reparacion!: Reparacion
   router = inject(Router)
   activatedRoute = false;
- comunicacionService = inject (ComunicationServiceService)
+  comunicacionService = inject(ComunicationServiceService)
 
 
   async ngOnInit() {
     try {
-    
+
       this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
@@ -47,22 +48,24 @@ export class DetalleReparacionComponent {
       await this.notasService.insertReparacionNota(this.reparacionId, this.formAddNota.value)
       this.formAddNota.reset();
       this.reloadNotas.emit();
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
-    
+
     this.comunicacionService.emitirActivacion(true);
   }
 
 
   async cambiarEstado(nuevoEstado: string) {
 
-   try {
-     const response = await this.reparacionesServices.reparacionCompletada(this.reparacionId, { estado: nuevoEstado });
-     this.ngOnInit();
-   } catch (error: any) {
-    toast.error(error.message)
-   }
+    try {
+      const response = await this.reparacionesServices.reparacionCompletada(this.reparacionId, { estado: nuevoEstado });
+      this.ngOnInit();
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    } catch (error: any) {
+      toast.error(error.message)
+    }
   }
 }
 
