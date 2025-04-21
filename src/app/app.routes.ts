@@ -15,24 +15,26 @@ import { DashboardMecanicoComponent } from './pages/dashboard-mecanico/dashboard
 import { NuevaReparacionComponent } from './pages/nueva-reparacion/nueva-reparacion.component';
 import { NuevoVehiculoComponent } from './pages/nuevo-vehiculo/nuevo-vehiculo.component';
 import { ListaNotasComponent } from './pages/lista-notas/lista-notas.component';
-import { DetalleNotasComponent } from './pages/detalle-notas/detalle-notas.component';
 import { ReparacionAdminComponent } from './pages/reparacion-admin/reparacion-admin.component';
+import { adminGuard } from './guards/admin.guard';
+import { tallerguardGuard } from './guards/tallerguard.guard';
+import { authtGuard } from './guards/autht.guard';
+import { ActualizarComponent } from './pages/actualizar/actualizar.component';
 
 export const routes: Routes = [
 
     { path: '', pathMatch: 'full', redirectTo: '/inicio' },
     { path: 'inicio', component: LoginComponent },
-    { path: 'registro/usuario', component: NuevoUsuarioComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'usuarios', component: ListaUsuariosComponent },
-    { path: 'cliente/:clienteId', component: DetalleClienteComponent },
-    { path: 'clientes', component: ListaClientesComponent },
+    /*  { path: 'registro/usuario', component: NuevoUsuarioComponent },
+     { path: 'login', component: LoginComponent },
+     { path: 'cliente/:clienteId', component: DetalleClienteComponent },
+     { path: 'clientes', component: ListaClientesComponent }, */
 
 
 
     //rutas hija del admin
     {
-        path: 'admin', component: DashboardAdminComponent, children: [
+        path: 'admin', component: DashboardAdminComponent, canActivate: [authtGuard, adminGuard], children: [
             { path: 'usuarios', component: ListaUsuariosComponent },
             { path: 'reparaciones', component: ListaReparacionesComponent },
             { path: 'vehiculo/:vehiculoId', component: DetalleVehiculoComponent },
@@ -43,8 +45,8 @@ export const routes: Routes = [
             { path: 'nuevoCliente', component: NuevoClienteComponent },
             { path: 'nuevoEmpleado', component: NuevoUsuarioComponent },
             { path: 'nuevaReparacion', component: NuevaReparacionComponent },
-
             { path: 'vehiculos', component: ListaVehiculosComponent },
+            { path: 'actualizar', component: ActualizarComponent },
 
             {
                 path: 'cliente/:clienteId', component: DetalleClienteComponent, children: [
@@ -59,7 +61,7 @@ export const routes: Routes = [
     },
 
     //rutas del mecanico
-    { path: 'taller', component: DashboardMecanicoComponent },
+    { path: 'taller', component: DashboardMecanicoComponent, canActivate: [authtGuard, tallerguardGuard] },
     {
         path: 'reparacion/:reparacionId', component: DetalleReparacionComponent,
         children: [
@@ -70,7 +72,7 @@ export const routes: Routes = [
         ]
     },
 
-    { path: 'reparaciones', component: ListaReparacionesComponent },
+    /*     { path: 'reparaciones', component: ListaReparacionesComponent }, */
 
     {
         path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent, children: [
@@ -78,9 +80,9 @@ export const routes: Routes = [
             { path: 'cliente/:clienteId', component: ListaReparacionesComponent },
         ]
     },
-    { path: 'cliente/:clienteId', component: DetalleClienteComponent },
-    { path: 'registro/reparaciones', component: NuevaReparacionComponent },
-    { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent },
+    /*   { path: 'cliente/:clienteId', component: DetalleClienteComponent },
+      { path: 'registro/reparaciones', component: NuevaReparacionComponent },
+      { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent }, */
 
 
 

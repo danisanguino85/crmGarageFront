@@ -1,0 +1,7 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="garage-form">
+    <div class="form-group">
+        <label>Imagen</label>
+        <input type="file" class="form-control" name="imagen" (change)="onChange($event)">
+    </div>
+    <input type="submit">
+  </form>
