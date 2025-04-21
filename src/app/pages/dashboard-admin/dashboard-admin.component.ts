@@ -6,12 +6,27 @@ import { VehiculosService } from '../../services/vehiculos.service';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import { UsuariosService } from '../../services/usuarios.service';
 import type { Usuario } from '../../interfaces/usuario';
+<<<<<<< HEAD
 import { BrowserModule } from '@angular/platform-browser';
+=======
+import { RegistroLaboralService } from '../../services/registro-laboral.service';
+import { DatePipe } from '@angular/common';
+import dayjs from 'dayjs';
+>>>>>>> newFeature
 
+type Registros = {
+  entrada?: string,
+  salida?: string,
+  usuarios_id: number
+}
 
 @Component({
   selector: 'app-dashboard-admin',
+<<<<<<< HEAD
   imports: [ReactiveFormsModule, RouterOutlet, RouterLink,],
+=======
+  imports: [ReactiveFormsModule, RouterOutlet, RouterLink, DatePipe],
+>>>>>>> newFeature
   templateUrl: './dashboard-admin.component.html',
   styleUrl: './dashboard-admin.component.css'
 })
@@ -21,11 +36,15 @@ export class DashboardAdminComponent {
   clientesService = inject(ClientesService)
   usuariosService = inject(UsuariosService)
   reparacionesService = inject(ReparacionesService)
+  registroService = inject(RegistroLaboralService)
   usuario!: Usuario
   selectedTab = ''
   activatedRoute = false
   horaRegistro = ''
+  entradas: Registros[] = []
+  salidas: Registros[] = []
   router = inject(Router)
+
 
   @Input() clienteId = 0
   @Input() vehiculoId = 0
@@ -55,6 +74,7 @@ export class DashboardAdminComponent {
   ngOnInit() {
     this.loadUsuario()
     this.horaRegistro = localStorage.getItem('horaRegistro') || ''
+    this.loadRegistros()
   }
 
   async onSubmitCliente() {
@@ -95,7 +115,6 @@ export class DashboardAdminComponent {
     }
 
   }
-
   selectTab(tab: string) {
     this.selectedTab = tab
   }
@@ -108,5 +127,30 @@ export class DashboardAdminComponent {
   }
 
 
+  async loadRegistros() {
+    const data = this.usuariosService.tokenDecodificado()
+    if (data) {
+      this.usuario = await this.usuariosService.getById(data.id)
+    }
+    const entradas = await this.registroService.getLatestEntradas(this.usuario.id)
+    const salidas = await this.registroService.getLatestSalidas(this.usuario.id)
 
+    entradas.map((entrada: Registros) => {
+      const fechaEntrada = dayjs(entrada.entrada).format('YYYY-MM-DD HH:mm:ss')
+      this.entradas.push({
+        entrada: fechaEntrada,
+        usuarios_id: entrada.usuarios_id
+      })
+    })
+    salidas.map((salida: Registros) => {
+      const fechaSalida = dayjs(salida.salida).format('YYYY-MM-DD HH:mm:ss')
+      this.salidas.push({
+        salida: fechaSalida,
+        usuarios_id: salida.usuarios_id
+      })
+    })
+
+  }
 }
+
+

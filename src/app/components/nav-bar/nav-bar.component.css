@@ -11,7 +11,7 @@ header .derecha {
 	display: flex;
 	gap: 20px;
 }
-.logoTaller {
+.logout {
 	display: flex;
 	text-align: center;
 
@@ -26,17 +26,24 @@ header .derecha {
 		margin-top: 3px;
 	}
 }
+
 h1 {
 	font-size: 150%;
-	cursor: pointer;
 	&:hover {
 		color: var(--tertiary-color);
 	}
 }
-p:hover,
-.usuario:hover {
-	color: var(--tertiary-color);
-}
 p {
 	text-transform: capitalize;
+}
+
+.in:hover {
+	color: green;
+}
+.out:hover {
+	color: red;
+}
+.botonesRegistro,
+h1 {
+	cursor: pointer;
 }

@@ -18,7 +18,7 @@
         @for(usuario of usuarios;track $index){
 
         <tr [routerLink]="[`/admin/usuario/${usuario.id}`]"><!--ver cómo lo desactivo para tamaños inferiores-->
-            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.nombre}} {{usuario.apellidos}}</td>
             <td>{{usuario.telefono}}</td>
             <td class="email">{{usuario.email}}</td>
             <td>{{usuario.rol}}</td>

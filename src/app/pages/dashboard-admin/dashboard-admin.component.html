@@ -91,17 +91,38 @@
                 <p>TALLERES MACARRONI</p>
             </div>
             }
+
         </div>
-
-
     </div>
 
     <div class="main wrapper">
         @if(activatedRoute===false){
         <div class="home">
             @if(usuario){
-            <h2>Hola {{usuario.nombre}} {{usuario.apellidos}}</h2>
-            <h3>Login a las {{horaRegistro}} </h3>
+            <p>Hola <strong>{{usuario.nombre}} {{usuario.apellidos}}</strong>, te has logado por última vez a las
+                <strong>{{horaRegistro}}</strong>
+            </p>
+            <div class="registro">
+                <h3>REGISTRO DE ENTRADAS Y SALIDAS</h3>
+                <div class="listas">
+                    <div>
+                        <h4>ENTRADAS</h4>
+                        <ul>
+                            @for(entrada of entradas;track $index){
+                            <li>{{entrada.entrada | date:'EEEE d \'de\' MMMM, HH:mm' : ''}}</li>
+                            }
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>SALIDAS</h4>
+                        <ul>
+                            @for(salida of salidas;track $index){
+                            <li>{{salida.salida | date:'EEEE d \'de\' MMMM HH:mm' : ''}}</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
             }
         </div>
         }
