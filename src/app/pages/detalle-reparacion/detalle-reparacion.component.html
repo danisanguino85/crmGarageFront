@@ -1,11 +1,15 @@
-
-
 <div class="detalle-panel">
   <div class="wrapper">
     <h2 class="titulo">
-      Detalle Reparación: <strong>{{ reparacion.id }}</strong>
+      Reparación Nº <strong>{{ reparacion.id }}</strong>
     </h2>
-
+    <div class="footer-detalle">
+      <button class="btn-marcar" [class]="{
+        'finalizado': reparacion.estado === 'finalizado'
+      }" (click)="marcarComoCompletado()">
+        ✅ Marcar como Completada
+      </button>
+    </div>
     <!-- Menú de navegación -->
     <div class="nav-tabs">
       <button [routerLink]="['/reparacion', reparacionId, 'vehiculo']">
@@ -19,27 +23,45 @@
       </button>
     </div>
 
-    <!-- Contenido principal con zona derecha -->
+    <!-- Zona principal de contenido -->
     <div class="contenido-wrapper">
-      <!-- Contenido dinámico principal -->
+      <!-- Card detalle principal -->
       <div class="card-detalle">
-        <router-outlet></router-outlet>
+       <!--  @if (activatedRoute===false) {
+        <div class="card-cliente">
+          <h3>👤 Detalle del Cliente</h3>
+          <ul>
+            <li><strong>Nombre:</strong>Hoooooo</li>
+            <li><strong>DNI:</strong> kajsbcjaskln</li>
+            <li><strong>Teléfono:</strong> kjasblcnaskmñ</li>
+            <li><strong>Email:</strong> knsbcjjaksj</li>
+            <li><strong>Dirección:</strong> kjkabdsioasjp</li>
+            <li><strong>Fecha de alta:</strong> khasbcuiosil</li>
+          </ul>
+        </div>
+        } -->
+
+        <router-outlet
+          (activate)="activated()"
+          (deactivate)="nonActivated()"
+        ></router-outlet>
+
+        <!-- Botón discreto al final -->
       </div>
 
-      <!-- Zona derecha: botón + formulario -->
-      <div class="zona-derecha">
-        
-        <div class="zona-nota">
-          <form [formGroup]="formAddNota" (ngSubmit)="onSubmitNota()">
+      <!-- Nota a la derecha -->
+      <div class="zona-nota">
+        <h4>📌 Añadir nota</h4>
+        <form [formGroup]="formAddNota" (ngSubmit)="onSubmitNota()">
           <label for="nota">Añadir nota:</label>
           <textarea
             id="nota"
-            placeholder="Escribe una nota importante..." formControlName="notas"
+            placeholder="Escribe una nota importante..."
+            formControlName="notas"
           ></textarea>
-          <input type="submit" class="btn-crear-nota" value="📝 Crear nueva nota" />
+          <input type="submit" class="btn-nota" value="📝 Crear nueva nota" />
         </form>
-        </div>
       </div>
     </div>
   </div>
-</div>
+

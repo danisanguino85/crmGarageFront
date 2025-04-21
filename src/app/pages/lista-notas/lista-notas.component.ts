@@ -24,7 +24,6 @@ export class ListaNotasComponent {
 
       const reparacionNotas = await this.notasService.getReparacionAllNotas(params.reparacionId)
       this.arrReparacionNotas = reparacionNotas;
-
     });
   }
 
