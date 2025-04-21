@@ -5,10 +5,13 @@ import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/route
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NotasService } from '../../services/notas.service';
 import type { Nota } from '../../interfaces/nota';
+import { DatePipe } from '@angular/common';
+import { ComunicationServiceService } from '../../services/comunication-service.service';
+import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-detalle-reparacion',
-  imports: [RouterOutlet, RouterLink, ReactiveFormsModule],
+  imports: [RouterOutlet, RouterLink, ReactiveFormsModule, DatePipe, NgxSonnerToaster],
   templateUrl: './detalle-reparacion.component.html',
   styleUrl: './detalle-reparacion.component.css'
 })
@@ -21,14 +24,15 @@ export class DetalleReparacionComponent {
   reparacion!: Reparacion
   router = inject(Router)
   activatedRoute = false;
-  finalizadoBool: boolean = false;
+ comunicacionService = inject (ComunicationServiceService)
+
 
   async ngOnInit() {
     try {
+    
       this.reparacion = await this.reparacionesServices.getReparacionById(this.reparacionId)
-
-      this.reparacion.estado === 'finalizado'? this.finalizadoBool = true : this.finalizadoBool = false;
-    } catch (error) {
+    } catch (error: any) {
+      toast.error(error.message)
     }
   }
 
@@ -43,26 +47,22 @@ export class DetalleReparacionComponent {
       await this.notasService.insertReparacionNota(this.reparacionId, this.formAddNota.value)
       this.formAddNota.reset();
       this.reloadNotas.emit();
-    } catch (error) {
-
+    } catch (error: any) {
+      toast.error(error.message)
     }
+    
+    this.comunicacionService.emitirActivacion(true);
   }
 
 
- async marcarComoCompletado(){
+  async cambiarEstado(nuevoEstado: string) {
 
-    const response = await this.reparacionesServices.reparacionCompletada(this.reparacionId = 6, {estado: 'finalizado'});
-    this.ngOnInit()
-    console.log(response)
+   try {
+     const response = await this.reparacionesServices.reparacionCompletada(this.reparacionId, { estado: nuevoEstado });
+     this.ngOnInit();
+   } catch (error: any) {
+    toast.error(error.message)
+   }
   }
-
-
-/*   activated() {
-    this.activatedRoute = true
-  }
-  nonActivated() {
-    this.activatedRoute = false
-  } (activate)="activated()"
-          (deactivate)="nonActivated()" */
 }
 

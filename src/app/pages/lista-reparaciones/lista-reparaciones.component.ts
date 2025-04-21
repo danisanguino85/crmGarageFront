@@ -5,10 +5,11 @@ import { Router, RouterLink } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
 import type { Usuario } from '../../interfaces/usuario';
 import { DatePipe } from '@angular/common';
+import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-lista-reparaciones',
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, DatePipe, NgxSonnerToaster],
   templateUrl: './lista-reparaciones.component.html',
   styleUrl: './lista-reparaciones.component.css'
 })
@@ -26,11 +27,12 @@ export class ListaReparacionesComponent {
     try {
       this.reparaciones = await this.reparacionesServices.getAllReparaciones()
       await this.loadMecanico()
-    } catch (error) {
 
+      this.ordenarPorFechaIngreso();
+    } catch (error: any) {
+      toast.error(error.message)
     }
 
-    this.ordenarPorFechaIngreso();
   }
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -62,7 +64,11 @@ export class ListaReparacionesComponent {
   }
 
   async loadMecanico() {
-    this.usuarios = await this.usuariosService.getAll()
+    try {
+      this.usuarios = await this.usuariosService.getAll()
+    } catch (error: any) {
+      toast.error(error.message)
+    }
   }
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>

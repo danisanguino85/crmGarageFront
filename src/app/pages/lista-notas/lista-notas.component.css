@@ -46,9 +46,26 @@
     font-weight: 500;
     transition: background-color 0.2s;
   }
+
+  .nota-fecha {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
   
+  .fecha-nota {
+    font-style: italic;
+    color: #495057;
+    font-size: 0.85rem;
+  }
+
+  
+
   /* Estilo específico */
-  .btn-ver {
+  /* .btn-ver {
     background-color: #0d6efd;
     color: white;
   }
@@ -65,7 +82,7 @@
   .btn-eliminar:hover {
     background-color: #c82333;
   }
-  
+   */
   
   
   

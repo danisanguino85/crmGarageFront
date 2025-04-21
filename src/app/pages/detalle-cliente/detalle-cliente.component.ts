@@ -11,6 +11,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import type { Vehiculo } from '../../interfaces/vehiculo';
 import { VehiculosService } from '../../services/vehiculos.service';
 import type { Reparacion } from '../../interfaces/reparacion';
+import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 type Body = {
   vehiculoId: 0
@@ -19,7 +20,7 @@ type Body = {
 
 @Component({
   selector: 'app-detalle-cliente',
-  imports: [ReactiveFormsModule, DatePipe, RouterLink, RouterOutlet],
+  imports: [ReactiveFormsModule, DatePipe, RouterLink, RouterOutlet, NgxSonnerToaster],
   templateUrl: './detalle-cliente.component.html',
   styleUrl: './detalle-cliente.component.css'
 })
@@ -42,49 +43,53 @@ export class DetalleClienteComponent {
   reparaciones: Reparacion[] = []
   coche!: Vehiculo
   router = inject(Router);
-  clienteReparacion!: Cliente 
+  clienteReparacion!: Cliente
 
   nuevaNotaForm: FormGroup = new FormGroup({
     notas: new FormControl()
   });
 
   ngOnInit() {
-    this.loadCliente()
-    this.loadVehiculos()
-    const data = this.usuarioService.tokenDecodificado()
-    if (data?.rol === 'mecanico') {
-      this.mecanicoAdmin = true;
-    };
+    try {
+      this.loadCliente()
+      this.loadVehiculos()
+      const data = this.usuarioService.tokenDecodificado()
+      if (data?.rol === 'mecanico') {
+        this.mecanicoAdmin = true;
+      };
+    } catch (error: any) {
+      toast.error(error.message)
+    }
   }
 
   async loadVehiculos() {
     try {
       this.vehiculos = await this.vehiculosService.getVehiculosByClienteId(this.clienteId)
-    } catch (error) {
 
+      this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+        this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
+      });
+    } catch (error: any) {
+      toast.error(error.message)
     }
-
-
-    this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-    this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
-    });
   }
+
+
   async onClick(vehiculoId: number) {
 
     try {
       this.reparaciones = await this.reparacionesService.getReparacionesByVehiculo({ vehiculoId })
-    } catch (error) {
-
+    } catch (error: any) {
+      toast.error(error.message)
     }
   }
 
 
   async loadCliente() {
     try {
-      this.cliente = await this.clientesService.getById(this.clienteId)
-
-    } catch (error) {
-
+      this.cliente = await this.clientesService.getById(this.clienteId);
+    } catch (error: any) {
+      toast.error(error.message)
     }
   }
 

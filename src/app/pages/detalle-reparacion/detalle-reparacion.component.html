@@ -1,20 +1,32 @@
-<div class="detalle-panel">
+<!-- <div class="detalle-panel">
   <div class="wrapper">
     <h2 class="titulo">
       Reparación Nº <strong>{{ reparacion.id }}</strong>
     </h2>
-    <div class="footer-detalle">
+    <div class="estado-selector">
       <button
-        class="btn-marcar"
-        [class]="{
-          finalizado: reparacion.estado === 'finalizado'
-        }"
-        (click)="marcarComoCompletado()"
+        class="btn-estado"
+        [class]="{ 'activo': reparacion.estado === 'pendiente' }"
+        (click)="cambiarEstado('pendiente')"
       >
-        ✅ Marcar como Completada
+        ⏳ Pendiente
+      </button>
+      <button
+        class="btn-estado"
+        [class]="{ 'activo': reparacion.estado === 'progreso' }"
+        (click)="cambiarEstado('progreso')"
+      >
+        🔧 En Progreso
+      </button>
+      <button
+        class="btn-estado"
+        [class]="{ 'activo': reparacion.estado === 'finalizado' }"
+        (click)="cambiarEstado('finalizado')"
+      >
+        ✅ Finalizado
       </button>
     </div>
-    <!-- Menú de navegación -->
+  
     <div class="nav-tabs">
       <button [routerLink]="['/reparacion', reparacionId, 'vehiculo']">
         🚗 Vehículo
@@ -27,13 +39,81 @@
       </button>
     </div>
 
+  
+    <div class="contenido-wrapper">
+     
+      <div class="card-detalle">
+        <router-outlet></router-outlet>
+
+       
+      </div>
+
+   
+      <div class="zona-nota">
+        <h4>📌 Añadir nota</h4>
+        <form [formGroup]="formAddNota" (ngSubmit)="onSubmitNota()">
+          <label for="nota">Añadir nota:</label>
+          <textarea
+            id="nota"
+            placeholder="Escribe una nota importante..."
+            formControlName="notas"
+          ></textarea>
+          <input type="submit" class="btn-nota" value="📝 Crear nueva nota" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="detalle-panel">
+  <div class="wrapper">
+    <h2 class="titulo">
+      Reparación Nº <strong>{{ reparacion?.id }}</strong>
+    </h2>
+
+    <!-- ✅ Menú de navegación -->
+    <div class="nav-tabs">
+      <button [routerLink]="['/reparacion', reparacionId, 'vehiculo']">
+        🚗 Vehículo
+      </button>
+      <button [routerLink]="['/reparacion', reparacionId, 'cliente']">
+        👤 Cliente
+      </button>
+      <button [routerLink]="['/reparacion', reparacionId, 'notas']">
+        📝 Notas
+      </button>
+    </div>
+
+    <!-- ✅ Selector de estado -->
+    <div class="estado-selector">
+      <button
+        class="btn-estado"
+        [class]="{ activo1: reparacion?.estado === 'pendiente' }"
+        (click)="cambiarEstado('pendiente')"
+      >
+        ⏳ Pendiente
+      </button>
+      <button
+        class="btn-estado"
+        [class]="{ activo2: reparacion?.estado === 'en_progreso' }"
+        (click)="cambiarEstado('en_progreso')"
+      >
+        🔧 En Progreso
+      </button>
+      <button
+        class="btn-estado"
+        [class]="{ activo3: reparacion?.estado === 'finalizado' }"
+        (click)="cambiarEstado('finalizado')"
+      >
+        ✅ Finalizado
+      </button>
+    </div>
+
     <!-- Zona principal de contenido -->
     <div class="contenido-wrapper">
       <!-- Card detalle principal -->
       <div class="card-detalle">
         <router-outlet></router-outlet>
-
-        <!-- Botón discreto al final -->
       </div>
 
       <!-- Nota a la derecha -->
@@ -52,3 +132,4 @@
     </div>
   </div>
 </div>
+<ngx-sonner-toaster richColors position="bottom-center" />

@@ -1,18 +1,17 @@
-
 @for (nota of arrReparacionNotas; track $index) {
-     
-    <div class="card-nota">
-        <div class="nota-header">
-          <span class="nota-id">📝 Nota #{{ nota.id }}</span>
-        </div>
-      
-        <p class="nota-texto">{{ nota.notas }}</p>
-      
-        <!-- <div class="nota-botones">
-          <button class="btn-ver" >👁 Ver nota</button>
-          <button class="btn-eliminar">🗑 Eliminar</button>
-        </div> -->
-      </div>
-}
 
-<!-- notaId -->
+<div class="card-nota">
+  <div class="nota-header">
+    <span class="nota-id">📝 Nota #{{ nota.id }}</span>
+    <p class="nota-fecha">
+      <span class="material-icons">schedule</span>
+      <span class="fecha-nota">{{
+        nota.created_at | date : "EEEE d 'de' MMMM, HH:mm"
+      }}</span>
+    </p>
+  </div>
+
+  <p class="nota-texto">{{ nota.notas }}</p>
+</div>
+}
+<ngx-sonner-toaster richColors position="bottom-center" />

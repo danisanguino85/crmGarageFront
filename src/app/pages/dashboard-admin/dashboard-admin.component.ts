@@ -9,6 +9,7 @@ import type { Usuario } from '../../interfaces/usuario';
 import { RegistroLaboralService } from '../../services/registro-laboral.service';
 import { DatePipe } from '@angular/common';
 import dayjs from 'dayjs';
+import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 type Registros = {
   entrada?: string,
@@ -18,7 +19,7 @@ type Registros = {
 
 @Component({
   selector: 'app-dashboard-admin',
-  imports: [ReactiveFormsModule, RouterOutlet, RouterLink, DatePipe],
+  imports: [ReactiveFormsModule, RouterOutlet, RouterLink, DatePipe, NgxSonnerToaster],
   templateUrl: './dashboard-admin.component.html',
   styleUrl: './dashboard-admin.component.css'
 })
@@ -101,9 +102,13 @@ export class DashboardAdminComponent {
   async loadUsuario() {
     const data = this.usuariosService.tokenDecodificado()
 
-    if (data) {
-      this.usuario = await this.usuariosService.getById(data.id)
+    try {
+      if (data) {
+        this.usuario = await this.usuariosService.getById(data.id)
 
+      }
+    } catch (error: any) {
+      toast.error(error.message)
     }
 
   }
@@ -120,29 +125,37 @@ export class DashboardAdminComponent {
 
 
   async loadRegistros() {
-    const data = this.usuariosService.tokenDecodificado()
-    if (data) {
-      this.usuario = await this.usuariosService.getById(data.id)
-    }
-    const entradas = await this.registroService.getLatestEntradas(this.usuario.id)
-    const salidas = await this.registroService.getLatestSalidas(this.usuario.id)
+    const data = this.usuariosService.tokenDecodificado();
 
-    entradas.map((entrada: Registros) => {
-      const fechaEntrada = dayjs(entrada.entrada).format('YYYY-MM-DD HH:mm:ss')
-      this.entradas.push({
-        entrada: fechaEntrada,
-        usuarios_id: entrada.usuarios_id
+    try {
+      if (data) {
+        this.usuario = await this.usuariosService.getById(data.id)
+      }
+      const entradas = await this.registroService.getLatestEntradas(this.usuario.id)
+      const salidas = await this.registroService.getLatestSalidas(this.usuario.id)
+
+      entradas.map((entrada: Registros) => {
+        const fechaEntrada = dayjs(entrada.entrada).format('YYYY-MM-DD HH:mm:ss')
+        this.entradas.push({
+          entrada: fechaEntrada,
+          usuarios_id: entrada.usuarios_id
+        })
       })
-    })
-    salidas.map((salida: Registros) => {
-      const fechaSalida = dayjs(salida.salida).format('YYYY-MM-DD HH:mm:ss')
-      this.salidas.push({
-        salida: fechaSalida,
-        usuarios_id: salida.usuarios_id
+      salidas.map((salida: Registros) => {
+        const fechaSalida = dayjs(salida.salida).format('YYYY-MM-DD HH:mm:ss')
+        this.salidas.push({
+          salida: fechaSalida,
+          usuarios_id: salida.usuarios_id
+        })
       })
-    })
+
+    } catch (error: any) {
+      toast.error(error.message)
+    }
+
 
   }
+
 }
 
 
