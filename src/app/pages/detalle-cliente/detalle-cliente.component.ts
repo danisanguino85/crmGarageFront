@@ -41,7 +41,8 @@ export class DetalleClienteComponent {
   vehiculos: Vehiculo[] = []
   reparaciones: Reparacion[] = []
   coche!: Vehiculo
-  router = inject(Router)
+  router = inject(Router);
+  clienteReparacion!: Cliente 
 
   nuevaNotaForm: FormGroup = new FormGroup({
     notas: new FormControl()
@@ -64,9 +65,9 @@ export class DetalleClienteComponent {
     }
 
 
-    // this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-    // this.cliente = await this.clientesService.getClienteByReparacion(params.reparacionId)
-    //});
+    this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+    this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
+    });
   }
   async onClick(vehiculoId: number) {
 

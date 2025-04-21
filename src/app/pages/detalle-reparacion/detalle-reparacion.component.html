@@ -4,9 +4,13 @@
       Reparación Nº <strong>{{ reparacion.id }}</strong>
     </h2>
     <div class="footer-detalle">
-      <button class="btn-marcar" [class]="{
-        'finalizado': reparacion.estado === 'finalizado'
-      }" (click)="marcarComoCompletado()">
+      <button
+        class="btn-marcar"
+        [class]="{
+          finalizado: reparacion.estado === 'finalizado'
+        }"
+        (click)="marcarComoCompletado()"
+      >
         ✅ Marcar como Completada
       </button>
     </div>
@@ -27,24 +31,7 @@
     <div class="contenido-wrapper">
       <!-- Card detalle principal -->
       <div class="card-detalle">
-       <!--  @if (activatedRoute===false) {
-        <div class="card-cliente">
-          <h3>👤 Detalle del Cliente</h3>
-          <ul>
-            <li><strong>Nombre:</strong>Hoooooo</li>
-            <li><strong>DNI:</strong> kajsbcjaskln</li>
-            <li><strong>Teléfono:</strong> kjasblcnaskmñ</li>
-            <li><strong>Email:</strong> knsbcjjaksj</li>
-            <li><strong>Dirección:</strong> kjkabdsioasjp</li>
-            <li><strong>Fecha de alta:</strong> khasbcuiosil</li>
-          </ul>
-        </div>
-        } -->
-
-        <router-outlet
-          (activate)="activated()"
-          (deactivate)="nonActivated()"
-        ></router-outlet>
+        <router-outlet></router-outlet>
 
         <!-- Botón discreto al final -->
       </div>
@@ -64,4 +51,4 @@
       </div>
     </div>
   </div>
-
+</div>

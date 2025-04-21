@@ -57,11 +57,12 @@ export class DetalleReparacionComponent {
   }
 
 
-  activated() {
+/*   activated() {
     this.activatedRoute = true
   }
   nonActivated() {
     this.activatedRoute = false
-  }
+  } (activate)="activated()"
+          (deactivate)="nonActivated()" */
 }
 

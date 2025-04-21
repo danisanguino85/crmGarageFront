@@ -65,10 +65,6 @@ export const routes: Routes = [
             { path: 'vehiculo', component: DetalleVehiculoComponent },
             { path: 'cliente', component: DetalleClienteComponent },
             { path: 'notas', component: ListaNotasComponent },
-            {
-                path: 'create', component: DetalleNotasComponent,
-                outlet: 'notaPanel'
-            },
             { path: 'notas/:notaId', component: ListaNotasComponent },
         ]
     },
