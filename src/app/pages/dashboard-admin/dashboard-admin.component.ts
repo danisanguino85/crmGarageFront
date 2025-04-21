@@ -10,6 +10,7 @@ import { RegistroLaboralService } from '../../services/registro-laboral.service'
 import { DatePipe } from '@angular/common';
 import dayjs from 'dayjs';
 
+
 type Registros = {
   entrada?: string,
   salida?: string,
@@ -18,7 +19,7 @@ type Registros = {
 
 @Component({
   selector: 'app-dashboard-admin',
-  imports: [ReactiveFormsModule, RouterOutlet, RouterLink, DatePipe],
+  imports: [ReactiveFormsModule, RouterOutlet, RouterLink, DatePipe,],
   templateUrl: './dashboard-admin.component.html',
   styleUrl: './dashboard-admin.component.css'
 })

@@ -7,15 +7,16 @@ export const adminGuard: CanActivateFn = (route, state) => {
     const usersService = inject(UsuariosService)
     const router = inject(Router)
 
-    if (usersService.isAdmin())
+    if (usersService.isAdmin()) {
         return true
+    }
     Swal.fire({
         icon: 'error',
         title: 'Acceso denegado',
-        text: 'No tienes permisos para acceder a esta sección',
+        text: 'Acceso denegado: solo los administradores tienen permiso para acceder a esta sección.',
         confirmButtonText: 'Aceptar'
     })
-    router.navigate(['/admin'])
+    router.navigate(['/login']);
     return false
 
 };

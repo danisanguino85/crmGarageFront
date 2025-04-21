@@ -1,7 +1,7 @@
 import { Router, type CanActivateFn } from '@angular/router';
-import { environment } from '../../environments/environment.development';
 import Swal from 'sweetalert2';
 import { inject } from '@angular/core';
+import { environment } from '../../environments/enviroment';
 
 export const authtGuard: CanActivateFn = (route, state) => {
     const token = localStorage.getItem(environment.tokenName);
@@ -9,7 +9,6 @@ export const authtGuard: CanActivateFn = (route, state) => {
     if (token) {
         return true;
     }
-
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
