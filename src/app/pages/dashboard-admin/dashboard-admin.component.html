@@ -39,7 +39,7 @@
             @if(selectedTab=== 'taller'){
             <ul class="menuSelectedTab">
                 <li [routerLink]="['/admin', 'reparaciones']">Notas de taller</li>
-                <li (click)="selectTab('cliente')">Nueva nota de taller</li>
+
             </ul>
             <form class="mb-3" [formGroup]="searchReparacionForm" (ngSubmit)="onSubmitReparacion()">
                 <label class="form-label">Búsqueda</label>
@@ -47,22 +47,7 @@
                 <input type="submit" value="Enviar">
             </form>
             }
-            @if(selectedTab=== 'cliente'){
-            <ul class="menuSelectedTab">
-                <li [routerLink]="['/admin', 'reparaciones']">Notas de taller</li>
-                <li (click)="selectTab('cliente')">Nueva nota de taller</li>
-            </ul>
-            <form class="mb-3" [formGroup]="searchReparacionForm" (ngSubmit)="onSubmitReparacion()">
-                <label class="form-label">Búsqueda</label>
-                <input type="text" class="form-control" placeholder="número de nota" formControlName="notaTaller">
-                <input type="submit" value="Enviar">
-            </form>
-            <form class="mb-3" [formGroup]="searchClienteForm" (ngSubmit)="onSubmitCliente()">
-                <label class="form-label">Búsqueda cliente</label>
-                <input type="text" class="form-control" placeholder="Teléfono" formControlName="telefono">
-                <input type="submit" value="Enviar">
-            </form>
-            }
+
             @if(selectedTab=== 'vehiculos'){
             <ul class="menuSelectedTab">
                 <li [routerLink]="['/admin', 'vehiculos']">Lista de vehículos</li>

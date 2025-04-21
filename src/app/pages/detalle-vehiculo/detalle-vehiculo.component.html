@@ -6,9 +6,9 @@
     <li><strong>Modelo:</strong> {{ vehiculo.modelo }}</li>
     <li><strong>Marca:</strong> {{ vehiculo.marca }}</li>
     <li><strong>Bastidor:</strong> {{ vehiculo.bastidor }}</li>
-    <li><strong>Fecha Entrada:</strong> {{ vehiculo.fecha_entrada }}</li>
-    <li><strong>Fecha Salida:</strong> {{ vehiculo.fecha_salida }}</li>
-    <li><strong>Fecha Matriculación:</strong> {{ vehiculo.fecha_matriculacion }}</li>
+    <li><strong>Fecha Entrada:</strong> {{ vehiculo.fecha_entrada | date : 'dd-MM-yyyy'}}</li>
+    <li><strong>Fecha Salida:</strong> {{ vehiculo.fecha_salida | date : 'dd-MM-yyyy' }}</li>
+    <li><strong>Fecha Matriculación:</strong> {{ vehiculo.fecha_matriculacion | date : 'dd-MM-yyyy'}}</li>
   </ul>
 </div>
 }

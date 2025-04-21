@@ -42,7 +42,7 @@ export class DetalleClienteComponent {
   reparaciones: Reparacion[] = []
   coche!: Vehiculo
   router = inject(Router);
-  clienteReparacion!: Cliente 
+  clienteReparacion!: Cliente
 
   nuevaNotaForm: FormGroup = new FormGroup({
     notas: new FormControl()
@@ -65,8 +65,10 @@ export class DetalleClienteComponent {
     }
 
 
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-    this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
+      this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
     });
   }
   async onClick(vehiculoId: number) {

@@ -1,0 +1,47 @@
+@if(reparacion && mecanico ){
+<div class="reparacion">
+    <ul class="list-group">
+        <li class="encabezado list-group-item list-group-item-action" aria-current="true">
+            Nota de taller: {{reparacion.id}}
+        </li>
+        <li class="list-group-item list-group-item-action">
+            <strong>Cliente: </strong>{{cliente.nombre}} {{cliente.apellidos}}
+        </li>
+        <li class="list-group-item list-group-item-action">
+            <strong>Vehículo: </strong>{{vehiculo.marca}} {{vehiculo.modelo}} {{vehiculo.matricula}}
+        </li>
+
+        <li class="list-group-item list-group-item-action">
+            <strong>Entrada: </strong>{{ reparacion.fecha_ingreso | date : 'dd-MM-yyyy' }}
+        </li>
+        <li class="list-group-item list-group-item-action">
+            <strong>Estado: </strong>{{ reparacion.estado }}
+        </li>
+        <li class="list-group-item list-group-item-action">
+            <strong>Presupuesto inicial: </strong>{{reparacion.presupuesto | currency:'EUR'}}
+        </li>
+        <li class="list-group-item list-group-item-action">
+            <strong>Mecánico: </strong>{{mecanico.nombre}}
+            {{mecanico.apellidos}}
+        </li>
+    </ul>
+    <ul class="list-group">
+        <li class="encabezado list-group-item list-group-item-action" aria-current="true">
+            <strong>Notas: </strong>
+        </li>
+        @for(nota of notas;track $index){
+        <li class="notas" (click)="loadNota(nota.id)" class="list-group-item list-group-item-action">{{nota.created_at |
+            date :
+            'dd-MM-yyyy'}} | {{nota.notas}}
+        </li>
+
+        }
+    </ul>
+    @if(nota){
+    <div class="nota">
+        <p><strong>Creada:</strong> {{nota.created_at | date :
+            'dd-MM-yyyy'}}</p>
+        <p>{{nota.notas}}</p>
+    </div>
+    }
+</div>}

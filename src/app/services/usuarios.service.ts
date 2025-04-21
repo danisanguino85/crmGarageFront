@@ -53,6 +53,12 @@ export class UsuariosService {
     )
   }
 
+  getMecanicoByReparacion(reparacionId: number) {
+    return lastValueFrom(
+      this.httpClient.get<Usuario>(`${this.baseUrl}/mecanico/${reparacionId}`)
+    )
+  }
+
   register(body: Usuario) {
     return lastValueFrom
       (this.httpClient.post<Usuario>(`${this.baseUrl}/register`, body))

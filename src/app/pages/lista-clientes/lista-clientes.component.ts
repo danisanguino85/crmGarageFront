@@ -3,7 +3,6 @@ import type { Cliente } from '../../interfaces/cliente';
 import { ClientesService } from '../../services/clientes.service';
 import { RouterLink } from '@angular/router';
 
-
 @Component({
   selector: 'app-lista-clientes',
   imports: [RouterLink],

@@ -2,11 +2,7 @@
 <div class="general">
   <div class="cliente">
     <ul class="list-group">
-      <li
-        id="span"
-        class="nombre list-group-item list-group-item-action"
-        aria-current="true"
-      >
+      <li id="span" class="nombre list-group-item list-group-item-action" aria-current="true">
         <span>Datos del cliente</span>
         <span>ID: {{ cliente.id }}</span>
       </li>
@@ -29,8 +25,7 @@
         <strong>Dirección: </strong>{{ cliente.direccion }}
       </li>
       <li class="list-group-item list-group-item-action">
-        <strong>Fecha de alta: </strong
-        >{{ cliente.fecha_alta | date : "dd-MM-yyyy" }}
+        <strong>Fecha de alta: </strong>{{ cliente.fecha_alta | date : "dd-MM-yyyy" }}
       </li>
       <li class="list-group-item list-group-item-action">
         <strong>Dirección: </strong>{{ cliente.direccion }}
@@ -104,20 +99,3 @@
 </div>
 
 }
-
-<!--
-
-<h3>nueva nota</h3>
-<form [formGroup]="nuevaNotaForm">
-    <label>Nota</label>
-    <input type="text" formControlName="notas">
-
-    <input type="submit">
-</form>
-<h3>notas</h3>
-@for(nota of notas;track $index){
-
-<p>{{nota.notas}}</p>
-}
-
- (ngSubmit)="onSubmitNota()" -->

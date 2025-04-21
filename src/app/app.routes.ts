@@ -16,6 +16,7 @@ import { NuevaReparacionComponent } from './pages/nueva-reparacion/nueva-reparac
 import { NuevoVehiculoComponent } from './pages/nuevo-vehiculo/nuevo-vehiculo.component';
 import { ListaNotasComponent } from './pages/lista-notas/lista-notas.component';
 import { DetalleNotasComponent } from './pages/detalle-notas/detalle-notas.component';
+import { ReparacionAdminComponent } from './pages/reparacion-admin/reparacion-admin.component';
 
 export const routes: Routes = [
 
@@ -35,7 +36,7 @@ export const routes: Routes = [
             { path: 'usuarios', component: ListaUsuariosComponent },
             { path: 'reparaciones', component: ListaReparacionesComponent },
             { path: 'vehiculo/:vehiculoId', component: DetalleVehiculoComponent },
-            { path: 'reparacion/:reparacionId', component: DetalleReparacionComponent },
+            { path: 'reparacion/:reparacionId', component: ReparacionAdminComponent },
             { path: 'usuario/:usuarioId', component: DetalleUsuarioComponent },
             { path: 'usuario/:usuarioId/editarUsuario', component: NuevoUsuarioComponent },
             { path: 'clientes', component: ListaClientesComponent },
