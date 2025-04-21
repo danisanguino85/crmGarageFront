@@ -1,8 +1,8 @@
 import { Component, inject, Input } from '@angular/core';
 import type { Usuario } from '../../interfaces/usuario';
 import { UsuariosService } from '../../services/usuarios.service';
-import { RouterModule } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-usuario',
@@ -15,6 +15,7 @@ export class DetalleUsuarioComponent {
   usuario!: Usuario
   usuariosService = inject(UsuariosService)
   mostrarFormulario = false;
+  router = inject(Router)
 
 
   async ngOnInit() {
@@ -34,6 +35,11 @@ export class DetalleUsuarioComponent {
 
       toast.error(error.message)
     }
+  }
+
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  actualizarFoto($event: any) {
+    this.router.navigate(['/admin/actualizar'], { queryParams: { usuarioId: this.usuarioId } });
   }
 
   // Método para mostrar el formulario en el componente "Nuevo Usuario"

@@ -47,7 +47,6 @@ export class VehiculosService {
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   async getVehiculoByReparacion(body: any) {
-
     return lastValueFrom(
       this.httpClient.post<Vehiculo>(`${this.baseUrl}/reparacion`, body)
     )

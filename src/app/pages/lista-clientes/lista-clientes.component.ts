@@ -4,7 +4,6 @@ import { ClientesService } from '../../services/clientes.service';
 import { RouterLink } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
-
 @Component({
   selector: 'app-lista-clientes',
   imports: [RouterLink, NgxSonnerToaster],

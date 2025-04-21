@@ -23,7 +23,7 @@ export class NotasService {
   }
 
 
-  getReparacionAllNotas(reparacionId: number){
+  getReparacionAllNotas(reparacionId: number) {
     return lastValueFrom(
       this.httpClient.get<Nota[]>(`${this.baseUrl}/nota/${reparacionId}`))
   }
@@ -34,6 +34,10 @@ export class NotasService {
     )
   }
 
-  /* http://localhost:3000/api/notas/nota/1 */
+  getNotaById(notaId: number) {
+    return lastValueFrom(
+      this.httpClient.get<Nota>(`${this.baseUrl}/${notaId}`)
+    )
+  }
 }
 

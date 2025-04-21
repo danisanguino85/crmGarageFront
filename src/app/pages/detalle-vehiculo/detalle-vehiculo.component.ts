@@ -25,27 +25,28 @@ export class DetalleVehiculoComponent {
 
   async ngOnInit() {
 
-    try {
-      // biome-ignore lint/style/noNonNullAssertion: <explanation>
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+ /*    try {
       this.activatedRoute.parent!.params.subscribe(async (params: any) => {
         const body = {
           id: params.reparacionId
         }
-        this.vehiculo = await this.vehiculosService.getVehiculoByReparacion(body)
+        this.vehiculon = await this.vehiculosService.getVehiculoByReparacion(body)
       });
 
-      //await this.loadVehiculo()
+       
     } catch (error: any) {
       toast.error(error.message)
-    }
+    } */
+      await this.loadVehiculo() 
   }
 
 
   async loadVehiculo() {
     try {
       this.vehiculo = await this.vehiculosService.getVehiculoById(this.vehiculoId)
-    } catch (error:any) {
+    } catch (error: any) {
       toast.error(error.message)
     }
   }

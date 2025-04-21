@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 import dayjs from 'dayjs';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
+
 type Registros = {
   entrada?: string,
   salida?: string,

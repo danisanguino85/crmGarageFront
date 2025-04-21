@@ -22,18 +22,3 @@ body {
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
-table {
-	text-align: center;
-	border: 1px solid black;
-
-	width: 100%;
-	th,
-	td {
-		border: 1px solid black;
-	}
-	td,
-	th {
-		padding: 5px;
-	}
-}

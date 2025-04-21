@@ -53,6 +53,12 @@ export class UsuariosService {
     )
   }
 
+  getMecanicoByReparacion(reparacionId: number) {
+    return lastValueFrom(
+      this.httpClient.get<Usuario>(`${this.baseUrl}/mecanico/${reparacionId}`)
+    )
+  }
+
   register(body: Usuario) {
     return lastValueFrom
       (this.httpClient.post<Usuario>(`${this.baseUrl}/register`, body))
@@ -73,6 +79,14 @@ export class UsuariosService {
     return false;
   }
 
+  isMecanico() {
+    const token = localStorage.getItem(environment.tokenName);
+    if (!token) return false;
+    const data = jwtDecode<{ rol: string, id: number }>(token);
+    if (data.rol === 'mecanico') return true;
+    return false;
+  }
+
   tokenDecodificado() {
     const token = localStorage.getItem(environment.tokenName);
     if (!token) return null;
@@ -85,6 +99,12 @@ export class UsuariosService {
     return lastValueFrom(
       this.httpClient.put<Usuario>(`${this.baseUrl}/update/${usuarioId}`, body)
     );
+  }
+
+  updateFoto(id: FormData) {
+    return lastValueFrom(
+      this.httpClient.get<Usuario>(`${this.baseUrl}/${id}`)
+    )
   }
 }
 
