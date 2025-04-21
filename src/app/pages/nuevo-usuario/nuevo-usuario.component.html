@@ -1,8 +1,10 @@
 <div class="container">
     <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
         <div class="header">
-            <h1>Registrar Usuario</h1>
-            <p class="subtitle">Completa los datos para registrar un nuevo usuario</p>
+            <h1>{{ modo === 'registrar' ? 'Registrar Usuario' : 'Actualizar Usuario' }}</h1>
+            <p class="subtitle">
+              {{ modo === 'registrar' ? 'Completa los datos para registrar un nuevo usuario' : 'Edita los datos del usuario' }}
+            </p>
         </div>
 
         <div class="mb-3">

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuariosService } from '../../services/usuarios.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 import { ESPECIALIDADES } from '../../db/db';
 
@@ -15,7 +15,9 @@ import { ESPECIALIDADES } from '../../db/db';
 export class NuevoUsuarioComponent {
   usuarioService = inject(UsuariosService);
   router = inject(Router);
-  especialidades: string[] = ESPECIALIDADES
+  route = inject(ActivatedRoute);
+  especialidades: string[] = ESPECIALIDADES;
+  modo: 'registrar' | 'actualizar' = 'registrar';
 
 
   formRegistro: FormGroup = new FormGroup({
@@ -105,10 +107,9 @@ export class NuevoUsuarioComponent {
    }
  */
   ngOnInit() {
-    // Obtener el usuario desde el servicio
     const usuario = this.usuarioService.getUsuario();
     if (usuario) {
-      // Si hay usuario, actualizar los campos del formulario con patchValue
+      this.modo = 'actualizar';
       this.formRegistro.patchValue({
         id: usuario.id,
         nombre: usuario.nombre,
@@ -126,6 +127,9 @@ export class NuevoUsuarioComponent {
         foto_perfil: usuario.foto_perfil,
         especialidad: usuario.especialidad
       });
+    } else {
+      this.modo = 'registrar';
+      this.formRegistro.reset();
     }
   }
 
@@ -146,6 +150,9 @@ export class NuevoUsuarioComponent {
         await this.usuarioService.register(usuarioData);
         toast.success('Usuario registrado correctamente');
       }
+
+      this.formRegistro.reset();
+      this.modo = 'registrar';
 
       setTimeout(() => {
         const rol = usuarioData.rol;

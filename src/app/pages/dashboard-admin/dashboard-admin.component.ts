@@ -6,11 +6,12 @@ import { VehiculosService } from '../../services/vehiculos.service';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import { UsuariosService } from '../../services/usuarios.service';
 import type { Usuario } from '../../interfaces/usuario';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-dashboard-admin',
-  imports: [ReactiveFormsModule, RouterOutlet, RouterLink],
+  imports: [ReactiveFormsModule, RouterOutlet, RouterLink,],
   templateUrl: './dashboard-admin.component.html',
   styleUrl: './dashboard-admin.component.css'
 })

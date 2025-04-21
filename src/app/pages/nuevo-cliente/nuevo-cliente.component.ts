@@ -19,6 +19,7 @@ export class NuevoClienteComponent {
   router = inject(Router)
   clientesService = inject(ClientesService)
   mailingService = inject(MailingService)
+  modo: 'registrar' | 'actualizar' = 'registrar';
 
   clienteId!: number;
   cliente: Cliente | null = null;
@@ -74,7 +75,7 @@ export class NuevoClienteComponent {
       this.cliente = await this.clientesService.getById(this.clienteId);
 
       if (this.cliente) {
-        // Si el cliente existe, llenar el formulario con los datos del cliente
+        this.modo = 'actualizar';
         this.registerForm.patchValue({
           nombre: this.cliente.nombre,
           apellidos: this.cliente.apellidos,
