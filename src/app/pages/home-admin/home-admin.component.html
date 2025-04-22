@@ -2,7 +2,8 @@
 
     <div class="home">
         @if(usuario){
-        <p>Hola <strong>{{usuario.nombre}} {{usuario.apellidos}}</strong>, te has logado por última vez a las
+        <p>Hola <strong>{{usuario.nombre | titlecase }} {{usuario.apellidos | titlecase }}</strong>, te has logado por
+            última vez a las
             <strong>{{horaRegistro}}.</strong>
         </p>
         <div class="registro">
@@ -26,7 +27,8 @@
                 </div>
             </div>
         </div>
-        <button [routerLink]="['/taller']">Salir</button>
-        }
+        @if(this.admin===false){
+        <button [routerLink]="['/taller']" [class.active]="">Salir</button>
+        }}
 
     </div>

@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, TitleCasePipe } from '@angular/common';
 import dayjs from 'dayjs';
 import { UsuariosService } from '../../services/usuarios.service';
 import { RegistroLaboralService } from '../../services/registro-laboral.service';
@@ -15,7 +15,7 @@ type Registros = {
 
 @Component({
   selector: 'app-home-admin',
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink, TitleCasePipe],
   templateUrl: './home-admin.component.html',
   styleUrl: './home-admin.component.css'
 })
@@ -27,11 +27,12 @@ export class HomeAdminComponent {
   usuario!: Usuario
   horaRegistro = ''
   @Input() usuarioId? = 0
-
+  admin!: boolean
 
   ngOnInit() {
     this.loadRegistros()
     this.horaRegistro = localStorage.getItem('horaRegistro') || ''
+    this.isAdmin()
   }
 
 
@@ -67,6 +68,13 @@ export class HomeAdminComponent {
       toast.error(error.message)
     }
   }
-
+  isAdmin() {
+    const data = this.usuariosService.tokenDecodificado();
+    if (data && data.rol === 'admin') {
+      this.admin = true;
+    } else {
+      this.admin = false;
+    }
+  }
 
 }
