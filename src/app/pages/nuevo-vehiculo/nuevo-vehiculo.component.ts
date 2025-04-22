@@ -3,6 +3,7 @@ import { VehiculosService } from '../../services/vehiculos.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { ComunicationServiceService } from '../../services/comunication-service.service';
 
 
 
@@ -16,6 +17,8 @@ export class NuevoVehiculoComponent {
   @Input() clienteId = 0
   vehiculosService = inject(VehiculosService)
   activatedRoute = inject(ActivatedRoute)
+  comunicacionService = inject(ComunicationServiceService);
+
 
   nuevoVehiculoForm: FormGroup = new FormGroup({
     matricula: new FormControl('', [
@@ -69,6 +72,12 @@ export class NuevoVehiculoComponent {
   checkControl(controlName: string, errorName: string): boolean {
     const control = this.nuevoVehiculoForm.get(controlName);
     return !!control && control.hasError(errorName) && control.touched;
+  }
+
+
+
+  actualizarVehiculosAsociados() {
+    this.comunicacionService.activarVehiculosAsociados(true);
   }
 
 

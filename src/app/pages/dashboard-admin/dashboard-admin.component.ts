@@ -9,6 +9,7 @@ import type { Usuario } from '../../interfaces/usuario';
 import { RegistroLaboralService } from '../../services/registro-laboral.service';
 import { DatePipe } from '@angular/common';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { ComunicationServiceService } from '../../services/comunication-service.service';
 
 
 
@@ -30,6 +31,7 @@ export class DashboardAdminComponent {
   selectedTab = ''
   horaRegistro = ''
   router = inject(Router)
+  comunicacionService = inject(ComunicationServiceService);
 
 
   @Input() clienteId = 0
@@ -59,6 +61,8 @@ export class DashboardAdminComponent {
 
   ngOnInit() {
     this.loadUsuario()
+
+   
 
   }
 

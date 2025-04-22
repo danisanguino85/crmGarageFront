@@ -43,7 +43,7 @@ export class LoginComponent {
         } else {
           this.router.navigateByUrl('/taller');
         }
-      }, 1500)
+      }, 500)
     } catch (error) {
 
       toast.error('Error al iniciar sesión',
@@ -54,6 +54,8 @@ export class LoginComponent {
     }
   }
 
+  /* LimElec2025#
+ */
 
   horaRegistro() {
     const loginTime = new Date
