@@ -8,15 +8,10 @@ import { UsuariosService } from '../../services/usuarios.service';
 import type { Usuario } from '../../interfaces/usuario';
 import { RegistroLaboralService } from '../../services/registro-laboral.service';
 import { DatePipe } from '@angular/common';
-import dayjs from 'dayjs';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 
-type Registros = {
-  entrada?: string,
-  salida?: string,
-  usuarios_id: number
-}
+
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -33,10 +28,7 @@ export class DashboardAdminComponent {
   registroService = inject(RegistroLaboralService)
   usuario!: Usuario
   selectedTab = ''
-  activatedRoute = false
   horaRegistro = ''
-  entradas: Registros[] = []
-  salidas: Registros[] = []
   router = inject(Router)
 
 
@@ -67,8 +59,6 @@ export class DashboardAdminComponent {
 
   ngOnInit() {
     this.loadUsuario()
-    this.horaRegistro = localStorage.getItem('horaRegistro') || ''
-    this.loadRegistros()
 
   }
 
@@ -120,44 +110,6 @@ export class DashboardAdminComponent {
     this.selectedTab = tab
   }
 
-  activated() {
-    this.activatedRoute = true
-  }
-  nonActivated() {
-    this.activatedRoute = false
-  }
-
-
-  async loadRegistros() {
-    const data = this.usuariosService.tokenDecodificado();
-
-    try {
-      if (data) {
-        this.usuario = await this.usuariosService.getById(data.id)
-      }
-      const entradas = await this.registroService.getLatestEntradas(this.usuario.id)
-      const salidas = await this.registroService.getLatestSalidas(this.usuario.id)
-
-      entradas.map((entrada: Registros) => {
-        const fechaEntrada = dayjs(entrada.entrada).format('YYYY-MM-DD HH:mm:ss')
-        this.entradas.push({
-          entrada: fechaEntrada,
-          usuarios_id: entrada.usuarios_id
-        })
-      })
-      salidas.map((salida: Registros) => {
-        const fechaSalida = dayjs(salida.salida).format('YYYY-MM-DD HH:mm:ss')
-        this.salidas.push({
-          salida: fechaSalida,
-          usuarios_id: salida.usuarios_id
-        })
-      })
-
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    } catch (error: any) {
-      toast.error(error.message)
-    }
-  }
 
 
 

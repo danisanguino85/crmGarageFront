@@ -39,7 +39,7 @@ export class NuevaReparacionComponent {
     vehiculos_id: new FormControl('', [
       Validators.required
     ]),
-    comentarios: new FormControl('', [
+    notas: new FormControl('', [
       Validators.required
     ]),
     presupuesto: new FormControl('', [
@@ -47,7 +47,7 @@ export class NuevaReparacionComponent {
     ]),
     usuarios_id: new FormControl('', [
       Validators.required
-    ])
+    ]),
   })
 
   fechaReparacion() {
@@ -57,9 +57,9 @@ export class NuevaReparacionComponent {
   }
 
   async ngOnInit() {
-    await this.loadMecanicos()
-    await this.loadVehiculos()
-    await this.loadCliente()
+    this.loadMecanicos()
+    this.loadVehiculos()
+    this.loadCliente()
 
   }
 
@@ -68,6 +68,7 @@ export class NuevaReparacionComponent {
     try {
       if (this.formRegistro.valid) {
         this.nuevaReparacion = await this.reparacionesServices.register(this.formRegistro.value);
+
         this.formRegistro.reset()
         toast.success('Confirmación de ingreso de su vehículo en Taller Macarroni');
         await this.mailingService.sendMail({
@@ -81,7 +82,7 @@ Te confirmamos que hemos recibido tu vehículo en día y hora ${this.fecha} para
 
 Datos del ingreso:
 
-    Vehículo: 
+    Vehículo: $, 
 
     Motivo de la visita: [Descripción breve del problema o servicio solicitado]
 

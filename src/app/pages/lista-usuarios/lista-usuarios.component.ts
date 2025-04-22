@@ -33,6 +33,7 @@ export class ListaUsuariosComponent {
       } if ($event.target.value === '') {
         this.usuarios = await this.usuarioService.getAll()
       }
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
 
       toast.error(error.message)

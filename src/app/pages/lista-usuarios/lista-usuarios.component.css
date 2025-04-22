@@ -14,6 +14,9 @@ header {
 		cursor: pointer;
 	}
 }
+.capitalize {
+	text-transform: capitalize;
+}
 table {
 	text-align: center;
 	border: 1px solid black;
@@ -21,11 +24,11 @@ table {
 	width: 100%;
 	th,
 	td {
+		padding: 5px;
 		border: 1px solid black;
 	}
-	td,
-	th {
-		padding: 5px;
+	.vista {
+		cursor: pointer;
 	}
 }
 

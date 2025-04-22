@@ -17,18 +17,17 @@
 </header>
 <div class="table table-responsive">
     <table>
-        <th>Ref.</th>
         <th class="entrada">Entrada</th>
         <th>Vehículo</th>
         <th>Mecánico</th>
         <th>Estado</th>
         @for(reparacion of reparaciones;track $index){
-        <tr [routerLink]="[`/admin/reparacion/${reparacion.id}`]"><!--ver cómo lo desactivo para tamaños inferiores-->
-            <td>{{reparacion.id}}</td>
+        <tr>
             <td class="entrada">{{reparacion.fecha_ingreso | date: 'dd/MM/yyyy'}}</td>
             <td>{{reparacion.vehiculo}}</td>
             <td>{{reparacion.mecanico}}</td>
             <td [style]="getEstiloEstado(reparacion.estado)">{{reparacion.estado}}</td>
+            <td class="vista"> <i [routerLink]="[`/admin/cliente/${reparacion.id}`]" class="fa-solid fa-eye"></i> </td>
         </tr>
         }
     </table>

@@ -39,6 +39,7 @@ export class ListaNotasComponent {
           }
         });
       });
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }

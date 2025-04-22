@@ -20,6 +20,7 @@ import { adminGuard } from './guards/admin.guard';
 import { tallerguardGuard } from './guards/tallerguard.guard';
 import { authtGuard } from './guards/autht.guard';
 import { ActualizarComponent } from './pages/actualizar/actualizar.component';
+import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 
 export const routes: Routes = [
 
@@ -35,6 +36,7 @@ export const routes: Routes = [
     //rutas hija del admin
     {
         path: 'admin', component: DashboardAdminComponent, canActivate: [authtGuard, adminGuard], children: [
+            { path: '', pathMatch: 'full', component: HomeAdminComponent },
             { path: 'usuarios', component: ListaUsuariosComponent },
             { path: 'reparaciones', component: ListaReparacionesComponent },
             { path: 'vehiculo/:vehiculoId', component: DetalleVehiculoComponent },

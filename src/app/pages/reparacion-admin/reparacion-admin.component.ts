@@ -37,11 +37,11 @@ export class ReparacionAdminComponent {
   async ngOnInit() {
 
     try {
-      await this.getCliente()
-      await this.loadReparacion()
-      await this.loadVehiculo()
-      await this.loadNotas()
-      await this.loadMecanico()
+      this.getCliente()
+      this.loadReparacion()
+      this.loadVehiculo()
+      this.loadNotas()
+      this.loadMecanico()
     } catch (error) {
     }
   }

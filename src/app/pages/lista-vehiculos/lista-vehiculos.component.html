@@ -5,7 +5,6 @@
 
 <div class="table table-responsive" id="pdf-content">
     <table>
-        <th>ID</th>
         <th class="vehiculo">Vehículo</th>
         <th>Matrícula</th>
         <th>Entrada</th>
@@ -13,14 +12,12 @@
 
         @for(vehiculo of vehiculos;track $index){
 
-        <tr [routerLink]="[`/admin/vehiculo/${vehiculo.id}`]"><!--ver cómo lo desactivo para tamaños inferiores-->
-            <td>{{vehiculo.id}}</td>
+        <tr>
             <td class="vehiculo">{{vehiculo.marca}} {{vehiculo.modelo}}</td>
             <td>{{vehiculo.matricula}}</td>
             <td>{{vehiculo.fecha_entrada | date: 'dd/MM/yyyy'}}</td>
             <td>{{vehiculo.fecha_salida | date: 'dd/MM/yyyy'}}</td>
-            <td class="boton"><button class="btn btn-info" [routerLink]="[`/admin/vehiculo/${vehiculo.id}`]">Ver
-                    detalle</button></td>
+            <td class="vista"> <i [routerLink]="[`/admin/vehiculo/${vehiculo.id}`]" class="fa-solid fa-eye"></i> </td>
 
         </tr>
         }

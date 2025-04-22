@@ -26,7 +26,7 @@ export class ListaReparacionesComponent {
   async ngOnInit() {
     try {
       this.reparaciones = await this.reparacionesServices.getAllReparaciones()
-      await this.loadMecanico()
+      this.loadMecanico()
 
       this.ordenarPorFechaIngreso();
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
