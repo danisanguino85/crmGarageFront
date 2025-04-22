@@ -1,6 +1,6 @@
 @if(usuario){
 <ul class="list-group">
-    <li class="nombre list-group-item list-group-item-action">Datos del empleado <img class="imagen-empleado" src="https://img.freepik.com/psd-gratis/ilustracion-3d-avatar-o-perfil-humano_23-2150671122.jpg" alt="">
+    <li class="nombre list-group-item list-group-item-action">Datos del empleado <img class="imagen-empleado" [src]="(usuario.foto_perfil!=='') ? 'http://localhost:3000/images/' + usuario.foto_perfil : 'https://img.freepik.com/psd-gratis/ilustracion-3d-avatar-o-perfil-humano_23-2150671122.jpg'" alt="">
         <button class="actualizar-imagen" (click)="actualizarFoto($event)">Actualizar foto</button>
     </li>
     <li class="list-group-item list-group-item-action"><strong>Nombre: </strong>{{usuario.nombre}}</li>

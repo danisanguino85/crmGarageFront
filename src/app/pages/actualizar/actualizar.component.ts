@@ -25,11 +25,10 @@ export class ActualizarComponent {
   async onSubmit() {
     const fd = new FormData();
     fd.append('imagen', this.files[0]);
-    const usuario = await this.usuarioService.getById(this.usuarioId);
-    fd.append('id', usuario.id.toString());
-    console.log(fd)
 
-    this.usuarioService.updateFoto(fd).then(result => {
+
+
+    this.usuarioService.updateFoto(fd, this.usuarioId).then(result => {
       this.router.navigate(['/admin/usuario/:usuarioId']);
     })
   }
