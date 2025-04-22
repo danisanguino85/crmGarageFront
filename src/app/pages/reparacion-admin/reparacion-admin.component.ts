@@ -79,7 +79,7 @@ export class ReparacionAdminComponent {
   async loadNotas() {
     try {
       this.notas = await this.notasService.getReparacionAllNotas(this.reparacionId)
-
+      console.log(this.notas)
     } catch (error) {
 
     }
