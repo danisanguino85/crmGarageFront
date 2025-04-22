@@ -25,6 +25,7 @@ export class NuevaReparacionComponent {
   router = inject(Router)
   mecanicos: Usuario[] = []
   vehiculos: Vehiculo[] = []
+  vehiculoId: number | undefined;
 
   route = inject(ActivatedRoute)
   clienteId!: number
@@ -59,8 +60,7 @@ export class NuevaReparacionComponent {
   async ngOnInit() {
     await this.loadMecanicos()
     await this.loadVehiculos()
-    await this.loadCliente()
-
+    await this.loadCliente()   
   }
 
   async onSubmit() {
@@ -81,7 +81,7 @@ Te confirmamos que hemos recibido tu vehículo en día y hora ${this.fecha} para
 
 Datos del ingreso:
 
-    Vehículo: 
+    Vehículo:  
 
     Motivo de la visita: [Descripción breve del problema o servicio solicitado]
 
@@ -106,8 +106,8 @@ Equipo de Taller Macarroni
       } else {
         toast.error('Por favor completa correctamente el formulario');
       }
-    } catch (error) {
-      toast.error('Hubo un error al registrar la reparación');//hay que ver por qué salta el aviso cuando funciona
+    } catch (error: any) {
+      toast.error(error.message);//hay que ver por qué salta el aviso cuando funciona
     }
   }
 
@@ -116,8 +116,8 @@ Equipo de Taller Macarroni
       const usuarios = await this.usuariosService.getAll()
 
       this.mecanicos = usuarios.filter((usuario) => usuario.rol === 'mecanico');
-    } catch (error) {
-
+    } catch (error: any) {
+      toast.error(error.message)
     }
 
   }

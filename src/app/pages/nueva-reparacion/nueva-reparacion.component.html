@@ -2,14 +2,17 @@
   <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
     <div class="header">
       <h1>Nueva nota de taller</h1>
-      <p class="subtitle">Rellena los campos para registrar una nueva reparación</p>
+      <p class="subtitle">
+        Rellena los campos para registrar una nueva reparación
+      </p>
     </div>
     <div class="mb-3">
-
       <select class="form-label" formControlName="vehiculos_id">
         <option value="">Vehículos</option>
         @for(vehiculo of vehiculos;track $index){
-        <option value="{{vehiculo.id}}">{{vehiculo.marca}} {{vehiculo.modelo}} {{vehiculo.matricula}}</option>
+        <option value="{{ vehiculo.id }}">
+          {{ vehiculo.marca }} {{ vehiculo.modelo }} {{ vehiculo.matricula }}
+        </option>
         }
       </select>
       @if (checkControl('vehiculo', 'required')) {
@@ -18,7 +21,7 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Comentarios</label>
-      <input type="text" class="form-control" formControlName="comentarios">
+      <input type="text" class="form-control" formControlName="comentarios" />
       @if (checkControl('comentarios', 'required')) {
       <p class="text-danger"></p>
       }
@@ -26,7 +29,7 @@
 
     <div class="mb-3">
       <label class="form-label">Presupuesto</label>
-      <input type="text" class="form-control" formControlName="presupuesto">
+      <input type="text" class="form-control" formControlName="presupuesto" />
       @if (checkControl('presupuesto', 'required')) {
       <p class="text-danger">Presupuesto obligatorio</p>
       }
@@ -35,7 +38,9 @@
       <select class="form-label" formControlName="usuarios_id">
         <option value="">Mecánicos</option>
         @for(mecanico of mecanicos;track $index){
-        <option value={{mecanico.id}}>{{mecanico.nombre}} {{mecanico.apellidos}}</option>
+        <option value="{{ mecanico.id }}">
+          {{ mecanico.nombre }} {{ mecanico.apellidos }}
+        </option>
         }
       </select>
 
@@ -44,9 +49,7 @@
       }
     </div>
 
-
-
-    <input type="submit" value="Registrar" class="btn">
+    <input type="submit" value="Registrar" class="btn" />
   </form>
 </div>
 <ngx-sonner-toaster richColors position="bottom-center" />

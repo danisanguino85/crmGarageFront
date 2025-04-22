@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReparacionesService } from '../../services/reparaciones.service';
 import { DatePipe } from '@angular/common';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-detalle-vehiculo',
@@ -15,9 +16,12 @@ import { NgxSonnerToaster, toast } from 'ngx-sonner';
 export class DetalleVehiculoComponent {
 
   vehiculo: Vehiculo | undefined
+  vehiculon:  Vehiculo | undefined
   vehiculosService = inject(VehiculosService)
+  usuariosService = inject(UsuariosService)
   reparacionesService = inject(ReparacionesService);
   activatedRoute = inject(ActivatedRoute);
+  mecanicoAdmin: boolean = false;
 
 
   @Input() vehiculoId = 0
@@ -25,21 +29,48 @@ export class DetalleVehiculoComponent {
 
   async ngOnInit() {
 
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
- /*    try {
+    try {
+      const data = this.usuariosService.tokenDecodificado()
+      if (data?.rol === 'mecanico') {
+        this.mecanicoAdmin = true;
+      };
+    } catch (error: any) {
+      toast.error(error.message)
+    }
+
+  
+   if(this.mecanicoAdmin){
+    try {
       this.activatedRoute.parent!.params.subscribe(async (params: any) => {
         const body = {
           id: params.reparacionId
         }
-        this.vehiculon = await this.vehiculosService.getVehiculoByReparacion(body)
-      });
-
-       
+        this.vehiculon = await this.vehiculosService.getVehiculoByReparacion(body) 
+      }); 
     } catch (error: any) {
       toast.error(error.message)
-    } */
-      await this.loadVehiculo() 
+    } 
+
+   }else {
+     await this.loadVehiculo()
+   }
+
+
+
+    
+    /*  try {
+         this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+           const body = {
+             id: params.reparacionId
+           }
+           this.vehiculon = await this.vehiculosService.getVehiculoByReparacion(body) 
+         });
+   
+          
+       } catch (error: any) {
+         toast.error(error.message)
+       }  */
+    
   }
 
 
