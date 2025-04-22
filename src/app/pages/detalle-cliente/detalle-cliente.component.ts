@@ -43,7 +43,7 @@ export class DetalleClienteComponent {
   reparaciones: Reparacion[] = []
   coche!: Vehiculo
   router = inject(Router);
-  clienteReparacion!: Cliente
+  clienteReparacion!: Cliente | null
 
   nuevaNotaForm: FormGroup = new FormGroup({
     notas: new FormControl()
@@ -57,6 +57,7 @@ export class DetalleClienteComponent {
       if (data?.rol === 'mecanico') {
         this.mecanicoAdmin = true;
       };
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
@@ -66,9 +67,12 @@ export class DetalleClienteComponent {
     try {
       this.vehiculos = await this.vehiculosService.getVehiculosByClienteId(this.clienteId)
 
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       this.activatedRoute.parent!.params.subscribe(async (params: any) => {
         this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
       });
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
@@ -85,6 +89,7 @@ export class DetalleClienteComponent {
 
     try {
       this.reparaciones = await this.reparacionesService.getReparacionesByVehiculo({ vehiculoId })
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
@@ -94,6 +99,7 @@ export class DetalleClienteComponent {
   async loadCliente() {
     try {
       this.cliente = await this.clientesService.getById(this.clienteId);
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }

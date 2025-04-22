@@ -22,10 +22,10 @@ table {
 	th,
 	td {
 		border: 1px solid black;
-	}
-	td,
-	th {
 		padding: 5px;
+	}
+	.vista {
+		cursor: pointer;
 	}
 }
 select {

@@ -5,18 +5,19 @@
 
             <ul class=" tab nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" (click)="selectTab('clientes')"
+                    <a class="nav-link" [routerLink]="['/admin/clientes']" (click)="selectTab('clientes')"
                         [class.active]="selectedTab==='clientes'">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" (click)="selectTab('empleados')"
+                    <a class="nav-link" [routerLink]="['/admin/usuarios']" (click)="selectTab('empleados')"
                         [class.active]="selectedTab==='empleados'">Empleados</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" (click)="selectTab('taller')" [class.active]="selectedTab==='taller'">Taller</a>
+                    <a class="nav-link" [routerLink]="['/admin/reparaciones']" (click)="selectTab('taller')"
+                        [class.active]="selectedTab==='taller'">Taller</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" (click)="selectTab('vehiculos')"
+                    <a class="nav-link" [routerLink]="['/admin/vehiculos']" (click)="selectTab('vehiculos')"
                         [class.active]="selectedTab==='vehiculos'">Vehículos</a>
                 </li>
 
@@ -81,38 +82,9 @@
     </div>
 
     <div class="main wrapper">
-        @if(activatedRoute===false){
-        <div class="home">
-            @if(usuario){
-            <p>Hola <strong>{{usuario.nombre}} {{usuario.apellidos}}</strong>, te has logado por última vez a las
-                <strong>{{horaRegistro}}</strong>
-            </p>
-            <div class="registro">
-                <h3>REGISTRO DE ENTRADAS Y SALIDAS</h3>
-                <div class="listas">
-                    <div>
-                        <h4>ENTRADAS</h4>
-                        <ul>
-                            @for(entrada of entradas;track $index){
-                            <li>{{entrada.entrada | date:'EEEE d \'de\' MMMM, HH:mm' : ''}}</li>
-                            }
-                        </ul>
-                    </div>
-                    <div>
-                        <h4>SALIDAS</h4>
-                        <ul>
-                            @for(salida of salidas;track $index){
-                            <li>{{salida.salida | date:'EEEE d \'de\' MMMM HH:mm' : ''}}</li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            }
-        </div>
-        }
+
         <div class="router">
-            <router-outlet (activate)="activated()" (deactivate)="nonActivated()" />
+            <router-outlet />
         </div>
 
     </div>

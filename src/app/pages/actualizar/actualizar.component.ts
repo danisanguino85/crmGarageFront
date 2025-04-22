@@ -1,12 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-actualizar',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './actualizar.component.html',
   styleUrl: './actualizar.component.css'
 })

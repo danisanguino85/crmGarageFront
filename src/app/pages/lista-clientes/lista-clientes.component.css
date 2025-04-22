@@ -6,6 +6,10 @@ header {
 	i {
 		font-size: 200%;
 		cursor: pointer;
+		margin-left: 10px;
+	}
+	button {
+		margin-right: 10px;
 	}
 }
 table {
@@ -16,10 +20,10 @@ table {
 	th,
 	td {
 		border: 1px solid black;
-	}
-	td,
-	th {
 		padding: 5px;
+	}
+	.vista {
+		cursor: pointer;
 	}
 }
 

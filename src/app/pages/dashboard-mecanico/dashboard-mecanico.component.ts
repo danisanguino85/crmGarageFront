@@ -6,7 +6,7 @@ import { ReparacionesService } from '../../services/reparaciones.service';
 import { environment } from '../../../environments/enviroment';
 import { UsuariosService } from '../../services/usuarios.service';
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { Usuario } from '../../interfaces/usuario';
+import type { Usuario } from '../../interfaces/usuario';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 @Component({
@@ -23,7 +23,7 @@ export class DashboardMecanicoComponent {
   reparacionesServices = inject(ReparacionesService);
   usuarioServices = inject(UsuariosService);
   reparacionSeleccionada!: Reparacion
-  mecanico!: Usuario
+  mecanico!: Usuario | null;
   arrMecanicoReparaciones: Reparacion[] = [];
   router = inject(Router)
 
@@ -35,10 +35,12 @@ export class DashboardMecanicoComponent {
       const mecanicoReparaciones: Reparacion[] = await this.reparacionesServices.getReparacionesByMecanico()
       this.arrMecanicoReparaciones = mecanicoReparaciones
 
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       const data: any = await this.usuarioServices.tokenDecodificado()
       const mecanico = await this.usuarioServices.getById(data?.id);
       this.mecanico = mecanico;
 
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
 
       toast.error(error.message)

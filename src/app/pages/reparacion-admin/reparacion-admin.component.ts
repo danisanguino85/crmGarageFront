@@ -37,11 +37,11 @@ export class ReparacionAdminComponent {
   async ngOnInit() {
 
     try {
-      await this.getCliente()
-      await this.loadReparacion()
-      await this.loadVehiculo()
-      await this.loadNotas()
-      await this.loadMecanico()
+      this.getCliente()
+      this.loadReparacion()
+      this.loadVehiculo()
+      this.loadNotas()
+      this.loadMecanico()
     } catch (error) {
     }
   }
@@ -55,9 +55,7 @@ export class ReparacionAdminComponent {
     }
 
   }
-
   async getCliente() {
-
     try {
       this.cliente = await this.clientesService.getClienteByReparacion(this.reparacionId)
     } catch (error) {
@@ -81,7 +79,7 @@ export class ReparacionAdminComponent {
   async loadNotas() {
     try {
       this.notas = await this.notasService.getReparacionAllNotas(this.reparacionId)
-      console.log(this.notas)
+
     } catch (error) {
 
     }

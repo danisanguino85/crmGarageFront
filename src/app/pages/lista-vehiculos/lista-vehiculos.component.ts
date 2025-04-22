@@ -20,16 +20,15 @@ export class ListaVehiculosComponent {
 
 
   async ngOnInit() {
-    try {
-      await this.loadVehiculos()
-    } catch (error: any) {
-      toast.error(error.message)
-    }
+
+    this.loadVehiculos()
+
   }
 
   async loadVehiculos() {
     try {
       this.vehiculos = await this.vehiculosService.getAll()
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }

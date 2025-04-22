@@ -1,6 +1,10 @@
 <header>
     <h2>CLIENTES</h2>
-    <i class="fa-solid fa-print"></i>
+    <div>
+        <button (click)="paginaAnterior()">anterior</button>
+        <button (click)="siguientePagina()">siguiente</button>
+        <i class="fa-solid fa-print"></i>
+    </div>
 </header>
 <div class="table table-responsive">
     <table>
@@ -10,14 +14,12 @@
         <th class="email">Email</th>
         @for(cliente of clientes;track $index){
 
-        <tr [routerLink]="[`/admin/cliente/${cliente.id}`]">
-            <!--ver cómo lo desactivo para activarlo en tamaños inferiores-->
+        <tr>
             <td>{{cliente.nombre}}</td>
             <td>{{cliente.apellidos}}</td>
             <td>{{cliente.telefono}}</td>
             <td class="email">{{cliente.email}}</td>
-            <td class="boton"><button class="btn btn-info" [routerLink]="[`/admin/cliente/${cliente.id}`]">Ver
-                    detalle</button></td>
+            <td class="vista"> <i [routerLink]="[`/admin/cliente/${cliente.id}`]" class="fa-solid fa-eye"></i> </td>
         </tr>
         }
     </table>

@@ -67,14 +67,6 @@ button {
 		font-size: 300%;
 	}
 }
-.home p {
-	font-size: 150%;
-	margin-bottom: 30px;
-	font-weight: lighter;
-	strong {
-		text-transform: capitalize;
-	}
-}
 .registro {
 	text-align: center;
 

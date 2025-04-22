@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Comentarios</label>
-      <input type="text" class="form-control" formControlName="comentarios" />
+      <input type="text" class="form-control" formControlName="notas" />
       @if (checkControl('comentarios', 'required')) {
       <p class="text-danger"></p>
       }
@@ -49,7 +49,7 @@
       }
     </div>
 
-    <input type="submit" value="Registrar" class="btn" />
+    <input type="submit" value="Registrar" class="btn">
   </form>
 </div>
 <ngx-sonner-toaster richColors position="bottom-center" />
