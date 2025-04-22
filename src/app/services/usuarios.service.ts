@@ -101,9 +101,11 @@ export class UsuariosService {
     );
   }
 
-  updateFoto(id: FormData) {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  updateFoto(data: FormData | any, id: number) {
     return lastValueFrom(
-      this.httpClient.get<Usuario>(`${this.baseUrl}/${id}`)
+      this.httpClient.put<Usuario>(`${this.baseUrl}/imagen/${id}`, data)
+
     )
   }
 }
