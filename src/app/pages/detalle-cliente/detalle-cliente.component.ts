@@ -12,6 +12,7 @@ import type { Vehiculo } from '../../interfaces/vehiculo';
 import { VehiculosService } from '../../services/vehiculos.service';
 import type { Reparacion } from '../../interfaces/reparacion';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { ComunicationServiceService } from '../../services/comunication-service.service';
 
 type Body = {
   vehiculoId: 0
@@ -43,7 +44,10 @@ export class DetalleClienteComponent {
   reparaciones: Reparacion[] = []
   coche!: Vehiculo
   router = inject(Router);
-  clienteReparacion!: Cliente | null
+  clienteReparacion!: Cliente | null;
+  comunicacionService = inject(ComunicationServiceService)
+
+
 
   nuevaNotaForm: FormGroup = new FormGroup({
     notas: new FormControl()
@@ -53,14 +57,27 @@ export class DetalleClienteComponent {
     try {
       this.loadCliente()
       this.loadVehiculos()
+
       const data = this.usuarioService.tokenDecodificado()
       if (data?.rol === 'mecanico') {
         this.mecanicoAdmin = true;
       };
+
+
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
+  }
+
+  /* esta funcion lo que hace es recargar la lista de vehiculos asiganadas al usuario */
+  ngAfterViewChecked() {
+    this.comunicacionService.evento$.subscribe(valor => {
+      if (valor === true) {
+        /* window.location.reload */
+        this.loadVehiculos()
+      }
+    });
   }
 
   async loadVehiculos() {

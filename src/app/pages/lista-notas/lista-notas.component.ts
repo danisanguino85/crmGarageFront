@@ -47,4 +47,27 @@ export class ListaNotasComponent {
   }
 
 
+/* 
+  ngAfterViewChecked() {
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+
+        const reparacionNotas = await this.notasService.getReparacionAllNotas(params.reparacionId)
+        this.arrReparacionNotas = reparacionNotas;
+
+        // esta funcion recibe lo que hace es que cuando añadamos una nota desde el panel de reparacion del meacnico
+        //este recibe recibe evento y llama a ng on init para refrescar la lista de notas
+         
+        this.comunicacionService.evento$.subscribe( async(valor) => {
+          if (valor === true) {
+            const reparacionNotas = await this.notasService.getReparacionAllNotas(params.reparacionId)
+            this.arrReparacionNotas = reparacionNotas;
+          }
+        });
+      });
+  } */
+  
+      
+
 }
