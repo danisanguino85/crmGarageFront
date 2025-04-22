@@ -4,7 +4,10 @@
   <div class="general-container">
     <div class="card-mecanico">
       <figure>
-        <img src="https://via.placeholder.com/150" alt="Foto mecanico" />
+        @if(mecanico){
+        <img
+          [src]="(mecanico.foto_perfil!=='') ? 'http://localhost:3000/images/' + mecanico.foto_perfil : 'https://img.freepik.com/psd-gratis/ilustracion-3d-avatar-o-perfil-humano_23-2150671122.jpg'"
+          alt="Foto mecanico" />}
       </figure>
       <p><strong>DNI:</strong> {{ mecanico?.dni }}</p>
       <p><strong>Teléfono:</strong> {{ mecanico?.telefono }}</p>

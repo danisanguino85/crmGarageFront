@@ -5,10 +5,11 @@
             Nota de taller: {{reparacion.id}}
         </li>
         <li class="list-group-item list-group-item-action">
-            <strong>Cliente: </strong>{{cliente.nombre}} {{cliente.apellidos}}
+            <strong>Cliente: </strong>{{cliente.nombre | titlecase}} {{cliente.apellidos | titlecase}}
         </li>
         <li class="list-group-item list-group-item-action">
-            <strong>Vehículo: </strong>{{vehiculo.marca}} {{vehiculo.modelo}} {{vehiculo.matricula}}
+            <strong>Vehículo: </strong>{{vehiculo.marca | titlecase}} {{vehiculo.modelo | titlecase}}
+            {{vehiculo.matricula}}
         </li>
 
         <li class="list-group-item list-group-item-action">

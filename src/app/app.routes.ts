@@ -36,7 +36,7 @@ export const routes: Routes = [
     //rutas hija del admin
     {
         path: 'admin', component: DashboardAdminComponent, canActivate: [authtGuard, adminGuard], children: [
-            { path: '', pathMatch: 'full', component: HomeAdminComponent },
+            // { path: '', pathMatch: 'full', component: HomeAdminComponent },
             { path: 'usuarios', component: ListaUsuariosComponent },
             { path: 'reparaciones', component: ListaReparacionesComponent },
             { path: 'vehiculo/:vehiculoId', component: DetalleVehiculoComponent },
@@ -61,7 +61,7 @@ export const routes: Routes = [
             },
         ]
     },
-
+    { path: 'main', component: HomeAdminComponent, canActivate: [authtGuard] },
     //rutas del mecanico
     { path: 'taller', component: DashboardMecanicoComponent, canActivate: [authtGuard, tallerguardGuard] },
     {

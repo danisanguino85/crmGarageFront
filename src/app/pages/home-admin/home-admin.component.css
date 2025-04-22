@@ -1,8 +1,7 @@
 .main.wrapper {
-	display: flex;
-	justify-content: center;
-	padding: 20px;
 	font-family: Arial, sans-serif;
+	height: calc(100vh - 142px);
+	align-content: center;
 }
 
 .home {
@@ -11,7 +10,8 @@
 	background-color: #f9f9f9;
 	border-radius: 8px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	padding: 20px;
+	margin: 0 auto;
+	text-align: center;
 }
 
 .home p {
@@ -61,7 +61,11 @@
 .home p {
 	text-align: center;
 }
-
+button {
+	width: 100px;
+	border-radius: 5px;
+	margin: 20px;
+}
 /* Responsive styles */
 @media (max-width: 768px) {
 	.listas {

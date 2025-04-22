@@ -5,7 +5,7 @@ import { ClientesService } from '../../services/clientes.service';
 import type { Cliente } from '../../interfaces/cliente';
 import type { Vehiculo } from '../../interfaces/vehiculo';
 import { VehiculosService } from '../../services/vehiculos.service';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, TitleCasePipe } from '@angular/common';
 import { NotasService } from '../../services/notas.service';
 import type { Nota } from '../../interfaces/nota';
 import { UsuariosService } from '../../services/usuarios.service';
@@ -15,7 +15,7 @@ import type { Usuario } from '../../interfaces/usuario';
 
 @Component({
   selector: 'app-reparacion-admin',
-  imports: [CurrencyPipe, DatePipe],
+  imports: [CurrencyPipe, DatePipe, TitleCasePipe],
   templateUrl: './reparacion-admin.component.html',
   styleUrl: './reparacion-admin.component.css'
 })

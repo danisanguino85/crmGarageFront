@@ -5,6 +5,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { RegistroLaboralService } from '../../services/registro-laboral.service';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 import type { Usuario } from '../../interfaces/usuario';
+import { RouterLink } from '@angular/router';
 
 type Registros = {
   entrada?: string,
@@ -14,7 +15,7 @@ type Registros = {
 
 @Component({
   selector: 'app-home-admin',
-  imports: [DatePipe],
+  imports: [DatePipe, RouterLink],
   templateUrl: './home-admin.component.html',
   styleUrl: './home-admin.component.css'
 })

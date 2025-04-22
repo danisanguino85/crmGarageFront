@@ -1,9 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { ListaReparacionesComponent } from "../lista-reparaciones/lista-reparaciones.component";
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import type { Reparacion } from '../../interfaces/reparacion';
 import { ReparacionesService } from '../../services/reparaciones.service';
-import { environment } from '../../../environments/enviroment';
 import { UsuariosService } from '../../services/usuarios.service';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import type { Usuario } from '../../interfaces/usuario';
@@ -23,7 +21,7 @@ export class DashboardMecanicoComponent {
   reparacionesServices = inject(ReparacionesService);
   usuarioServices = inject(UsuariosService);
   reparacionSeleccionada!: Reparacion
-  mecanico!: Usuario | null;
+  mecanico: Usuario | undefined
   arrMecanicoReparaciones: Reparacion[] = [];
   router = inject(Router)
 
@@ -39,7 +37,6 @@ export class DashboardMecanicoComponent {
       const data: any = await this.usuarioServices.tokenDecodificado()
       const mecanico = await this.usuarioServices.getById(data?.id);
       this.mecanico = mecanico;
-
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
 

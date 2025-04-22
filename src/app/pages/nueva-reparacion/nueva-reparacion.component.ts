@@ -11,10 +11,11 @@ import { MailingService } from '../../services/mailing.service';
 import { ClientesService } from '../../services/clientes.service';
 import type { Cliente } from '../../interfaces/cliente';
 import type { Reparacion } from '../../interfaces/reparacion';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-nueva-reparacion',
-  imports: [ReactiveFormsModule, NgxSonnerToaster],
+  imports: [ReactiveFormsModule, NgxSonnerToaster, TitleCasePipe],
   templateUrl: './nueva-reparacion.component.html',
   styleUrl: './nueva-reparacion.component.css'
 })
@@ -26,6 +27,7 @@ export class NuevaReparacionComponent {
   mecanicos: Usuario[] = []
   vehiculos: Vehiculo[] = []
   vehiculoId: number | undefined;
+  vehiculo!: Vehiculo
 
   route = inject(ActivatedRoute)
   clienteId!: number
@@ -69,7 +71,7 @@ export class NuevaReparacionComponent {
     try {
       if (this.formRegistro.valid) {
         this.nuevaReparacion = await this.reparacionesServices.register(this.formRegistro.value);
-
+        this.getVehiculo()
         this.formRegistro.reset()
         toast.success('Confirmación de ingreso de su vehículo en Taller Macarroni');
         await this.mailingService.sendMail({
@@ -83,9 +85,8 @@ Te confirmamos que hemos recibido tu vehículo en día y hora ${this.fecha} para
 
 Datos del ingreso:
 
-    Vehículo:  
+    Vehículo: ${this.vehiculo.marca} ${this.vehiculo.modelo} con matrícula ${this.vehiculo.matricula}
 
-    Motivo de la visita: [Descripción breve del problema o servicio solicitado]
 
     Número de nota de taller: ${this.nuevaReparacion.id}
 
@@ -139,6 +140,15 @@ Equipo de Taller Macarroni
       this.clienteId = params.clienteId
       this.cliente = await this.clientesService.getById(this.clienteId)
     });
+  }
+
+  async getVehiculo() {
+    this.vehiculo = await this.vehiculosService.getVehiculoByReparacion(
+      {
+        id: this.nuevaReparacion.id
+      }
+    )
+    console.log(this.vehiculo)
   }
 
   checkControl(controlName: string, errorName: string): boolean {

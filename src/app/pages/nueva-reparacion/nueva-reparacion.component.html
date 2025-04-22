@@ -39,7 +39,7 @@
         <option value="">Mecánicos</option>
         @for(mecanico of mecanicos;track $index){
         <option value="{{ mecanico.id }}">
-          {{ mecanico.nombre }} {{ mecanico.apellidos }}
+          {{ mecanico.nombre | titlecase }} {{ mecanico.apellidos | titlecase }}
         </option>
         }
       </select>

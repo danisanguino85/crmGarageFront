@@ -1,6 +1,7 @@
 .general {
 	height: 76vh;
 	align-content: center;
+	min-height: calc(100vh - 142px);
 }
 .container {
 	max-width: 460px;

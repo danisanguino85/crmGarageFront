@@ -1,81 +1,82 @@
 .wrapper {
 	background-color: lightgray;
-  }
-  
-  .titulo-mecanico {
+	min-height: calc(100vh - 142px);
+}
+
+.titulo-mecanico {
 	text-align: center;
 	color: #2c3e50;
 	margin-bottom: 20px;
-  }
-  
-  .general-container {
+}
+
+.general-container {
 	display: flex;
 	gap: 20px;
 	flex-wrap: wrap;
-  }
-  
-  /* Card mecánico (sidebar) */
-  .card-mecanico {
+}
+
+/* Card mecánico (sidebar) */
+.card-mecanico {
 	flex: 1 1 250px;
 	max-width: 300px;
 	background-color: #f4f4f4;
 	padding: 20px;
 	border-radius: 12px;
-	box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  }
-  
-  .card-mecanico figure {
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-mecanico figure {
 	margin-bottom: 15px;
 	text-align: center;
-  }
-  
-  .card-mecanico img {
+}
+
+.card-mecanico img {
 	width: 120px; /* Tamaño fijo */
 	height: 120px;
 	border-radius: 50%;
 	object-fit: cover;
 	display: block;
 	margin: 0 auto;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-	border: 3px solid #28a745; 
-  }
-  
-  .card-mecanico p {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border: 3px solid #28a745;
+}
+
+.card-mecanico p {
 	font-size: 0.95rem;
 	margin: 6px 0;
-  }
-  
-  /* Card reparaciones */
-  .card-reparaciones {
+}
+
+/* Card reparaciones */
+.card-reparaciones {
 	flex: 3 1 500px;
 	background-color: #ffffff;
 	padding: 20px;
 	border-radius: 12px;
 	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  
+
 	/* Altura máxima con scroll */
 	max-height: 500px;
 	overflow-y: auto;
-  }
-  
-  .item-reparacion {
+}
+
+.item-reparacion {
 	background-color: #f9f9f9;
 	border: 1px solid #e2e2e2;
 	padding: 15px;
 	border-radius: 8px;
 	margin-bottom: 15px;
-  }
-  
-  .item-reparacion p {
+}
+
+.item-reparacion p {
 	margin: 5px 0;
-  }
-  
-  .item-reparacion span {
+}
+
+.item-reparacion span {
 	font-weight: bold;
 	color: #007bff;
-  }
-  
-  .item-reparacion button {
+}
+
+.item-reparacion button {
 	margin-top: 10px;
 	padding: 8px 12px;
 	background-color: #28a745;
@@ -84,26 +85,22 @@
 	border-radius: 6px;
 	cursor: pointer;
 	transition: background-color 0.2s;
-  }
-  
-  .item-reparacion button:hover {
+}
+
+.item-reparacion button:hover {
 	background-color: #218838;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
+}
+
+/* Responsive */
+@media (max-width: 768px) {
 	.general-container {
-	  flex-direction: column;
+		flex-direction: column;
 	}
-  
+
 	.card-mecanico,
 	.card-reparaciones {
-	  max-width: 100%;
+		max-width: 100%;
 	}
-  }
+}
 
-
-  /*  */
-
-
-  
+/*  */
