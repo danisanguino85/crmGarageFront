@@ -74,7 +74,6 @@ export class DetalleClienteComponent {
   ngAfterViewChecked() {
     this.comunicacionService.evento$.subscribe(valor => {
       if (valor === true) {
-        /* window.location.reload */
         this.loadVehiculos()
       }
     });

@@ -35,7 +35,7 @@ export class NavBarComponent {
 
   /* esta carga el navBar cuando hacemos login y log out, para que aparezca/ o se quite el nombre del usuario logeado */
   ngDoCheck() {
-    this.loadUsuario()
+    // this.loadUsuario()
   }
 
 

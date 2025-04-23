@@ -13,7 +13,8 @@
 	font-weight: bolder;
 }
 .notas {
-	overflow: hidden;
+	height: 50px;
+	overflow-x: hidden;
 }
 .nota {
 	width: 100%;

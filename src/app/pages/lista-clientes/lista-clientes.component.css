@@ -12,11 +12,15 @@ header {
 		margin-right: 10px;
 	}
 }
+th {
+	background-color: var(--primary-color);
+	color: white;
+}
 table {
 	text-align: center;
 	border: 1px solid black;
-
 	width: 100%;
+
 	th,
 	td {
 		border: 1px solid black;

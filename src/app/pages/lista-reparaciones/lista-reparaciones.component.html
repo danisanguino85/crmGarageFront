@@ -1,5 +1,5 @@
 <header>
-    <div>
+    <div class="selectResponsive">
         <h2>NOTAS DE TALLER</h2>
         <select (change)="filtrarPorEstado($event)">
             <option value="">Todas las Reparaciones</option>
@@ -21,6 +21,7 @@
         <th>Vehículo</th>
         <th>Mecánico</th>
         <th>Estado</th>
+        <th></th>
         @for(reparacion of reparaciones;track $index){
         <tr>
             <td class="entrada">{{reparacion.fecha_ingreso | date: 'dd/MM/yyyy'}}</td>

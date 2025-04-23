@@ -17,6 +17,10 @@ header {
 .capitalize {
 	text-transform: capitalize;
 }
+th {
+	background-color: var(--primary-color);
+	color: white;
+}
 table {
 	text-align: center;
 	border: 1px solid black;

@@ -5,14 +5,17 @@
     @if(usuario?.rol==='admin'){
     <h1 [routerLink]="['/admin']">CRM-GARAGE</h1>
     }
+    @if(!usuario){
+    <h1>CRM-GARAGE</h1>
+    }
     <div>
         <div class="derecha">
-            @if(usuario){
+            @if(usuariosService.isLogged()){
             <div class="usuario">
                 <i class="fa-solid fa-user"></i>
                 <p>{{usuario?.nombre}} {{usuario?.apellidos}}</p>
             </div>
-            }
+
             <div class="logout">
                 <div class="botonesRegistro">
                     @if(trabajando===false){
@@ -23,7 +26,7 @@
                     }
                 </div>
             </div>
-
+            }
         </div>
     </div>
 

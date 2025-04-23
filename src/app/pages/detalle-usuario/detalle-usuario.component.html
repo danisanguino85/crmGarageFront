@@ -1,7 +1,7 @@
 @if(usuario){
 <ul class="list-group">
     <li class="nombre list-group-item list-group-item-action"><img class="imagen-empleado"
-            [src]="(usuario.foto_perfil!=='') ? 'http://localhost:3000/images/' + usuario.foto_perfil : '/images/image.png'"
+            [src]="(usuario.foto_perfil!=='') ? 'http://localhost:3000/images/' + usuario.foto_perfil : '/images/avatarcrm.avif'"
             alt="">
         <button class="actualizar-imagen" (click)="actualizarFoto($event)">Actualizar foto</button>
     </li>
@@ -29,9 +29,6 @@
     </li>
     <li class="list-group-item list-group-item-action">
         <p><strong>Rol: </strong>{{usuario.rol}}</p>
-    </li>
-    <li class="list-group-item list-group-item-action">
-        <p><strong>Estado: </strong>{{usuario.activo}}</p>
     </li>
     <li class="list-group-item list-group-item-action">
         <strong>Jornada: </strong>{{usuario.jornada}}

@@ -44,7 +44,6 @@ export class HomeAdminComponent {
     try {
       if (data) {
         this.usuario = await this.usuariosService.getById(data.id)
-        console.log(this.usuario);
         const entradas = await this.registroService.getLatestEntradas(this.usuario.id)
         const salidas = await this.registroService.getLatestSalidas(this.usuario.id)
 

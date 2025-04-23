@@ -22,15 +22,18 @@ export class ActualizarComponent {
     foto_perfil: new FormControl('')
   })
 
-  async onSubmit() {
+  onSubmit() {
     const fd = new FormData();
     fd.append('imagen', this.files[0]);
+    this.usuarioService.updateFoto(fd, this.usuarioId)
+      .then(result => {
+        this.router.navigate(['/admin', 'usuario', this.usuarioId]);
+      })
+      .catch(err => {
+        console.log(err)
+      })
 
 
-
-    this.usuarioService.updateFoto(fd, this.usuarioId).then(result => {
-      this.router.navigate(['/admin/usuario/:usuarioId']);
-    })
   }
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>

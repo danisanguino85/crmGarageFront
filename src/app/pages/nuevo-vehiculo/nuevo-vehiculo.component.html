@@ -11,7 +11,7 @@
       @if (checkControl('matricula', 'required')) {
       <p class="text-danger">Matricula obligatoria</p>
       } @if (checkControl('matricula', 'pattern')) {
-      <p class="text-danger">El patron de email esta mal</p>
+      <p class="text-danger">El patron de la matrícula esta mal</p>
       }
     </div>
 
@@ -54,23 +54,11 @@
 
     <div class="mb-3">
       <label class="form-label">Fecha matriculación</label>
-      <input
-        class="form-control"
-        type="date"
-        formControlName="fecha_matriculacion"
-      />
+      <input class="form-control" type="date" formControlName="fecha_matriculacion" />
       @if (checkControl('Fecha_matriculacion', 'required')) {
       <p class="text-danger">fecha de matriculacion obligatoria</p>
       }
     </div>
-    <input
-      type="submit"
-      value="Registrar"
-      class="btn"
-      
-      [disabled]="!nuevoVehiculoForm.valid"
-    />
+    <input type="submit" value="Registrar" class="btn" [disabled]="!nuevoVehiculoForm.valid" />
   </form>
 </div>
-<ngx-sonner-toaster richColors position="bottom-center" />
-<!-- (click)="actualizarVehiculosAsociados()" -->

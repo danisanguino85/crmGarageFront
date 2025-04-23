@@ -18,7 +18,7 @@ export class NuevoUsuarioComponent {
   route = inject(ActivatedRoute);
   especialidades: string[] = ESPECIALIDADES;
   modo: 'registrar' | 'actualizar' = 'registrar';
-
+  activatedRoute = inject(ActivatedRoute)
 
   formRegistro: FormGroup = new FormGroup({
     id: new FormControl(null),
@@ -121,17 +121,25 @@ export class NuevoUsuarioComponent {
         toast.success('Usuario registrado correctamente');
       }
 
+      // // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      // // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      // this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+
+      //   console.log(params.id)
+
+
+      // });
+
+
       this.formRegistro.reset();
       this.modo = 'registrar';
 
       setTimeout(() => {
         const rol = usuarioData.rol;
-        if (rol === 'admin') {
-          this.router.navigateByUrl('/admin');
-        } else if (rol === 'mecanico') {
-          this.router.navigateByUrl('/taller');
-        }
+        // this.router.navigate([`/usuario/${usuarioId}`]);
       }, 1500);
+
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.error.message);
     }

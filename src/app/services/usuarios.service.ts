@@ -108,5 +108,11 @@ export class UsuariosService {
 
     )
   }
+
+  isLogged() {
+    const token = localStorage.getItem(environment.tokenName);
+    if (!token) return false;
+    return true
+  }
 }
 

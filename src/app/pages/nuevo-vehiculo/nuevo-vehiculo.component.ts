@@ -47,8 +47,9 @@ export class NuevoVehiculoComponent {
   })
 
   async onSubmit() {
+
     try {
-      
+
       if (this.nuevoVehiculoForm.valid) {
         // biome-ignore lint/style/noNonNullAssertion: <explanation>
         // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -56,11 +57,13 @@ export class NuevoVehiculoComponent {
           this.clienteId = params.clienteId;
         })
 
-          await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
-          toast.success('Vehiculo registrado correctamente');
-  
+        await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
+        toast.success('Vehiculo registrado correctamente');
+
         this.nuevoVehiculoForm.reset()
-      } 
+      }
+      window.location.reload;
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.error.message);
     }

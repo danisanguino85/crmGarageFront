@@ -1,113 +1,74 @@
 <div class="container">
   <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
     <div class="header">
-      <h1>
-        {{ modo === "registrar" ? "Registrar Usuario" : "Actualizar Usuario" }}
-      </h1>
+      <h1>{{ modo === 'registrar' ? 'Registrar Usuario' : 'Actualizar Usuario' }}</h1>
       <p class="subtitle">
-        {{
-          modo === "registrar"
-            ? "Completa los datos para registrar un nuevo usuario"
-            : "Edita los datos del usuario"
+        {{ modo === 'registrar' ? 'Completa los datos para registrar un nuevo usuario' : 'Edita los datos del usuario'
         }}
       </p>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" formControlName="nombre" />
+      <input type="text" class="form-control" formControlName="nombre">
       @if (checkControl('nombre', 'required')) {
       <p class="text-danger">Nombre obligatorio</p>
-      } @if (checkControl('nombre', 'minlength')) {
-      <p class="text-danger">El nombre debe tener 3 caracteres como minimo</p>
-      } @if (checkControl('nombre', 'maxlength')) {
-      <p class="text-danger">El nombre no puede ser mas de 50 caracteres</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Apellidos</label>
-      <input type="text" class="form-control" formControlName="apellidos" />
+      <input type="text" class="form-control" formControlName="apellidos">
       @if (checkControl('apellidos', 'required')) {
       <p class="text-danger">Apellidos obligatorio</p>
-      } @if (checkControl('apellidos', 'minlength')) {
-      <p class="text-danger">El apellido debe tener 2 caracteres como minimo</p>
-      } @if (checkControl('apellidos', 'maxlength')) {
-      <p class="text-danger">El apellido no puede ser mas de 50 caracteres</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">DNI</label>
-      <input type="text" class="form-control" formControlName="dni" />
+      <input type="text" class="form-control" formControlName="dni">
       @if (checkControl('dni', 'required')) {
       <p class="text-danger">DNI obligatorio</p>
-      } @if (checkControl('dni', 'pattern')) {
-      <p class="text-danger">EL patron del DNI no es correcto</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Teléfono</label>
-      <input type="text" class="form-control" formControlName="telefono" />
+      <input type="text" class="form-control" formControlName="telefono">
       @if (checkControl('telefono', 'required')) {
       <p class="text-danger">Teléfono obligatorio</p>
-      } @if (checkControl('telefono', 'pattern')) {
-      <p class="text-danger">EL patron del telefono no es correcto</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Email</label>
-      <input type="email" class="form-control" formControlName="email" />
+      <input type="email" class="form-control" formControlName="email">
       @if (checkControl('email', 'required')) {
       <p class="text-danger">Email obligatorio</p>
-      } @if (checkControl('email', 'pattern')) {
-      <p class="text-danger">EL patron del email no es correcto</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Fecha de Nacimiento</label>
-      <input
-        type="date"
-        class="form-control"
-        formControlName="fecha_nacimiento"
-      />
+      <input type="date" class="form-control" formControlName="fecha_nacimiento">
       @if (checkControl('fecha de nacimiento', 'required')) {
       <p class="text-danger">Fecha de nacimiento obligatoria</p>
-      } @if (checkControl('fecha de nacimiento', 'pattern')) {
-      <p class="text-danger">
-        EL patron del fecha de nacimiento no es correcto
-      </p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Dirección</label>
-      <input type="text" class="form-control" formControlName="direccion" />
+      <input type="text" class="form-control" formControlName="direccion">
       @if (checkControl('direccion', 'required')) {
       <p class="text-danger">Dirección obligatoria</p>
-      } @if (checkControl('direccion', 'minlength')) {
-      <p class="text-danger">
-        El direccion debe tener 5 caracteres como minimo
-      </p>
-      } @if (checkControl('direccion', 'maxlength')) {
-      <p class="text-danger">El direccion no puede ser mas de 100 caracteres</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Número SS</label>
-      <input type="text" class="form-control" formControlName="numero_ss" />
+      <input type="text" class="form-control" formControlName="numero_ss">
       @if (checkControl('numeross', 'required')) {
       <p class="text-danger">Número SS obligatorio</p>
-      } @if (checkControl('numero_ss', 'minlength')) {
-      <p class="text-danger">
-        El numero_ss debe tener 12 caracteres como minimo
-      </p>
-      } @if (checkControl('numero_ss', 'maxlength')) {
-      <p class="text-danger">El numero_ss no puede ser mas de 12 caracteres</p>
       }
     </div>
 
@@ -122,9 +83,10 @@
       }
     </div>
 
+
     <div class="mb-3">
       <label class="form-label">Contraseña</label>
-      <input type="password" class="form-control" formControlName="password" />
+      <input type="password" class="form-control" formControlName="password">
       @if (checkControl('password', 'required')) {
       <p class="text-danger">Contraseña obligatoria</p>
       }
@@ -145,7 +107,7 @@
       <label class="form-label">Especialidad</label>
       <select class="form-control" formControlName="especialidad">
         @for (especialidad of especialidades; track $index) {
-        <option value="{{ especialidad }}">{{ especialidad }}</option>
+        <option value="{{especialidad}}">{{especialidad}}</option>
         }
       </select>
       @if (checkControl('especialidad', 'required')) {
@@ -153,10 +115,8 @@
       }
     </div>
 
-    <input type="submit" value="Registrar" class="btn"/>
+    <input type="submit" value="Registrar" class="btn">
   </form>
 
-  <div class="footer-note">
-    ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
-  </div>
+
 </div>

@@ -66,6 +66,7 @@ button {
 	margin: 100px auto;
 	i {
 		font-size: 300%;
+		margin-bottom: 20px;
 	}
 }
 .registro {
