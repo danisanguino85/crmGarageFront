@@ -133,6 +133,7 @@ export class NuevoUsuarioComponent {
         }
       }, 1500);
 
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       console.log(error)
       toast.error(error.error.message);
