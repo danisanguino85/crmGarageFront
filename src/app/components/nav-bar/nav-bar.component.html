@@ -1,12 +1,16 @@
 <header class="wrapper">
+    @if(usuario?.rol==='mecanico'){
     <h1 [routerLink]="['/main']">CRM-GARAGE</h1>
-
+    }
+    @if(usuario?.rol==='admin'){
+    <h1 [routerLink]="['/admin']">CRM-GARAGE</h1>
+    }
     <div>
         <div class="derecha">
             @if(usuario){
             <div class="usuario">
                 <i class="fa-solid fa-user"></i>
-                <p>{{usuario.nombre}} {{usuario.apellidos}}</p>
+                <p>{{usuario?.nombre}} {{usuario?.apellidos}}</p>
             </div>
             }
             <div class="logout">

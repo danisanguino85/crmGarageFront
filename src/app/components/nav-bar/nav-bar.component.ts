@@ -14,7 +14,7 @@ import { ComunicationServiceService } from '../../services/comunication-service.
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
-  usuario!: Usuario | undefined
+  usuario!: Usuario | undefined;
   router = inject(Router)
   usuariosService = inject(UsuariosService)
   registroService = inject(RegistroLaboralService)
@@ -30,8 +30,6 @@ export class NavBarComponent {
 
     if (data) {
       this.usuario = await this.usuariosService.getById(data.id)
-    } else {
-      this.usuario = undefined;
     }
   }
 

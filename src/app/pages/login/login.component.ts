@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
-import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { toast } from 'ngx-sonner';
 import { environment } from '../../../environments/enviroment';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, NgxSonnerToaster],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -30,20 +30,24 @@ export class LoginComponent {
     this.horaRegistro()
     try {
       const response = await this.usuarioService.login(this.formLogin.value)
-      toast.success('Usuario logado correctamente')
+
 
       localStorage.setItem(environment.tokenName, response.token)
 
       const isAdmin = this.usuarioService.isAdmin()
 
 
+      toast.success('Usuario logado correctamente')
       setTimeout(() => {
         if (isAdmin) {
-          this.router.navigateByUrl('/admin');
+          this.router.navigate(['/admin']);
         } else {
-          this.router.navigateByUrl('/taller');
+          this.router.navigate(['/taller']);
         }
-      }, 500)
+      }, 1000)
+
+
+
     } catch (error) {
 
       toast.error('Error al iniciar sesión',

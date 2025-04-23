@@ -24,7 +24,7 @@ export class HomeAdminComponent {
   registroService = inject(RegistroLaboralService)
   entradas: Registros[] = []
   salidas: Registros[] = []
-  usuario!: Usuario
+  usuario!: Usuario | undefined;
   horaRegistro = ''
   @Input() usuarioId? = 0
   admin!: boolean
@@ -44,24 +44,27 @@ export class HomeAdminComponent {
     try {
       if (data) {
         this.usuario = await this.usuariosService.getById(data.id)
-      }
-      const entradas = await this.registroService.getLatestEntradas(this.usuario.id)
-      const salidas = await this.registroService.getLatestSalidas(this.usuario.id)
+        console.log(this.usuario);
+        const entradas = await this.registroService.getLatestEntradas(this.usuario.id)
+        const salidas = await this.registroService.getLatestSalidas(this.usuario.id)
 
-      entradas.map((entrada: Registros) => {
-        const fechaEntrada = dayjs(entrada.entrada).format('YYYY-MM-DD HH:mm:ss')
-        this.entradas.push({
-          entrada: fechaEntrada,
-          usuarios_id: entrada.usuarios_id
+
+
+        entradas.map((entrada: Registros) => {
+          const fechaEntrada = dayjs(entrada.entrada).format('YYYY-MM-DD HH:mm:ss')
+          this.entradas.push({
+            entrada: fechaEntrada,
+            usuarios_id: entrada.usuarios_id
+          })
         })
-      })
-      salidas.map((salida: Registros) => {
-        const fechaSalida = dayjs(salida.salida).format('YYYY-MM-DD HH:mm:ss')
-        this.salidas.push({
-          salida: fechaSalida,
-          usuarios_id: salida.usuarios_id
+        salidas.map((salida: Registros) => {
+          const fechaSalida = dayjs(salida.salida).format('YYYY-MM-DD HH:mm:ss')
+          this.salidas.push({
+            salida: fechaSalida,
+            usuarios_id: salida.usuarios_id
+          })
         })
-      })
+      }
 
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {

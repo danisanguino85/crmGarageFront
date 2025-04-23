@@ -1,21 +1,39 @@
 .main.wrapper {
 	font-family: Arial, sans-serif;
-	height: calc(100vh - 142px);
+	min-height: calc(100vh - 142px);
 	align-content: center;
+	display: flex;
+	flex-wrap: wrap;
 }
-
+.perfil {
+	width: 30%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	ul {
+		text-align: left;
+		li {
+			margin-bottom: 10px;
+		}
+	}
+}
+.nombre {
+	background-color: var(--primary-color);
+	color: white;
+	font-weight: bolder;
+}
 .home {
 	max-width: 800px;
-	width: 100%;
+	width: 70%;
 	background-color: #f9f9f9;
 	border-radius: 8px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	margin: 0 auto;
 	text-align: center;
 }
 
 .home p {
-	font-size: 1.2rem;
 	margin-bottom: 20px;
 	color: #333;
 }
@@ -66,6 +84,15 @@ button {
 	border-radius: 5px;
 	margin: 20px;
 }
+
+.imagen-empleado {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid black;
+	margin-right: 20px;
+}
 /* Responsive styles */
 @media (max-width: 768px) {
 	.listas {
@@ -75,6 +102,14 @@ button {
 
 	.listas div {
 		text-align: center;
+	}
+	.main.wrapper {
+		flex-direction: column;
+	}
+	.perfil,
+	.home {
+		width: 100%;
+		margin: 30px;
 	}
 }
 
