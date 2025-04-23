@@ -21,6 +21,7 @@ export class DetalleUsuarioComponent {
   async ngOnInit() {
     try {
       await this.getUsuario();
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
@@ -31,6 +32,7 @@ export class DetalleUsuarioComponent {
       this.usuario = await this.usuariosService.getById(this.usuarioId);
       // Establecer el usuario en el servicio
       this.usuariosService.setUsuario(this.usuario);
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
 
       toast.error(error.message)
