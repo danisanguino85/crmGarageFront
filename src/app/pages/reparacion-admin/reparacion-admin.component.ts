@@ -10,12 +10,13 @@ import { NotasService } from '../../services/notas.service';
 import type { Nota } from '../../interfaces/nota';
 import { UsuariosService } from '../../services/usuarios.service';
 import type { Usuario } from '../../interfaces/usuario';
+import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 
 
 @Component({
   selector: 'app-reparacion-admin',
-  imports: [CurrencyPipe, DatePipe, TitleCasePipe],
+  imports: [CurrencyPipe, DatePipe, TitleCasePipe, NgxSonnerToaster],
   templateUrl: './reparacion-admin.component.html',
   styleUrl: './reparacion-admin.component.css'
 })
@@ -42,7 +43,8 @@ export class ReparacionAdminComponent {
       this.loadVehiculo()
       this.loadNotas()
       this.loadMecanico()
-    } catch (error) {
+    } catch (error: any) {
+      toast.error(error.error.message);
     }
   }
 
@@ -50,16 +52,16 @@ export class ReparacionAdminComponent {
     try {
       this.reparacion = await this.reparacionesService.getReparacionById(this.reparacionId)
 
-    } catch (error) {
-
+    } catch (error: any) {
+      toast.error(error.error.message);
     }
 
   }
   async getCliente() {
     try {
       this.cliente = await this.clientesService.getClienteByReparacion(this.reparacionId)
-    } catch (error) {
-
+    } catch (error: any) {
+      toast.error(error.error.message);
     }
 
   }
@@ -71,25 +73,32 @@ export class ReparacionAdminComponent {
           id: this.reparacionId
         }
       )
-    } catch (error) {
-
+    } catch (error: any) {
+      toast.error(error.error.message);
     }
   }
 
   async loadNotas() {
     try {
       this.notas = await this.notasService.getReparacionAllNotas(this.reparacionId)
-      console.log(this.notas)
-    } catch (error) {
-
+    } catch (error: any) {
+      toast.error(error.error.message);
     }
   }
-  async loadMecanico() {
-    this.mecanico = await this.usuariosService.getMecanicoByReparacion(this.reparacionId)
+  async loadMecanico() {try {
+    
+      this.mecanico = await this.usuariosService.getMecanicoByReparacion(this.reparacionId)
+  } catch (error: any) {
+    toast.error(error.error.message);
+  }
 
   }
   async loadNota(notaId: number) {
-    this.nota = await this.notasService.getNotaById(notaId)
+    try {
+      this.nota = await this.notasService.getNotaById(notaId)
+    } catch (error: any) {
+      toast.error(error.error.message);
+    }
   }
 
 

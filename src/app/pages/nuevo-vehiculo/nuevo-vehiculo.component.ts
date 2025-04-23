@@ -47,25 +47,22 @@ export class NuevoVehiculoComponent {
   })
 
   async onSubmit() {
-    if (this.nuevoVehiculoForm.valid) {
-      // biome-ignore lint/style/noNonNullAssertion: <explanation>
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-        this.clienteId = params.clienteId;
-      })
+    try {
+      
+      if (this.nuevoVehiculoForm.valid) {
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+          this.clienteId = params.clienteId;
+        })
 
-      try {
-        await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
-        toast.success('Vehiculo registrado correctamente');
-
-      } catch (error) {
-        console.error('Error al registrar el vehículo:', error);
-        toast.error('Hubo un error al registrar el vehiculo');
-
-      };
-      this.nuevoVehiculoForm.reset()
-    } else {
-      toast.error('Hubo un error al registrar el vehiculo');
+          await this.vehiculosService.registerVehiculo(this.nuevoVehiculoForm.value, this.clienteId)
+          toast.success('Vehiculo registrado correctamente');
+  
+        this.nuevoVehiculoForm.reset()
+      } 
+    } catch (error: any) {
+      toast.error(error.error.message);
     }
   }
 

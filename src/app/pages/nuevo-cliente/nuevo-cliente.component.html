@@ -1,62 +1,89 @@
 <div class="container">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="header">
-      <h1>{{ modo === 'registrar' ? 'Nuevo Cliente' : 'Actualizar Cliente' }}</h1>
+      <h1>
+        {{ modo === "registrar" ? "Nuevo Cliente" : "Actualizar Cliente" }}
+      </h1>
       <p class="subtitle">
-        {{ modo === 'registrar' ? 'Rellena los datos para registrar un nuevo cliente' : 'Modifica los datos del cliente' }}
+        {{
+          modo === "registrar"
+            ? "Rellena los datos para registrar un nuevo cliente"
+            : "Modifica los datos del cliente"
+        }}
       </p>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Nombre</label>
-      <input class="form-control" type="text" formControlName="nombre">
-      @if(checkError('nombre', 'required') || checkError('nombre', 'minlength')){
+      <input class="form-control" type="text" formControlName="nombre" />
+      @if(checkError('nombre', 'required')){
       <p class="text-danger">Debes incluir un nombre.</p>
+      } @if(checkError('nombre', 'minlength')){
+      <p class="text-danger">Debe tener como minimo 3 caracteres</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Apellidos</label>
-      <input class="form-control" type="text" formControlName="apellidos">
-      @if(checkError('apellidos', 'required') || checkError('apellidos', 'minlength')){
+      <input class="form-control" type="text" formControlName="apellidos" />
+      @if(checkError('apellidos', 'required')){
       <p class="text-danger">Debes incluir al menos un apellido.</p>
+      } @if(checkError('apellidos', 'minlength')){
+      <p class="text-danger">Debe tener como minimo 3 caracteres</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">DNI</label>
-      <input class="form-control" type="text" formControlName="dni">
-      @if(checkError('dni', 'required') || checkError('dni', 'minlength')){
+      <input class="form-control" type="text" formControlName="dni" />
+      @if(checkError('dni', 'required')){
       <p class="text-danger">El DNI es obligatorio.</p>
+      } @if(checkError('dni', 'minlength')){
+      <p class="text-danger">Debe tener como minimo 9 caracteres</p>
+      } @if(checkError('dni', 'maxlength')){
+      <p class="text-danger">Debe tener como maximo 9 caracteres</p>
+      } @if(checkError('dni', 'pattern')){
+      <p class="text-danger">El patron del DNI no es correcto.</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Teléfono</label>
-      <input class="form-control" type="text" formControlName="telefono">
-      @if(checkError('telefono', 'required') || checkError('telefono', 'minlength')){
+      <input class="form-control" type="text" formControlName="telefono" />
+      @if(checkError('telefono', 'required')){
       <p class="text-danger">Debes incluir un teléfono válido.</p>
+      } @if(checkError('telefono', 'minlength')){
+      <p class="text-danger">Debe tener como minimo 9 caracteres</p>
+      } @if(checkError('telefono', 'maxlength')){
+      <p class="text-danger">Debe tener como maximo 12 caracteres</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Email</label>
-      <input class="form-control" type="text" formControlName="email">
-      @if(checkError('email', 'required') || checkError('email', 'minlength')){
+      <input class="form-control" type="text" formControlName="email" />
+      @if(checkError('email', 'required')){
       <p class="text-danger">Debes incluir un email válido.</p>
+      } @if(checkError('email', 'pattern')){
+      <p class="text-danger">El patron del email es incorrecto.</p>
       }
     </div>
 
     <div class="mb-3">
       <label class="form-label">Dirección</label>
-      <input class="form-control" type="text" formControlName="direccion">
-      @if(checkError('direccion', 'required') || checkError('direccion', 'minlength')){
+      <input class="form-control" type="text" formControlName="direccion" />
+      @if(checkError('direccion', 'required') || checkError('direccion',
+      'minlength')){
       <p class="text-danger">Debes incluir una dirección.</p>
       }
     </div>
 
-    <input type="submit" value="Registrar" class="btn">
-
+    <input
+      type="submit"
+      value="Registrar"
+      class="btn"
+      [disabled]="!this.registerForm.valid"
+    />
   </form>
 </div>
 

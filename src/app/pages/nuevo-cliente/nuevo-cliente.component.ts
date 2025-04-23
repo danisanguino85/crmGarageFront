@@ -31,12 +31,13 @@ export class NuevoClienteComponent {
     ]),
     apellidos: new FormControl('', [
       Validators.required,
-
+      Validators.minLength(3)
     ]),
     dni: new FormControl('', [
       Validators.required,
       Validators.minLength(9),
-      Validators.maxLength(9)
+      Validators.maxLength(9),
+      Validators.pattern(/^\d{8}[A-HJ-NP-TV-Z]$/i)
 
     ]),
     telefono: new FormControl('', [
@@ -88,8 +89,7 @@ export class NuevoClienteComponent {
 
       }
     } catch (error) {
-      console.error('Error al cargar los datos del cliente', error);
-      toast.error('Error al cargar los datos del cliente');
+      console.error(error);
     }
   }
 

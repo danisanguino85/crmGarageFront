@@ -67,7 +67,7 @@ export class NuevoUsuarioComponent {
       Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/)
     ]),
     jornada: new FormControl('', [
-      Validators.required,
+      Validators.required
     ]),
 
     especialidad: new FormControl('', [
@@ -132,9 +132,7 @@ export class NuevoUsuarioComponent {
           this.router.navigateByUrl('/taller');
         }
       }, 1500);
-
     } catch (error: any) {
-      console.log(error)
       toast.error(error.error.message);
     }
   }
