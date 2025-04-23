@@ -61,9 +61,7 @@ export class NuevoUsuarioComponent {
     rol: new FormControl('', [
       Validators.required,
     ]),
-    activo: new FormControl('', [
-      Validators.required
-    ]),
+
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/)
@@ -71,9 +69,7 @@ export class NuevoUsuarioComponent {
     jornada: new FormControl('', [
       Validators.required,
     ]),
-    foto_perfil: new FormControl('', [
-      Validators.pattern(/https?:\/\/.+/)
-    ]),
+
     especialidad: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
@@ -97,10 +93,8 @@ export class NuevoUsuarioComponent {
         direccion: usuario.direccion,
         numero_ss: usuario.numero_ss,
         rol: usuario.rol,
-        activo: usuario.activo,
         password: usuario.password,
         jornada: usuario.jornada,
-        foto_perfil: usuario.foto_perfil,
         especialidad: usuario.especialidad
       });
     } else {
@@ -139,8 +133,9 @@ export class NuevoUsuarioComponent {
         }
       }, 1500);
 
-    } catch (error) {
-      toast.error('Hubo un error al guardar el usuario');
+    } catch (error: any) {
+      console.log(error)
+      toast.error(error.error.message);
     }
   }
 

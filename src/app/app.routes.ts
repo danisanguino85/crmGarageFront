@@ -26,14 +26,6 @@ export const routes: Routes = [
 
     { path: '', pathMatch: 'full', redirectTo: '/inicio' },
     { path: 'inicio', component: LoginComponent },
-    /*  { path: 'registro/usuario', component: NuevoUsuarioComponent },
-     { path: 'login', component: LoginComponent },
-     { path: 'cliente/:clienteId', component: DetalleClienteComponent },
-     { path: 'clientes', component: ListaClientesComponent }, */
-
-
-
-    //rutas hija del admin
     {
         path: 'admin', component: DashboardAdminComponent, canActivate: [authtGuard, adminGuard], children: [
             { path: '', pathMatch: 'full', component: HomeAdminComponent },
@@ -62,7 +54,6 @@ export const routes: Routes = [
         ]
     },
     { path: 'main', component: HomeAdminComponent, canActivate: [authtGuard] },
-    //rutas del mecanico
     { path: 'taller', component: DashboardMecanicoComponent, canActivate: [authtGuard, tallerguardGuard] },
     {
         path: 'reparacion/:reparacionId', component: DetalleReparacionComponent,
@@ -74,44 +65,14 @@ export const routes: Routes = [
         ]
     },
 
-    /*     { path: 'reparaciones', component: ListaReparacionesComponent }, */
-
     {
         path: 'reparaciones/:idReparaciones', component: DetalleReparacionComponent, children: [
             { path: 'vehiculo', component: ListaReparacionesComponent },
             { path: 'cliente/:clienteId', component: ListaReparacionesComponent },
         ]
     },
-    /*   { path: 'cliente/:clienteId', component: DetalleClienteComponent },
-      { path: 'registro/reparaciones', component: NuevaReparacionComponent },
-      { path: 'vehiculos/:vehiculoId', component: DetalleVehiculoComponent }, */
-
-
-
-
-
-
     { path: '**', redirectTo: '/inicio' },
 
 
 
 ];
-
-
-/* {path: 'taller/reparacion/:reparacionId', component: DetalleReparacionComponent, children: [
-            { path: 'vehiculo', component: DetalleVehiculoComponent },
-            { path: 'cliente', component: DetalleClienteComponent },
-        ]
-    },
- */
-
-
-/*   /*  { path: 'reparaciones/:idReparaciones', component: ListaReparacionesComponent }, */
-
-
-/* children: [
-               { path: 'reparaciones/:reparacionId', component: DetalleReparacionComponent, children:[
-                  { path: 'vehiculo', component: DetalleVehiculoComponent },
-                  { path: 'cliente', component: DetalleClienteComponent }, 
-              ] }, 
-        ] */
