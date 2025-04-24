@@ -120,16 +120,8 @@ export class NuevoUsuarioComponent {
       } else {
         await this.usuarioService.register(usuarioData);
         toast.success('Usuario registrado correctamente');
+        this.router.navigate(['/admin', 'usuarios']);
       }
-
-      // // biome-ignore lint/style/noNonNullAssertion: <explanation>
-      // // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      //this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-
-      //   console.log(params.id)
-
-
-      // });
 
 
       this.formRegistro.reset();

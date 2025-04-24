@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../services/clientes.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { toast } from 'ngx-sonner';
 import { MailingService } from '../../services/mailing.service';
 import type { Cliente } from '../../interfaces/cliente';
 
@@ -105,9 +105,9 @@ export class NuevoClienteComponent {
       try {
         const nuevoCliente = await this.clientesService.register(this.registerForm.value);
         toast.success('Cliente registrado correctamente');
-        setTimeout(() => {
-          this.router.navigate([`/admin/cliente/${nuevoCliente.id}`]);
-        }, 1500)
+
+        this.router.navigate([`/admin/cliente/${nuevoCliente.id}`]);
+
         this.mailingService.sendMail({
           nombre: this.registerForm.value.nombre,
           email: this.registerForm.value.email,

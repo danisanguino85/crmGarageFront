@@ -15,7 +15,7 @@ import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-nueva-reparacion',
-  imports: [ReactiveFormsModule, NgxSonnerToaster, TitleCasePipe],
+  imports: [ReactiveFormsModule, TitleCasePipe],
   templateUrl: './nueva-reparacion.component.html',
   styleUrl: './nueva-reparacion.component.css'
 })
@@ -71,7 +71,7 @@ export class NuevaReparacionComponent {
     try {
       if (this.formRegistro.valid) {
         this.nuevaReparacion = await this.reparacionesServices.register(this.formRegistro.value);
-        this.getVehiculo()
+        // this.getVehiculo()
         this.formRegistro.reset()
         toast.success('Confirmación de ingreso de su vehículo en Taller JMD');
         await this.mailingService.sendMail({
@@ -84,9 +84,6 @@ Gracias por confiar en Taller JMD.
 Te confirmamos que hemos recibido tu vehículo en día y hora ${this.fecha} para la revisión/reparación solicitada. Nuestro equipo ya está trabajando en el diagnóstico y te mantendremos informado sobre el estado de la reparación y cualquier detalle adicional que debamos comentarte.
 
 Datos del ingreso:
-
-    Vehículo: ${this.vehiculo.marca} ${this.vehiculo.modelo} con matrícula ${this.vehiculo.matricula}
-
 
     Número de nota de taller: ${this.nuevaReparacion.id}
 
@@ -141,14 +138,14 @@ Equipo de Taller JMD
     });
   }
 
-  async getVehiculo() {
-    this.vehiculo = await this.vehiculosService.getVehiculoByReparacion(
-      {
-        id: this.nuevaReparacion.id
-      }
-    )
+  // async getVehiculo() {
+  //   this.vehiculo = await this.vehiculosService.getVehiculoByReparacion(
+  //     {
+  //       id: this.nuevaReparacion.id
+  //     }
+  //   )
 
-  }
+  // }
 
   checkControl(controlName: string, errorName: string): boolean {
     const control = this.formRegistro.get(controlName);

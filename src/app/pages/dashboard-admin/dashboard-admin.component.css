@@ -65,6 +65,9 @@ button {
 	padding: 5px;
 	border-radius: 5px;
 }
+a{
+	color: white;
+}
 .logoTaller {
 	text-align: center;
 	margin: 100px auto;
