@@ -5,7 +5,7 @@ h2 {
 	display: flex;
 	height: 100vh;
 	overflow: auto;
-	min-height: calc(100vh - 142px);
+	min-height: calc(100vh - 161.4px);
 }
 
 .tab {
@@ -13,7 +13,11 @@ h2 {
 	flex-direction: column;
 	justify-content: center;
 }
-
+img {
+	margin: 10px auto;
+	display: block;
+	width: 100px;
+}
 .lateral {
 	position: relative;
 	width: 20%;
@@ -64,10 +68,11 @@ button {
 .logoTaller {
 	text-align: center;
 	margin: 100px auto;
-	i {
-		font-size: 300%;
-		margin-bottom: 20px;
-	}
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
+	font-weight: bolder;
+	font-size: 120%;
+	letter-spacing: 5px;
 }
 .registro {
 	text-align: center;
@@ -113,7 +118,9 @@ button {
 	.general {
 		flex-wrap: wrap;
 	}
-
+	.logoTaller {
+		margin: 50px auto;
+	}
 	.lateral {
 		width: 100%;
 		border-right: none;

@@ -14,22 +14,13 @@ export class ListaClientesComponent {
 
   clientes: Cliente[] = []
   clientesService = inject(ClientesService)
-  paginaActual = 1
+  paginaActual = 0
   limitePorPagina = 10
 
   async ngOnInit() {
     this.cargarClientes()
   }
-  //   await this.getClientes()
-  // }
 
-  //  async getClientes() {
-  //    try {
-  //      this.clientes = await this.clientesService.getAll()
-  //    } catch (error: any) {
-  //      toast.error(error.message)
-  //    }
-  //  }
 
   async cargarClientes() {
     try {
@@ -41,8 +32,10 @@ export class ListaClientesComponent {
   }
 
   siguientePagina() {
-    this.paginaActual++;
-    this.cargarClientes();
+    if (this.paginaActual < 2) {
+      this.paginaActual++;
+      this.cargarClientes();
+    }
   }
 
   paginaAnterior() {

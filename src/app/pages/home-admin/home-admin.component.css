@@ -1,6 +1,6 @@
 .main.wrapper {
 	font-family: Arial, sans-serif;
-	min-height: calc(100vh - 142px);
+	min-height: calc(100vh - 161.4px);
 	align-content: center;
 	display: flex;
 	flex-wrap: wrap;
@@ -14,9 +14,6 @@
 	gap: 20px;
 	ul {
 		text-align: left;
-		li {
-			margin-bottom: 10px;
-		}
 	}
 }
 .nombre {
@@ -91,10 +88,10 @@ button {
 	border-radius: 50%;
 	object-fit: cover;
 	border: 2px solid black;
-	margin-right: 20px;
+	margin: 0 auto;
 }
 /* Responsive styles */
-@media (max-width: 1004px) {
+@media (max-width: 1024px) {
 	.main.wrapper {
 		flex-direction: column;
 	}

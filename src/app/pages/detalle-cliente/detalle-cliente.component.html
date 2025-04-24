@@ -67,7 +67,7 @@
       <th>Salida</th>
       <th>Mecánico</th>
       @for(reparacion of reparaciones;track $index){
-      <tr>
+      <tr [routerLink]="['/admin','reparacion',reparacion.id]">
         <td>{{ reparacion.id }}</td>
         <td>{{ reparacion.estado }}</td>
         <td>{{ reparacion.fecha_ingreso | date : "dd-MM-yyyy" }}</td>
