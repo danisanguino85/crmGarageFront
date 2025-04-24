@@ -30,7 +30,12 @@ table {
 		cursor: pointer;
 	}
 }
-
+button {
+	border-radius: 5px;
+}
+p {
+	text-align: right;
+}
 @media (max-width: 1024px) {
 	.boton {
 		display: none;

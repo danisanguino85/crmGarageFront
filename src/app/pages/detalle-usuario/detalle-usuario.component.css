@@ -65,6 +65,12 @@ h1 {
 	background-color: var(--primary-color);
 }
 
+@media (max-width: 1004px) {
+	ul.list-group {
+		width: 80%;
+	}
+}
+
 /* querys */
 @media (max-width: 768px) {
 	.perfil {
@@ -72,12 +78,12 @@ h1 {
 		align-items: center;
 		text-align: center;
 	}
-
+	li.nombre {
+		text-align: center;
+	}
 	.imagen-empleado {
-		margin-right: 0;
-		margin-bottom: 15px;
-		width: 80px;
-		height: 80px;
+		width: 100px;
+		height: 100px;
 	}
 
 	.actualizar-imagen {
@@ -88,13 +94,9 @@ h1 {
 }
 
 @media (max-width: 480px) {
-	.imagen-empleado {
-		width: 80px;
-		height: 80px;
-		margin: 0 auto;
-		display: block;
+	ul.list-group {
+		width: 90%;
 	}
-
 	.actualizar-imagen {
 		padding: 8px 12px;
 		font-size: 13px;
