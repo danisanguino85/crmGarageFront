@@ -116,6 +116,7 @@ export class NuevoUsuarioComponent {
       if (usuarioData.id) {
         await this.usuarioService.update(usuarioData.id, usuarioData);
         toast.success('Usuario actualizado correctamente');
+        this.router.navigate(['/admin', 'usuario', usuarioData.id]);
       } else {
         await this.usuarioService.register(usuarioData);
         toast.success('Usuario registrado correctamente');
@@ -123,7 +124,7 @@ export class NuevoUsuarioComponent {
 
       // // biome-ignore lint/style/noNonNullAssertion: <explanation>
       // // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      // this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+      //this.activatedRoute.parent!.params.subscribe(async (params: any) => {
 
       //   console.log(params.id)
 
@@ -134,10 +135,10 @@ export class NuevoUsuarioComponent {
       this.formRegistro.reset();
       this.modo = 'registrar';
 
-      setTimeout(() => {
-        const rol = usuarioData.rol;
-        // this.router.navigate([`/usuario/${usuarioId}`]);
-      }, 1500);
+
+      const rol = usuarioData.rol;
+
+
 
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {

@@ -37,14 +37,12 @@ export class DetalleClienteComponent {
   route = inject(ActivatedRoute);
   notasService = inject(NotasService)
   vehiculosService = inject(VehiculosService)
-  activatedRoute = inject(ActivatedRoute)
   reparacionId = 0
   mecanicoAdmin?: boolean = false
   vehiculos: Vehiculo[] = []
   reparaciones: Reparacion[] = []
   coche!: Vehiculo
   router = inject(Router);
-  clienteReparacion!: Cliente | null;
   comunicacionService = inject(ComunicationServiceService)
 
 
@@ -58,10 +56,7 @@ export class DetalleClienteComponent {
       this.loadCliente()
       this.loadVehiculos()
 
-      const data = this.usuarioService.tokenDecodificado()
-      if (data?.rol === 'mecanico') {
-        this.mecanicoAdmin = true;
-      };
+
 
 
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -75,13 +70,7 @@ export class DetalleClienteComponent {
     try {
       this.vehiculos = await this.vehiculosService.getVehiculosByClienteId(this.clienteId)
 
-      // biome-ignore lint/style/noNonNullAssertion: <explanation>
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      if (this.mecanicoAdmin) {
-        this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-          this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
-        });
-      }
+
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)

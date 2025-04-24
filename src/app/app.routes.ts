@@ -21,6 +21,7 @@ import { tallerguardGuard } from './guards/tallerguard.guard';
 import { authtGuard } from './guards/autht.guard';
 import { ActualizarComponent } from './pages/actualizar/actualizar.component';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
+import { ClienteTallerComponent } from './pages/cliente-taller/cliente-taller.component';
 
 export const routes: Routes = [
 
@@ -59,7 +60,7 @@ export const routes: Routes = [
         path: 'reparacion/:reparacionId', component: DetalleReparacionComponent,
         children: [
             { path: 'vehiculo', component: DetalleVehiculoComponent },
-            { path: 'cliente', component: DetalleClienteComponent },
+            { path: 'cliente', component: ClienteTallerComponent },
             { path: 'notas', component: ListaNotasComponent },
             { path: 'notas/:notaId', component: ListaNotasComponent },
         ]

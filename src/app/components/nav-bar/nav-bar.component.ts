@@ -22,6 +22,10 @@ export class NavBarComponent {
   comunicacionService = inject(ComunicationServiceService)
 
 
+  ngAfterViewChecked() {
+    this.loadUsuario();
+  }
+
   async loadUsuario() {
     const data = this.usuariosService.tokenDecodificado()
 
@@ -29,13 +33,6 @@ export class NavBarComponent {
       this.usuario = await this.usuariosService.getById(data.id)
     }
   }
-
-  ngAfterViewChecked() {
-    this.loadUsuario()
-  }
-
-
-
 
   async registerEntrada() {
     await this.registroService.insertEntrada(

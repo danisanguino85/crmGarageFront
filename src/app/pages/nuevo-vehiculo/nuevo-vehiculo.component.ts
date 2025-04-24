@@ -64,7 +64,7 @@ export class NuevoVehiculoComponent {
       }
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
-      toast.error(error.error.message);
+      // toast.error(error.error.message);
     }
   }
 

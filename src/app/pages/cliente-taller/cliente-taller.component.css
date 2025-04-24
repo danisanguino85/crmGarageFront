@@ -1,0 +1,70 @@
+
+.card-cliente {
+	background-color: #fefefe;
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	border-left: 5px solid #0d6efd;
+	font-family: "Segoe UI", sans-serif;
+	max-width: 900px;
+	min-height: 400px;
+	margin: auto;
+	color: #333;
+}
+
+.card-cliente h3 {
+	font-size: 1.5rem;
+	color: #0d6efd;
+	margin-bottom: 16px;
+}
+
+.card-cliente ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.card-cliente li {
+	margin-bottom: 10px;
+	font-size: 1rem;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 6px;
+}
+
+.card-cliente li strong {
+	width: 160px;
+	display: inline-block;
+	color: #555;
+}
+
+table {
+	background-color: white;
+	text-align: center;
+	border: 1px solid lightgray;
+	width: 85%;
+	margin: 20px 0 30px 0;
+	th {
+		border-bottom: 1px solid lightgray;
+	}
+	td {
+		padding: 5px;
+		cursor: pointer;
+	}
+	thead th {
+		padding: 10px;
+		text-align: left;
+	}
+}
+@media (max-width: 1024px) {
+	.general {
+		flex-direction: column;
+		ul,
+		table {
+			width: 100%;
+		}
+		.cliente,
+		.router {
+			width: 100%;
+		}
+	}
+}

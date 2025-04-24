@@ -1,4 +1,4 @@
-@if (cliente) { @if (!mecanicoAdmin) {
+@if (cliente) {
 <div class="general">
   <div class="cliente">
     <ul class="list-group">
@@ -81,23 +81,5 @@
   <div class="router">
     <router-outlet />
   </div>
-</div>
-} }@else {
-<div class="card-cliente">
-  <h3>👤 Detalle del Cliente</h3>
-  <ul>
-    <li>
-      <strong>Nombre:</strong> {{ clienteReparacion?.nombre }}
-      {{ clienteReparacion?.apellidos }}
-    </li>
-    <li><strong>DNI:</strong> {{ clienteReparacion?.dni }}</li>
-    <li><strong>Teléfono:</strong> {{ clienteReparacion?.telefono }}</li>
-    <li><strong>Email:</strong> {{ clienteReparacion?.email }}</li>
-    <li><strong>Dirección:</strong> {{ clienteReparacion?.direccion }}</li>
-    <li>
-      <strong>Fecha de alta:</strong>
-      {{ clienteReparacion?.fecha_alta | date : "EEEE d 'de' MMMM, HH:mm" }}
-    </li>
-  </ul>
 </div>
 }
