@@ -78,12 +78,18 @@
       }
     </div>
 
-    <input
+<!--     <input
       type="submit"
       value="Registrar"
       class="btn"
       [disabled]="!this.registerForm.valid"
-    />
+    /> -->
+    <input
+  type="submit"
+ [value] = "modo === 'registrar' ? 'Registrar' : 'Actualizar'"
+  class="btn"
+  [disabled]="!registerForm.valid"
+/>
   </form>
 </div>
 
