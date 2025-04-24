@@ -73,13 +73,13 @@ export class NuevaReparacionComponent {
         this.nuevaReparacion = await this.reparacionesServices.register(this.formRegistro.value);
         this.getVehiculo()
         this.formRegistro.reset()
-        toast.success('Confirmación de ingreso de su vehículo en Taller Macarroni');
+        toast.success('Confirmación de ingreso de su vehículo en Taller JMD');
         await this.mailingService.sendMail({
           nombre: this.cliente.nombre,
           email: this.cliente.email,
           mensaje: `Hola ${this.cliente.nombre},
 
-Gracias por confiar en Taller Macarroni.
+Gracias por confiar en Taller JMD.
 
 Te confirmamos que hemos recibido tu vehículo en día y hora ${this.fecha} para la revisión/reparación solicitada. Nuestro equipo ya está trabajando en el diagnóstico y te mantendremos informado sobre el estado de la reparación y cualquier detalle adicional que debamos comentarte.
 
@@ -93,17 +93,16 @@ Datos del ingreso:
     Estado actual: ${this.nuevaReparacion.estado}
 
 Saludos,
-Equipo de Taller Macarroni
-[Teléfono del taller] – [Correo del taller]
+Equipo de Taller JMD
   
   📍 Dirección: C/ Rueda nº 123, Ciudad Motor  
   📞 Teléfono: 123 456 789  
-  🌐 Web: www.tallermacarroni.com
+  🌐 Web: www.tallerjmd.com
   
   No dudes en escribirnos si necesitas ayuda o tienes alguna pregunta.
   
 
-  **Taller Macarroni – Donde tu coche está en buenas manos.**`
+  **Taller JMD – Donde tu coche está en buenas manos.**`
         });
 
       } else {
@@ -148,7 +147,7 @@ Equipo de Taller Macarroni
         id: this.nuevaReparacion.id
       }
     )
-    console.log(this.vehiculo)
+
   }
 
   checkControl(controlName: string, errorName: string): boolean {

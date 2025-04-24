@@ -16,7 +16,7 @@ import { NgxSonnerToaster, toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-reparacion-admin',
-  imports: [CurrencyPipe, DatePipe, TitleCasePipe, NgxSonnerToaster],
+  imports: [CurrencyPipe, DatePipe, TitleCasePipe],
   templateUrl: './reparacion-admin.component.html',
   styleUrl: './reparacion-admin.component.css'
 })
@@ -85,12 +85,13 @@ export class ReparacionAdminComponent {
       toast.error(error.error.message);
     }
   }
-  async loadMecanico() {try {
-    
+  async loadMecanico() {
+    try {
+
       this.mecanico = await this.usuariosService.getMecanicoByReparacion(this.reparacionId)
-  } catch (error: any) {
-    toast.error(error.error.message);
-  }
+    } catch (error: any) {
+      toast.error(error.error.message);
+    }
 
   }
   async loadNota(notaId: number) {

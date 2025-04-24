@@ -16,17 +16,17 @@
             <strong>Entrada: </strong>{{ reparacion.fecha_ingreso | date : 'dd-MM-yyyy' }}
         </li>
         <li class="list-group-item list-group-item-action">
-            <strong>Estado: </strong>{{ reparacion.estado }}
+            <strong>Estado: </strong>{{ reparacion.estado | titlecase}}
         </li>
         <li class="list-group-item list-group-item-action">
             <strong>Presupuesto inicial: </strong>{{reparacion.presupuesto | currency:'EUR'}}
         </li>
         <li class="list-group-item list-group-item-action">
-            <strong>Mecánico: </strong>{{mecanico.nombre}}
-            {{mecanico.apellidos}}
+            <strong>Mecánico: </strong>{{mecanico.nombre | titlecase}}
+            {{mecanico.apellidos |titlecase}}
         </li>
     </ul>
-    <ul class="list-group">
+    <ul class="list-group listaNotas">
         <li class="encabezado list-group-item list-group-item-action" aria-current="true">
             <strong>Notas: </strong>
         </li>

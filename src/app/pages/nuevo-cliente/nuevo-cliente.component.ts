@@ -113,7 +113,7 @@ export class NuevoClienteComponent {
           email: this.registerForm.value.email,
           mensaje: `Hola ${this.registerForm.value.nombre},
 
-Gracias por confiar en nosotros y darte de alta en Taller Macarroni. Estamos encantados de tenerte como cliente.
+Gracias por confiar en nosotros y darte de alta en Taller JMD. Estamos encantados de tenerte como cliente.
 
 Nuestro equipo está listo para ofrecerte el mejor servicio en mantenimiento y reparación de tu vehículo, con total transparencia, profesionalidad y compromiso.
 
@@ -139,8 +139,8 @@ A partir de ahora, podrás recibir notificaciones sobre:
 
 No dudes en escribirnos si necesitas ayuda o tienes alguna pregunta.
 
-¡Bienvenido a la familia Macarroni!  
-**Taller Macarroni – Donde tu coche está en buenas manos.**`
+¡Bienvenido a la familia JMD!  
+**Taller JMD – Donde tu coche está en buenas manos.**`
         });
 
         this.registerForm.reset();

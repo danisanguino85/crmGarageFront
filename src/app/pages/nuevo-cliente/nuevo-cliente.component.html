@@ -6,9 +6,9 @@
       </h1>
       <p class="subtitle">
         {{
-          modo === "registrar"
-            ? "Rellena los datos para registrar un nuevo cliente"
-            : "Modifica los datos del cliente"
+        modo === "registrar"
+        ? "Rellena los datos para registrar un nuevo cliente"
+        : "Modifica los datos del cliente"
         }}
       </p>
     </div>
@@ -78,19 +78,13 @@
       }
     </div>
 
-<!--     <input
+    <!--     <input
       type="submit"
       value="Registrar"
       class="btn"
       [disabled]="!this.registerForm.valid"
     /> -->
-    <input
-  type="submit"
- [value] = "modo === 'registrar' ? 'Registrar' : 'Actualizar'"
-  class="btn"
-  [disabled]="!registerForm.valid"
-/>
+    <input type="submit" [value]="modo === 'registrar' ? 'Registrar' : 'Actualizar'" class="btn"
+      [disabled]="!registerForm.valid" />
   </form>
 </div>
-
-<ngx-sonner-toaster richColors position="bottom-center" />
