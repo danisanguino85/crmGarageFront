@@ -11,7 +11,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import type { Vehiculo } from '../../interfaces/vehiculo';
 import { VehiculosService } from '../../services/vehiculos.service';
 import type { Reparacion } from '../../interfaces/reparacion';
-import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { toast } from 'ngx-sonner';
 import { ComunicationServiceService } from '../../services/comunication-service.service';
 
 type Body = {
@@ -21,7 +21,7 @@ type Body = {
 
 @Component({
   selector: 'app-detalle-cliente',
-  imports: [ReactiveFormsModule, DatePipe, RouterLink, RouterOutlet, NgxSonnerToaster],
+  imports: [ReactiveFormsModule, DatePipe, RouterLink, RouterOutlet],
   templateUrl: './detalle-cliente.component.html',
   styleUrl: './detalle-cliente.component.css'
 })
@@ -70,14 +70,6 @@ export class DetalleClienteComponent {
     }
   }
 
-  /* esta funcion lo que hace es recargar la lista de vehiculos asiganadas al usuario */
-  ngAfterViewChecked() {
-    this.comunicacionService.evento$.subscribe(valor => {
-      if (valor === true) {
-        this.loadVehiculos()
-      }
-    });
-  }
 
   async loadVehiculos() {
     try {
@@ -85,19 +77,15 @@ export class DetalleClienteComponent {
 
       // biome-ignore lint/style/noNonNullAssertion: <explanation>
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-        this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
-      });
+      if (this.mecanicoAdmin) {
+        this.activatedRoute.parent!.params.subscribe(async (params: any) => {
+          this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
+        });
+      }
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.message)
     }
-
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    this.activatedRoute.parent!.params.subscribe(async (params: any) => {
-      this.clienteReparacion = await this.clientesService.getClienteByReparacion(params.reparacionId)
-    });
   }
 
 

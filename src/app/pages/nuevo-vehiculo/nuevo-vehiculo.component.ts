@@ -2,14 +2,14 @@ import { Component, inject, Input } from '@angular/core';
 import { VehiculosService } from '../../services/vehiculos.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { NgxSonnerToaster, toast } from 'ngx-sonner';
+import { toast } from 'ngx-sonner';
 import { ComunicationServiceService } from '../../services/comunication-service.service';
 
 
 
 @Component({
   selector: 'app-nuevo-vehiculo',
-  imports: [ReactiveFormsModule, NgxSonnerToaster],
+  imports: [ReactiveFormsModule],
   templateUrl: './nuevo-vehiculo.component.html',
   styleUrl: './nuevo-vehiculo.component.css'
 })
@@ -62,7 +62,6 @@ export class NuevoVehiculoComponent {
 
         this.nuevoVehiculoForm.reset()
       }
-      window.location.reload;
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       toast.error(error.error.message);

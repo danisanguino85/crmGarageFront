@@ -3,10 +3,11 @@ import type { Usuario } from '../../interfaces/usuario';
 import { UsuariosService } from '../../services/usuarios.service';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 import { Router, RouterModule } from '@angular/router';
+import { DatePipe, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detalle-usuario',
-  imports: [RouterModule, NgxSonnerToaster],
+  imports: [RouterModule, NgxSonnerToaster, TitleCasePipe, DatePipe],
   templateUrl: './detalle-usuario.component.html',
   styleUrl: './detalle-usuario.component.css'
 })

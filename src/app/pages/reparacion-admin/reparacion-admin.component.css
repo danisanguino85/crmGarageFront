@@ -7,9 +7,10 @@
 	}
 }
 .listaNotas {
-	background-color: black;
-	height: 300px;
+	height: 290px;
 	overflow-x: hidden;
+	background-color: white;
+	border: lightgoldenrodyellow;
 }
 .encabezado {
 	background-color: var(--primary-color);
@@ -27,6 +28,7 @@
 	margin-top: 20px;
 	background-color: white;
 	padding: 10px;
+	height: 200px;
 }
 
 @media (max-width: 768px) {

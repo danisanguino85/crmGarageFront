@@ -9,7 +9,7 @@ import type { Cliente } from '../../interfaces/cliente';
 
 @Component({
   selector: 'app-nuevo-cliente',
-  imports: [ReactiveFormsModule, NgxSonnerToaster],
+  imports: [ReactiveFormsModule],
   templateUrl: './nuevo-cliente.component.html',
   styleUrl: './nuevo-cliente.component.css'
 })

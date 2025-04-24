@@ -21,9 +21,6 @@ export class NavBarComponent {
   trabajando = false
   comunicacionService = inject(ComunicationServiceService)
 
-  ngOnInit() {
-    this.loadUsuario()
-  }
 
   async loadUsuario() {
     const data = this.usuariosService.tokenDecodificado()
@@ -33,9 +30,8 @@ export class NavBarComponent {
     }
   }
 
-  /* esta carga el navBar cuando hacemos login y log out, para que aparezca/ o se quite el nombre del usuario logeado */
-  ngDoCheck() {
-    // this.loadUsuario()
+  ngAfterViewChecked() {
+    this.loadUsuario()
   }
 
 

@@ -13,11 +13,11 @@ export class ComunicationServiceService {
     this.eventoSubject.next(valor);
   }
 
-  activarVehiculosAsociados(valor: boolean){
+  activarVehiculosAsociados(valor: boolean) {
     this.eventoSubject.next(valor);
   }
 
-  loadNavComponent(valor: boolean){
+  loadNavComponent(valor: boolean) {
     this.eventoSubject.next(valor);
   }
 }

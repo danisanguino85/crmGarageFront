@@ -15,27 +15,25 @@
         <strong>Dirección: </strong>{{usuario.direccion }}
     </li>
     <li class="list-group-item list-group-item-action">
-        <strong>Fecha de alta: </strong>{{usuario.fecha_alta }}
+        <strong>Fecha de alta: </strong>{{usuario.fecha_alta | date :
+        'dd-MM-yyyy' }}
     </li>
     <li class="list-group-item list-group-item-action">
-        <strong>Fecha de baja: </strong>{{usuario.fecha_baja }}
-    </li>
-    <li class="list-group-item list-group-item-action">
-        <strong>Fecha de nacimiento: </strong>{{usuario.fecha_nacimiento
+        <strong>Fecha de nacimiento: </strong>{{usuario.fecha_nacimiento | date :'dd-MM-yyyy'
         }}
     </li>
     <li class="list-group-item list-group-item-action">
         <p><strong>Número de la Seguridad social: </strong>{{usuario.numero_ss}}</p>
     </li>
     <li class="list-group-item list-group-item-action">
-        <p><strong>Rol: </strong>{{usuario.rol}}</p>
+        <p><strong>Rol: </strong>{{usuario.rol | titlecase}}</p>
     </li>
     <li class="list-group-item list-group-item-action">
-        <strong>Jornada: </strong>{{usuario.jornada}}
+        <strong>Jornada: </strong>{{usuario.jornada | titlecase}}
     </li>
 
     <li class="list-group-item list-group-item-action">
-        <strong>Especialidad: </strong>{{usuario.especialidad}}
+        <strong>Especialidad: </strong>{{usuario.especialidad | titlecase}}
     </li>
 </ul>
 }
